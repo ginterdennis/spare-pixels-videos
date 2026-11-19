@@ -1,0 +1,23 @@
+{
+  "series": "REN",
+  "last_part": 1,
+  "day": 1,
+  "days_to_winter": 21,
+  "water_liters": 0.5,
+  "food": {"granola_bars": 3},
+  "inventory": [
+    {"key": "bottle", "name": "Water bottle", "state": "half full (0.5 L)"},
+    {"key": "knife", "name": "Pocket knife", "state": "ok"},
+    {"key": "battery", "name": "9V battery", "state": "charged"},
+    {"key": "steelwool", "name": "Steel wool", "state": "1 pad"},
+    {"key": "tape", "name": "Duct tape", "state": "full roll"},
+    {"key": "paracord", "name": "Paracord", "state": "10 m"},
+    {"key": "blanket", "name": "Space blanket", "state": "folded"},
+    {"key": "phone", "name": "Dead phone", "state": "no battery, cracked screen"},
+    {"key": "needle", "name": "Sewing needle", "state": "with thread"},
+    {"key": "granola", "name": "Granola bars", "state": "x3"},
+    {"key": "bags", "name": "Trash bags", "state": "x2, black"},
+    {"key": "lighter", "name": "Empty lighter", "state": "no fuel, flint works"}
+  ],
+  "next_episode": {"part": 2, "day": 2, "problem": "The water runs out"}
+}
