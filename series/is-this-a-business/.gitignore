@@ -1,0 +1,6 @@
+node_modules/
+build/
+out/
+stills/
+public/*.ttf
+__pycache__/
