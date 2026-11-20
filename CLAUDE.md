@@ -4,6 +4,7 @@
 1. `bash setup.sh` once per workspace (installs Python deps, links `/home/claude/kit`, copies REN fonts).
 2. Each video has its own folder `tests/<id>-<slug>/` with `render.py` (frames → ffmpeg via `kit.Writer`) and `audio.py` (synth via `kit.Mix`), then `kit.mux(video, wav, out)` (loudnorm -14 LUFS).
    REN episodes live in `series/ren/src/` (`scene2.py` = Part 2 template; skia overlays; read `series/ren/README.md` and `state.json` first, update `state.json` after each episode).
+   Remotion (React) videos: see `tests/015-no-yellow/README.md` (render, convert Remotion's full-range output to standard range, mux at 48 kHz).
 3. Output 1080x1920, 30 fps, H.264. Render stills of the busiest moments and look at them before the full render.
 4. Copy the final MP4 to `videos/<id>-<slug>.mp4` (photo posts: JPEGs in `photos/<id>-<slug>/`), commit, push.
 5. Post through Metricool (brand/blogId `8233683`, timezone Europe/Berlin) with `createScheduledPost`, media = `https://raw.githubusercontent.com/ginterdennis/spare-pixels-videos/main/<path>`.
