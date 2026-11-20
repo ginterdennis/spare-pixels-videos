@@ -6,3 +6,4 @@ id,posted_at,file,series,part,topic,hook,length_s,tiktok_url,views_48h,likes_48h
 005,2026-11-20 12:25,videos/005-circles-write-a-name.mp4,TEST,calm-loop,200 Fourier circles write 'Emma',200 circles. One pen. Watch what they write.,20.0,,,,,,test 2/10 calm loop; reply-series hook; Metricool id 435364261
 006,2026-11-20 13:25,videos/006-afterimage-illusion.mp4,TEST,interactive,afterimage illusion (pixel balloon scene),Stare at the dot for 18 seconds,29.0,,,,,,test 3/10 interactive; YES/NO comment CTA; Metricool id 435366711
 007,2026-11-20 14:25,videos/007-gold-pixel-lottery.mp4,TEST,data,"1 gold pixel = 1 ticket, zoom out to 139,838,160",This gold pixel is your lottery ticket,30.0,,,,,,test 4/10 data; Metricool id 435375028
+008,2026-11-20 15:25,photos/008-wallpapers/ (9 slides),TEST,slideshow,8 pixel-art wallpapers carousel,8 pixel wallpapers - which number are you taking?,,,,,,,test 5/10 photo mode; autoAddMusic; Metricool id 435382728
