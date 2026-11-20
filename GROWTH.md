@@ -44,11 +44,12 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - Part 3 promises "If YES wins, Jonas builds it" (Part 4). Make Part 4 if Part 3's comments lean YES, or if Part 1 has signal; otherwise close the series with a short note in the learnings log. Track Part 2 views / Part 1 views (series carry-over).
 
 ## Publishing capacity (Metricool plan) - check every run
-- Metricool **Free = 20 published posts per calendar month**, counted once per network (TikTok + IG cross-post = 2), resets on the 1st. Scheduling more is allowed, but each publish over the cap fails with "You have reached your Metricool account limit." Starter (from EUR 20/month + VAT) has no monthly cap; upgrades apply immediately.
-- 20 Nov 20:25: cap reached. Failed: 013 TikTok, 003/001/013 IG. All failed and pending posts were moved to new slots (`updateScheduledPost` works on ERROR posts and sets them back to PENDING). The user was asked by push at 21:45 to upgrade to Starter.
-- **Each run, first:** getScheduledPosts for the last 24 h. Any new ERROR with that message means still Free.
-  - Still Free: make no new videos (the queue already covers 4+ days). Move every failed and still-queued post forward so that from 1 Dec only the best ones publish: max 20 a month, TikTok first (about 4 a week, best exploit formats), IG only for TikTok posts that reached For You. Keep series parts in order. Remind the user by push at most every 3 days, with the same click steps.
-  - Published fine (upgraded): reschedule any ERROR posts into free slots (keep series order, max 3 TikTok / 4 IG a day), remove this item from "Needs the user", and return to the normal loop.
+- Metricool **Free = 20 published posts per calendar month**, counted once per network (TikTok + IG cross-post = 2), resets on the 1st. Scheduling more is allowed, but each publish over the cap fails with "You have reached your Metricool account limit."
+- 20 Nov 20:25: cap reached. Failed: 013 TikTok, 003/001/013 IG. All failed and pending posts were moved to new slots (`updateScheduledPost` works on ERROR posts and sets them back to PENDING).
+- **20 Nov 22:10, user decision: stay free, no Metricool upgrade.** Plan: publish through **Buffer Free** (3 channels, 10 scheduled posts per channel at a time, refill any time; official API/MCP on Free, 1,000 requests per channel per 30 days) via Buffer's Claude connector (`https://mcp.buffer.com/mcp`, OAuth). Metricool stays for analytics, plus its 20 free posts a month as a spare from 1 Dec. Rejected: TikTok's own posting API (TikTok does not approve "a utility tool to help upload contents to the account(s) you or your team manages"; unapproved apps post private only), TikTok Studio scheduling (manual uploads), Windsor (Instagram only, trial).
+- **Each run, first:** check whether Buffer tools (`mcp__Buffer__*` or similar) are loaded.
+  - Buffer available: if not done yet, migrate: one test post, then recreate every still-queued Metricool post in Buffer at the same time (customScheduled + dueAt, Instagram type reel, video URL from raw.githubusercontent.com), set the Metricool copies to `draft: true` so nothing doubles, and log the Buffer ids in posts.csv. Keep each channel's Buffer queue at <= 10; the daily run refills it.
+  - Buffer not available yet: make no new videos (the queue already covers 4+ days); move failed Metricool posts forward; remind the user by push at most every 3 days with the Buffer steps under "Needs the user".
 
 ## Format scoreboard (update every run)
 Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not published yet.
@@ -72,4 +73,4 @@ Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not publis
 - 2026-11-20: 11 TikToks posted on the account's 2nd day; only 001 and 006 reached For You. Capped TikTok at 3/day and moved 012/017/018 to Sat/Sun. First-3-seconds drop-off is the main weakness.
 
 ## Needs the user (only human-only things; keep empty when nothing is needed)
-- Upgrade Metricool to Starter (asked 20 Nov 21:45 by push): app.metricool.com > menu (top left) > Plan and Billing > Change plan > Starter, monthly, 5 brands. Until then nothing publishes before 1 Dec.
+- Connect Buffer (asked 20 Nov 22:10): 1) buffer.com > Get started for free > sign up. 2) In Buffer, connect channels TikTok @spare.pixels and Instagram @spare.pixel. 3) claude.ai > Customize > Connectors > search "Buffer" > Connect > sign in and approve (if not listed: add a custom connector with URL https://mcp.buffer.com/mcp). 4) Add the Buffer connector to the scheduled task "spare.pixels growth loop (until 10k followers)".
