@@ -75,4 +75,5 @@ Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not publis
 - 2026-11-20: 11 TikToks posted on the account's 2nd day; only 001 and 006 reached For You. Capped TikTok at 3/day and moved 012/017/018 to Sat/Sun. First-3-seconds drop-off is the main weakness.
 
 ## Needs the user (only human-only things; keep empty when nothing is needed)
+- Add the Buffer connector to the scheduled task "spare.pixels growth loop (until 10k followers)" (asked 21 Nov 00:50; the run cannot add connectors to itself).
 - Connect Instagram @spare.pixel in Buffer (asked 21 Nov 00:45): buffer.com > log in > "Connect a channel" (or Channels > "+") > Instagram > log in as @spare.pixel and allow access.
