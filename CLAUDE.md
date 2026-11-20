@@ -10,6 +10,8 @@
 5. Post through Metricool (brand/blogId `8233683`, timezone Europe/Berlin) with `createScheduledPost`, media = `https://raw.githubusercontent.com/ginterdennis/spare-pixels-videos/main/<path>`.
    `tiktokData.title` is REQUIRED (the call fails without it). `isAigc: false` (code-drawn, nothing realistic). Photo posts: JPEG, `autoAddMusic: true`.
 6. Log every post in `posts.csv` (id, time, file, series, format, topic, hook, length, url, 48h metrics, notes incl. Metricool id).
+7. Cross-post every video to Instagram too (connected in Metricool as @spare.pixel since 20 Nov): a separate `createScheduledPost` with `providers [{"network":"instagram"}]`, `instagramData {"type":"REEL","showReelOnFeed":true,"isAiGenerated":false,"collaborators":[]}`, same media URL and cover. Drop TikTok-only hashtags (#fyp, #learnontiktok). Note the IG time and Metricool id in `posts.csv` notes.
+   Instagram rejects audio above 48 kHz: always mux at `-ar 48000` (kit.mux() leaves 96 kHz). Instagram feed photos must be 4:5 to 1.91:1, so 9:16 photo posts need a 4:5 version.
 
 ## Style rules
 - Look: dark navy gradient (`kit.BG_TOP/BG_BOT`), Inter Black headlines, accent GOLD #FFD36B / PINK / CYAN, small letter-spaced HUD labels with big numbers.
