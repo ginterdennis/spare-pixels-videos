@@ -38,6 +38,11 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - REN is just another format now: it gets a slot only while its last 2 episodes are at or above the median views of the last 10 TikTok posts. Otherwise set `"paused": true` and a reason in `series/ren/state.json` and use the slot for a winner. Re-check weekly.
 - When making an episode: follow `series/ren/README.md` (bible) and `state.json` (single source of truth; update it after each episode). Hook "DAY N" + the problem as a question in the first 3 s; real, checked survival science, described safely; inventory screen; close "Which item saves Ren next?". 30–45 s. Safe area: nothing important above y=220 or below y=1450, nothing right of x=940 between y=780 and y=1500. Template code: `series/ren/src/` (latest episode under `episodes/`). Usual slot 20:25.
 
+## "Is this a business?" series (illustrated story, Part N daily at 20:25)
+- Made 20 Nov at the user's request, modelled on a series the user sent. Bible, cast, facts and build steps: `series/is-this-a-business/README.md` (Remotion; `finish.sh` does the colour-range fix + 48 kHz mux).
+- Parts 1-3 (022-024) are scheduled Sun 22, Mon 23, Tue 24 Nov at 20:25 TikTok / 20:55 Instagram. Those evening slots are taken; plan around them.
+- Part 3 promises "If YES wins, Jonas builds it" (Part 4). Make Part 4 if Part 3's comments lean YES, or if Part 1 has signal; otherwise close the series with a short note in the learnings log. Track Part 2 views / Part 1 views (series carry-over).
+
 ## Format scoreboard (update every run)
 | Format | Posts | Reached For You | Best views | Avg watch % | Status |
 |---|---|---|---|---|---|
@@ -52,6 +57,7 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 | humour | 011 | – | – | – | pending |
 | story / group chat | 012 | – | – | – | pending |
 | REN series | 003, 013, 014 | none yet | 6 | 12% (003) | watch |
+| story series "Is this a business?" | 022, 023, 024 (Sun-Tue 20:25) | – | – | – | scheduled |
 
 ## Learnings log (newest first, one line each)
 - 2026-11-20: 11 TikToks posted on the account's 2nd day; only 001 and 006 reached For You. Capped TikTok at 3/day and moved 012/017/018 to Sat/Sun. First-3-seconds drop-off is the main weakness.
