@@ -1,23 +1,86 @@
 {
   "series": "REN",
-  "last_part": 1,
-  "day": 1,
-  "days_to_winter": 21,
-  "water_liters": 0.5,
-  "food": {"granola_bars": 3},
+  "last_part": 2,
+  "day": 2,
+  "days_to_winter": 20,
+  "water_liters": 1.0,
+  "food": {
+    "granola_bars": 2
+  },
   "inventory": [
-    {"key": "bottle", "name": "Water bottle", "state": "half full (0.5 L)"},
-    {"key": "knife", "name": "Pocket knife", "state": "ok"},
-    {"key": "battery", "name": "9V battery", "state": "charged"},
-    {"key": "steelwool", "name": "Steel wool", "state": "1 pad"},
-    {"key": "tape", "name": "Duct tape", "state": "full roll"},
-    {"key": "paracord", "name": "Paracord", "state": "10 m"},
-    {"key": "blanket", "name": "Space blanket", "state": "folded"},
-    {"key": "phone", "name": "Dead phone", "state": "no battery, cracked screen"},
-    {"key": "needle", "name": "Sewing needle", "state": "with thread"},
-    {"key": "granola", "name": "Granola bars", "state": "x3"},
-    {"key": "bags", "name": "Trash bags", "state": "x2, black"},
-    {"key": "lighter", "name": "Empty lighter", "state": "no fuel, flint works"}
+    {
+      "key": "bottle",
+      "name": "Water bottle",
+      "state": "full (1 L), refilled with snow melted in a black bag"
+    },
+    {
+      "key": "knife",
+      "name": "Pocket knife",
+      "state": "ok"
+    },
+    {
+      "key": "battery",
+      "name": "9V battery",
+      "state": "charged"
+    },
+    {
+      "key": "steelwool",
+      "name": "Steel wool",
+      "state": "1 pad"
+    },
+    {
+      "key": "tape",
+      "name": "Duct tape",
+      "state": "full roll"
+    },
+    {
+      "key": "paracord",
+      "name": "Paracord",
+      "state": "10 m"
+    },
+    {
+      "key": "blanket",
+      "name": "Space blanket",
+      "state": "folded"
+    },
+    {
+      "key": "phone",
+      "name": "Dead phone",
+      "state": "no battery, cracked screen"
+    },
+    {
+      "key": "needle",
+      "name": "Sewing needle",
+      "state": "with thread"
+    },
+    {
+      "key": "granola",
+      "name": "Granola bars",
+      "state": "x2"
+    },
+    {
+      "key": "bags",
+      "name": "Trash bags",
+      "state": "x2, black (1 in use as snow melter)"
+    },
+    {
+      "key": "lighter",
+      "name": "Empty lighter",
+      "state": "no fuel, flint works"
+    }
   ],
-  "next_episode": {"part": 2, "day": 2, "problem": "The water runs out"}
+  "next_episode": {
+    "part": 3,
+    "day": 3,
+    "problem": "Freezing night, no fire"
+  },
+  "episodes": [
+    {
+      "part": 2,
+      "day": 2,
+      "problem": "The water runs out",
+      "solution": "Never eat snow (costs body heat and energy). Melt clean fresh snow in a black trash bag in the sun; ~10 bottles of snow = 1 bottle of water.",
+      "file": "videos/013-ren-part2-day2.mp4"
+    }
+  ]
 }

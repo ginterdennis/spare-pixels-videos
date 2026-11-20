@@ -10,3 +10,4 @@ id,posted_at,file,series,part,topic,hook,length_s,tiktok_url,views_48h,likes_48h
 009,2026-11-20 16:25,videos/009-wordless-proofs.mp4,TEST,explainer,"3 wordless proofs: odd sums, staircase, Pythagoras",3 proofs. Zero words.,38.5,,,,,,test 6/10 explainer; Metricool id 435388541
 010,2026-11-20 17:25,videos/010-2026-in-365-pixels.mp4,TEST,seasonal,"2026 as 365 pixels, 41 left",2026 in 365 pixels,19.8,,,,,,test 7/10 seasonal; daily-countdown series candidate; Metricool id 435390594
 011,2026-11-20 18:25,videos/011-adulting-patch-notes.mp4,TEST,humour,Adulting v27.0 patch notes,Adulting v27.0 patch notes just dropped,33.3,,,,,,test 8/10 humour; comment-your-age CTA; Metricool id 435392857
+012,2026-11-20 19:25,videos/012-planets-group-chat.mp4,TEST,story,"planets group chat, Pluto voted out (IAU 24 Aug 2006)",POV: the planets' group chat,43.4,,,,,,test 9/10 story; YES/NO debate CTA; Metricool id 435401242
