@@ -48,8 +48,9 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 ## Publishing (Buffer Free since 21 Nov) - check every run
 - Metricool **Free = 20 published posts per calendar month** (counted per network). Cap hit 20 Nov 20:25. Metricool is now analytics only; its posts for TikTok were set to drafts on 21 Nov 00:40 so nothing doubles.
 - **Buffer Free** publishes now (user decision 20 Nov 22:10: stay free). Connector `Buffer_com`, org `6b00d1f57c8fd27105398cbf`, TikTok channel `6b00d2e9ece6dfde5f3a8402`. Limits: 3 channels, **10 scheduled posts per channel at a time**, 1,000 API requests per channel per 30 days (plus 150 per 15 min, 600 per 24 h). No monthly post cap. TikTok itself allows about 15 API posts a day per account.
-- 21 Nov 00:40: TikTok queue Sat 21 to Mon 23 (9 posts) moved to Buffer. 024 (Tue 20:25) still to add.
-- **Instagram is not connected in Buffer yet.** Until it is, IG posts stay in Metricool and fail (cap). Once `list_channels` shows an Instagram channel: recreate the queued Metricool IG posts in Buffer (type reel), set the Metricool IG copies to drafts, and log the Buffer ids. Keep <= 10 per channel.
+- Instagram channel `6b00de3bece6dfde5f3b8d7e` (spare.pixel, business) connected 21 Nov.
+- 21 Nov 01:00: whole queue moved to Buffer. TikTok: 10 posts Sat 21 to Tue 24 (full). Instagram: 10 Reels Sat 21 to Mon 23 13:40 (full). Every Metricool copy (TikTok + IG) is a draft now.
+- **IG backlog to add when the Buffer queue has room** (same captions as in Metricool drafts / posts.csv): 014 REN P3 Mon 23 17:10, 023 Biz P2 Mon 23 20:55, 007 lottery Tue 24 12:25, 024 Biz P3 Tue 24 20:55, 005 circles Wed 25 12:25, 009 proofs Thu 26 12:25. Max 4 Reels a day, so new videos' IG cross-posts come first on their day and backlog items fill the rest.
 - Each run: `list_posts` (status scheduled / sent / error) to count the queue, catch errors and fill missing tiktok_url values. If a Buffer post errors, fix and reschedule it; if the TikTok channel shows isDisconnected, ask the user to reconnect it in Buffer (exact steps).
 - First real Buffer TikTok post: 017 on Sat 21 Nov 13:10. The next run must confirm it was sent and is public.
 
@@ -76,4 +77,3 @@ Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not publis
 
 ## Needs the user (only human-only things; keep empty when nothing is needed)
 - Add the Buffer connector to the scheduled task "spare.pixels growth loop (until 10k followers)" (asked 21 Nov 00:50; the run cannot add connectors to itself).
-- Connect Instagram @spare.pixel in Buffer (asked 21 Nov 00:45): buffer.com > log in > "Connect a channel" (or Channels > "+") > Instagram > log in as @spare.pixel and allow access.
