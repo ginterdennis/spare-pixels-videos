@@ -1,5 +1,7 @@
 # Growth loop: 10,000 followers (TikTok @spare.pixels + Instagram @spare.pixel, combined)
 
+> **Publishing moved to Buffer on 21 Nov 2026 (user decision: stay free).** Wherever the scheduled task's prompt says to post or count posts with Metricool (`createScheduledPost`, `getScheduledPosts`), use Buffer instead (`create_post`, `list_posts`; details in CLAUDE.md step 5 and "Publishing" below). Metricool is analytics only. If the Buffer tools are not loaded in a run, do not post via Metricool: report it and ask the user to add the Buffer connector to the scheduled task.
+
 The user gave full autonomy on 20 Nov 2026: pick the content, make it, post it automatically, within TikTok's and Instagram's terms. Don't ask the user anything unless something only a human can do is blocking the account. In that case, give exact click-by-click steps.
 
 Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
