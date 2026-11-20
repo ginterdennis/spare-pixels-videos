@@ -4,3 +4,4 @@ id,posted_at,file,series,part,topic,hook,length_s,tiktok_url,views_48h,likes_48h
 003,2026-11-19 20:45,videos/003-ren-part1-day1.mp4,REN,1,"solar storm, 12 items",Can Ren survive the apocalypse with just 12 items?,35.8,https://www.tiktok.com/@spare.pixels/video/7709971201405242646,,,,,first full pipeline run
 004,2026-11-20 11:22,videos/004-pixel-reveal-fox.mp4,TEST,sim,pixel reveal guessing game (fox),Guess the picture before the balls finish,27.5,,,,,,test 1/10 simulation; Metricool id 435359702
 005,2026-11-20 12:25,videos/005-circles-write-a-name.mp4,TEST,calm-loop,200 Fourier circles write 'Emma',200 circles. One pen. Watch what they write.,20.0,,,,,,test 2/10 calm loop; reply-series hook; Metricool id 435364261
+006,2026-11-20 13:25,videos/006-afterimage-illusion.mp4,TEST,interactive,afterimage illusion (pixel balloon scene),Stare at the dot for 18 seconds,29.0,,,,,,test 3/10 interactive; YES/NO comment CTA; Metricool id 435366711
