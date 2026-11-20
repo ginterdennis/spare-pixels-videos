@@ -43,13 +43,13 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - Parts 1-3 (022-024) are scheduled Sun 22, Mon 23, Tue 24 Nov at 20:25 TikTok / 20:55 Instagram. Those evening slots are taken; plan around them. REN therefore runs Sat 21 20:25 (Part 2) and Mon 23 16:40 (Part 3).
 - Part 3 promises "If YES wins, Jonas builds it" (Part 4). Make Part 4 if Part 3's comments lean YES, or if Part 1 has signal; otherwise close the series with a short note in the learnings log. Track Part 2 views / Part 1 views (series carry-over).
 
-## Publishing capacity (Metricool plan) - check every run
-- Metricool **Free = 20 published posts per calendar month**, counted once per network (TikTok + IG cross-post = 2), resets on the 1st. Scheduling more is allowed, but each publish over the cap fails with "You have reached your Metricool account limit."
-- 20 Nov 20:25: cap reached. Failed: 013 TikTok, 003/001/013 IG. All failed and pending posts were moved to new slots (`updateScheduledPost` works on ERROR posts and sets them back to PENDING).
-- **20 Nov 22:10, user decision: stay free, no Metricool upgrade.** Plan: publish through **Buffer Free** (3 channels, 10 scheduled posts per channel at a time, refill any time; official API/MCP on Free, 1,000 requests per channel per 30 days) via Buffer's Claude connector (`https://mcp.buffer.com/mcp`, OAuth). Metricool stays for analytics, plus its 20 free posts a month as a spare from 1 Dec. Rejected: TikTok's own posting API (TikTok does not approve "a utility tool to help upload contents to the account(s) you or your team manages"; unapproved apps post private only), TikTok Studio scheduling (manual uploads), Windsor (Instagram only, trial).
-- **Each run, first:** check whether Buffer tools (`mcp__Buffer__*` or similar) are loaded.
-  - Buffer available: if not done yet, migrate: one test post, then recreate every still-queued Metricool post in Buffer at the same time (customScheduled + dueAt, Instagram type reel, video URL from raw.githubusercontent.com), set the Metricool copies to `draft: true` so nothing doubles, and log the Buffer ids in posts.csv. Keep each channel's Buffer queue at <= 10; the daily run refills it.
-  - Buffer not available yet: make no new videos (the queue already covers 4+ days); move failed Metricool posts forward; remind the user by push at most every 3 days with the Buffer steps under "Needs the user".
+## Publishing (Buffer Free since 21 Nov) - check every run
+- Metricool **Free = 20 published posts per calendar month** (counted per network). Cap hit 20 Nov 20:25. Metricool is now analytics only; its posts for TikTok were set to drafts on 21 Nov 00:40 so nothing doubles.
+- **Buffer Free** publishes now (user decision 20 Nov 22:10: stay free). Connector `Buffer_com`, org `6b00d1f57c8fd27105398cbf`, TikTok channel `6b00d2e9ece6dfde5f3a8402`. Limits: 3 channels, **10 scheduled posts per channel at a time**, 1,000 API requests per channel per 30 days (plus 150 per 15 min, 600 per 24 h). No monthly post cap. TikTok itself allows about 15 API posts a day per account.
+- 21 Nov 00:40: TikTok queue Sat 21 to Mon 23 (9 posts) moved to Buffer. 024 (Tue 20:25) still to add.
+- **Instagram is not connected in Buffer yet.** Until it is, IG posts stay in Metricool and fail (cap). Once `list_channels` shows an Instagram channel: recreate the queued Metricool IG posts in Buffer (type reel), set the Metricool IG copies to drafts, and log the Buffer ids. Keep <= 10 per channel.
+- Each run: `list_posts` (status scheduled / sent / error) to count the queue, catch errors and fill missing tiktok_url values. If a Buffer post errors, fix and reschedule it; if the TikTok channel shows isDisconnected, ask the user to reconnect it in Buffer (exact steps).
+- First real Buffer TikTok post: 017 on Sat 21 Nov 13:10. The next run must confirm it was sent and is public.
 
 ## Format scoreboard (update every run)
 Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not published yet.
@@ -73,4 +73,4 @@ Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not publis
 - 2026-11-20: 11 TikToks posted on the account's 2nd day; only 001 and 006 reached For You. Capped TikTok at 3/day and moved 012/017/018 to Sat/Sun. First-3-seconds drop-off is the main weakness.
 
 ## Needs the user (only human-only things; keep empty when nothing is needed)
-- Connect Buffer (asked 20 Nov 22:10): 1) buffer.com > Get started for free > sign up. 2) In Buffer, connect channels TikTok @spare.pixels and Instagram @spare.pixel. 3) claude.ai > Customize > Connectors > search "Buffer" > Connect > sign in and approve (if not listed: add a custom connector with URL https://mcp.buffer.com/mcp). 4) Add the Buffer connector to the scheduled task "spare.pixels growth loop (until 10k followers)".
+- Connect Instagram @spare.pixel in Buffer (asked 21 Nov 00:45): buffer.com > log in > "Connect a channel" (or Channels > "+") > Instagram > log in as @spare.pixel and allow access.
