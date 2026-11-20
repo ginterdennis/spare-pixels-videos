@@ -1,11 +1,11 @@
 {
   "series": "REN",
-  "last_part": 2,
-  "day": 2,
-  "days_to_winter": 20,
+  "last_part": 3,
+  "day": 3,
+  "days_to_winter": 19,
   "water_liters": 1.0,
   "food": {
-    "granola_bars": 2
+    "granola_bars": 1
   },
   "inventory": [
     {
@@ -21,12 +21,12 @@
     {
       "key": "battery",
       "name": "9V battery",
-      "state": "charged"
+      "state": "low (used to start the fire)"
     },
     {
       "key": "steelwool",
       "name": "Steel wool",
-      "state": "1 pad"
+      "state": "half pad"
     },
     {
       "key": "tape",
@@ -56,7 +56,7 @@
     {
       "key": "granola",
       "name": "Granola bars",
-      "state": "x2"
+      "state": "x1"
     },
     {
       "key": "bags",
@@ -70,9 +70,9 @@
     }
   ],
   "next_episode": {
-    "part": 3,
-    "day": 3,
-    "problem": "Freezing night, no fire"
+    "part": 4,
+    "day": 4,
+    "problem": "Lost without GPS (needle compass)"
   },
   "episodes": [
     {
@@ -81,6 +81,14 @@
       "problem": "The water runs out",
       "solution": "Never eat snow (costs body heat and energy). Melt clean fresh snow in a black trash bag in the sun; ~10 bottles of snow = 1 bottle of water.",
       "file": "videos/013-ren-part2-day2.mp4"
+    },
+    {
+      "part": 3,
+      "day": 3,
+      "problem": "Freezing night, no fire",
+      "solution": "Touch both 9V terminals to fluffed fine steel wool; the thin fibres short the battery, heat up and burn; set it on dry cardboard tinder in a metal bucket and blow gently. Pack tip: store battery and steel wool apart.",
+      "file": "videos/014-ren-part3-day3.mp4"
     }
-  ]
+  ],
+  "camp": "rooftop fire in a metal bucket (cardboard tinder); can boil water now"
 }
