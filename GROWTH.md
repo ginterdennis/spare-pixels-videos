@@ -8,7 +8,7 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 
 ## Daily loop (scheduled task, every evening, plans the NEXT day)
 1. **Followers.** TikTok: Windsor `tiktok_organic` `total_followers_count` (the account shows as "huh.neat" in Windsor's list but returns username `spare.pixels`), or Metricool `TKEV07`. Instagram: Metricool `IGEV01`. If combined >= 10,000: stop making videos, report, and switch the loop off.
-2. **Data.** Per video for the last 14 days: views, average watch (s and % of length), full-watch rate, likes, comments, shares, saves, new followers, For You share. Windsor has retention and traffic sources (TikTok only); Metricool has TikTok `TKPO*` and Instagram Reels `IGRE*` (incl. `IGRE27` retention, `IGRE30` skip rate). Fill `posts.csv` 48 h columns for posts that are 48 h+ old.
+2. **Data.** Per video for the last 14 days: views, retention at 1/2/3/5 s (`hold3` = at 3 s, see HOOKS.md), average watch (s and % of length), full-watch rate, likes, comments, shares, saves, new followers, For You share. Windsor has retention and traffic sources (TikTok only); Metricool has TikTok `TKPO*` and Instagram Reels `IGRE*` (incl. `IGRE27` retention, `IGRE30` skip rate). Fill `posts.csv` 48 h columns for posts that are 48 h+ old.
 3. **Decide** (rules below), **make** the videos, **post** them, **log** them, **report**.
 
 ## Cadence (why: new accounts that post 5+ a day risk velocity throttling)
@@ -28,7 +28,7 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - **Research** (web search) every Sunday, and whenever nothing has had signal for 4 days in a row: what is working now in faceless science/illusion/satisfying/number-fact/story short-form. Pick formats we can make to a high standard with code.
 
 ## Production rules (on top of CLAUDE.md)
-- **Frame 0 = the claim**, big, plus something already moving or visible. **First payoff by second 3.** A new payoff or escalation every 3–5 s after that. Data from 20 Nov: on the only two videos that reached For You, half the viewers were gone by second 2 and two thirds by second 3.
+- **Hooks: follow `HOOKS.md` (v2, 21 Nov).** In short: a viewer task of max 6 words, big (`kit/hook.py` `hook_text`), over something already moving on frame 0, a sound hit at 0.00 s (`hook_sfx`), the first payoff by 3.0 s (ideally with a visible `countdown`), and the payoff opens the next question. No labels/jargon/hedges in 0-3 s. Caption line 1 = the hook words. Run `python3 kit/hookcheck.py <mp4> --hook "..." --reveal <s>` before scheduling; every check must pass. Why: on 001/006/018 (the only For You videos) only 34-42% were still watching at 3 s.
 - 15–25 s long unless the format needs more. End so the loop hands back to frame 0.
 - One comment prompt that's easy to answer (a number, 1/2/3, YES/NO, your birthday, tag a friend).
 - Captions: hook + question + 4–6 hashtags. Instagram: drop TikTok-only tags (#fyp, #learnontiktok).
@@ -72,6 +72,7 @@ Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not publis
 | story series "Is this a business?" | 022*, 023*, 024* (Sun-Tue 20:25) | – | – | – | scheduled |
 
 ## Learnings log (newest first, one line each)
+- 2026-11-21 (hooks): 3-second hold on the For You videos was 34% (001), 37% (006), 42% (018); target 55%+. Every old opening was a small headline strip over a still picture, 9-15 words, a statement instead of a task. Hooks v2 (`HOOKS.md`, `kit/hook.py`, `kit/hookcheck.py`); 020, 021 and 012 rebuilt as v2 before they post. Log `hold3` (retention at 3 s) for every video from now on.
 - 2026-11-20 (21:40 run): Publishing capacity is the binding constraint: Metricool Free publishes only 20 posts per calendar month (counted per network) and the cap hit on day 2 at 20:25 (13 TikTok + 7 IG). Content-wise, both For You hits (001 "Fold a sheet of paper", 006 "Stare at the dot") open with a direct instruction to the viewer; the other 11 TikToks got 2-7 views, mostly from the profile page (never tested on For You).
 - 2026-11-20: 11 TikToks posted on the account's 2nd day; only 001 and 006 reached For You. Capped TikTok at 3/day and moved 012/017/018 to Sat/Sun. First-3-seconds drop-off is the main weakness.
 

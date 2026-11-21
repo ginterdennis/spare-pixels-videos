@@ -6,6 +6,7 @@
    REN episodes live in `series/ren/src/` (`scene2.py` = Part 2 template; skia overlays; read `series/ren/README.md` and `state.json` first, update `state.json` after each episode).
    Remotion (React) videos: see `tests/015-no-yellow/README.md` (render, convert Remotion's full-range output to standard range, mux at 48 kHz).
 3. Output 1080x1920, 30 fps, H.264. Render stills of the busiest moments and look at them before the full render.
+   Openings: follow `HOOKS.md` and build them with `kit/hook.py` (`from hook import hook_text, stamp, countdown, hook_sfx`). Before scheduling, `python3 kit/hookcheck.py videos/<file>.mp4 --hook "<frame-0 words>" --reveal <s>` must pass.
 4. Copy the final MP4 to `videos/<id>-<slug>.mp4` (photo posts: JPEGs in `photos/<id>-<slug>/`), commit, push.
 5. Post through **Buffer** (connector `Buffer_com`; since 21 Nov, because Metricool Free only publishes 20 posts a month). Organization `6b00d1f57c8fd27105398cbf` ("My organization"), TikTok channel `6b00d2e9ece6dfde5f3a8402` (spare.pixels), timezone Europe/Berlin. `create_post` with `schedulingType: automatic`, `mode: customScheduled`, `dueAt` with the Berlin offset (e.g. `2026-11-21T13:10:00+01:00`), `text` = caption, `assets [{"video":{"url":"https://raw.githubusercontent.com/ginterdennis/spare-pixels-videos/main/<path>","metadata":{"thumbnailOffset":<ms>}}}]`, `metadata {"tiktok":{"title":"...","isAiGenerated":false}}` (code-drawn, nothing realistic). Buffer Free: max 10 scheduled posts per channel at a time and 1,000 API requests per channel per 30 days, so schedule 1-3 days ahead and refill daily. Metricool (brand `8233683`) is now for analytics only; do not publish there (its 20 free posts a month are a spare from the 1st).
 6. Log every post in `posts.csv` (id, time, file, series, format, topic, hook, length, url, 48h metrics, notes incl. Buffer post id).
@@ -14,7 +15,7 @@
 
 ## Style rules
 - Look: dark navy gradient (`kit.BG_TOP/BG_BOT`), Inter Black headlines, accent GOLD #FFD36B / PINK / CYAN, small letter-spaced HUD labels with big numbers.
-- The first frame must work on its own (hook text + something visible). Keep key content out of the top ~180 px and bottom ~380 px (TikTok UI).
+- The first frame must work on its own: a big viewer task (max 6 words) over something already moving (HOOKS.md). Keep key content out of the top ~180 px and bottom ~380 px (TikTok UI).
 - English. Original art, jokes and music only. No copyrighted characters, no real brand UIs, no real people.
 - Fonts are Latin subsets: no arrows, no emoji inside the video (emoji are fine in captions).
 - Facts must be checked with a web search before they go in a video.
