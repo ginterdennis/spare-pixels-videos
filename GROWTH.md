@@ -11,18 +11,30 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 2. **Data.** Per video for the last 14 days: views, retention at 1/2/3/5 s (`hold3` = at 3 s, see HOOKS.md), average watch (s and % of length), full-watch rate, likes, comments, shares, saves, new followers, For You share. Windsor has retention and traffic sources (TikTok only); Metricool has TikTok `TKPO*` and Instagram Reels `IGRE*` (incl. `IGRE27` retention, `IGRE30` skip rate). Fill `posts.csv` 48 h columns for posts that are 48 h+ old.
 3. **Decide** (rules below), **make** the videos, **post** them, **log** them, **report**.
 
-## Cadence (why: new accounts that post 5+ a day risk velocity throttling)
+## TikTok reach recovery (ACTIVE since 21 Nov 2026; overrides the normal cadence below)
+- **Why:** only 3 of 16 TikToks reached For You by 21 Nov (001, 006, 018); the rest got 0-7 views, mostly from the profile page. The account followed nobody, had no bio, had never liked or commented, had only ever uploaded through the API, and posted 11 videos on 20 Nov, so TikTok most likely treated it as a probable bot. Instagram reached people fine, so the content is not the blocker.
+- **The user** did a one-time fix on 21 Nov (bio, phone/email verified, account status and For You eligibility checked, followed niche creators) and does a 10-minute in-app routine every evening 22-28 Nov (reminder 19:30: scroll niche For You, like, comment, follow 2-3 niche creators, reply to all comments). The user does NOT post or approve anything by hand: every Buffer post is `schedulingType: "automatic"`, never a reminder.
+- **TikTok slots while recovery is active: exactly 2 a day, both automatic.**
+  - **16:25 Berlin:** the strongest standalone video (illusions and number facts reach For You best). Alternates day by day between an exploit variant and an explore format; a follow-up (sequel) to a hit may take it.
+  - **20:25 Berlin:** series parts, REN, or the best exploit video.
+  - Never a third TikTok post on a day. Instagram cadence unchanged (below).
+- **Never** delete TikTok videos, set them to private, or re-upload one. Leave flops up.
+- **Exit:** when 5 TikTok posts in a row each reach For You (For You share >= 50% AND >= 200 views within 48 h), recovery ends: back to max 3 TikToks a day (third slot between 12:00 and 13:30), and tell the user in the report.
+- **First run after 28 Nov:** if recovery is still active, ask under "Needs you:" whether the user can keep the 10-minute routine going for another week.
+- Streak so far (newest last): 018 yes (566 views in 5 h, 98.5% FY) | 013 REN P2 pending (94% FY, 29 views at 1 h).
+
+## Cadence after recovery (why: new accounts that post 5+ a day risk velocity throttling)
 - TikTok: **max 3 posts a day**, at least 150 min apart, between 12:00 and 22:30 Berlin. Never the same format twice in a row.
 - Instagram: cross-post every new video 30 min after its TikTok slot. Max 4 Reels a day.
 - Ramp up to 4 TikToks a day only when the median of the last 9 TikTok posts is >= 500 views AND at least 6 of those 9 reached For You (For You share >= 50%).
-- **Throttle alarm:** if the last 6 TikTok posts (all 24 h+ old) each have < 50 views and 0% For You, post only 1 a day for 3 days, then return to 3. Never delete videos in bulk and never repost an identical file (reposts without meaningful change are not eligible for For You).
+- **Throttle alarm:** if the last 6 TikTok posts (all 24 h+ old) each have < 50 views and 0% For You, post only 1 a day for 3 days, then return to the normal cadence. Never delete videos and never repost an identical file (reposts without meaningful change are not eligible for For You).
 
 ## What counts as a winner
 A video **has signal** if any of: views >= 1,000; average watch >= 50% of its length; full-watch rate >= 25%; or (views >= 300 and comments + shares >= 10 per 1,000 views). Followers per 1,000 views is the tie-breaker (it's what we actually need). The two watch-based tests count only with >= 20 views (010 and 005 showed 64-73% average watch on 0-3 views: noise).
 
-## Explore / exploit (every day's 3 TikTok slots)
-- 2 slots: **exploit**. New variants of the best formats (by signal, then For You share, then average watch %). A variant keeps what worked (hook type, length, CTA) but has a new subject. Never a recolour.
-- 1 slot: **explore**. A new format or a bold twist on a format.
+## Explore / exploit (during recovery: the 16:25 slot alternates exploit/explore, 20:25 = series or best exploit; after recovery: 2 exploit + 1 explore TikTok slots a day)
+- **Exploit**: New variants of the best formats (by signal, then For You share, then average watch %). A variant keeps what worked (hook type, length, CTA) but has a new subject. Never a recolour.
+- **Explore**: a new format or a bold twist on a format.
 - **Follow-up rule:** any video with >= 1,000 views or >= 5 new followers gets a "Part 2" or a close sequel within 48 h.
 - **Retire rule:** a format with 3+ posts where none reached For You and average watch < 25% is retired. Write it in the scoreboard with the reason.
 - **Research** (web search) every Sunday, and whenever nothing has had signal for 4 days in a row: what is working now in faceless science/illusion/satisfying/number-fact/story short-form. Pick formats we can make to a high standard with code.
@@ -42,36 +54,43 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 
 ## "Is this a business?" series (illustrated story, Part N daily at 20:25)
 - Made 20 Nov at the user's request, modelled on a series the user sent. Bible, cast, facts and build steps: `series/is-this-a-business/README.md` (Remotion; `finish.sh` does the colour-range fix + 48 kHz mux).
-- Parts 1-3 (022-024) are scheduled Sun 22, Mon 23, Tue 24 Nov at 20:25 TikTok / 20:55 Instagram. Those evening slots are taken; plan around them. REN therefore runs Sat 21 20:25 (Part 2) and Mon 23 16:40 (Part 3).
+- Parts 1-3 (022-024): TikTok Sun 22, **Tue 24, Wed 25** Nov at 20:25 (moved 21 Nov so REN Part 3 keeps its promised Monday at 20:25 and 16:25 stays for standalone videos; Part 1's caption now says "Part 2 on Tuesday"). Instagram: Part 1 Sun 22 20:55, Part 2 Tue 24 20:55, Part 3 still to add (Wed 25 20:55).
 - Part 3 promises "If YES wins, Jonas builds it" (Part 4). Make Part 4 if Part 3's comments lean YES, or if Part 1 has signal; otherwise close the series with a short note in the learnings log. Track Part 2 views / Part 1 views (series carry-over).
+
+## "Same colour" illusion series (exploit, 16:25)
+- 018 (Part 1) is the best video on both networks (TikTok 98.5% For You, hold3 55%; IG 2,717 views, 54% avg watch). 025 = Part 2 (Mon 23 16:25), ends with "Part 3 is harder. Follow." **Part 3 is promised**: make it if 025 reaches For You, for a 16:25 slot 1-2 days later. Ideas not used yet: Koffka ring, White's illusion in grey, confetti illusion, colour cast (a red object under cyan light), Chubb.
 
 ## Publishing (Buffer Free since 21 Nov) - check every run
 - Metricool **Free = 20 published posts per calendar month** (counted per network). Cap hit 20 Nov 20:25. Metricool is now analytics only; its posts for TikTok were set to drafts on 21 Nov 00:40 so nothing doubles.
 - **Buffer Free** publishes now (user decision 20 Nov 22:10: stay free). Connector `Buffer_com`, org `6b00d1f57c8fd27105398cbf`, TikTok channel `6b00d2e9ece6dfde5f3a8402`. Limits: 3 channels, **10 scheduled posts per channel at a time**, 1,000 API requests per channel per 30 days (plus 150 per 15 min, 600 per 24 h). No monthly post cap. TikTok itself allows about 15 API posts a day per account.
 - Instagram channel `6b00de3bece6dfde5f3b8d7e` (spare.pixel, business) connected 21 Nov.
 - 21 Nov 01:00: whole queue moved to Buffer. TikTok: 10 posts Sat 21 to Tue 24 (full). Instagram: 10 Reels Sat 21 to Mon 23 13:40 (full). Every Metricool copy (TikTok + IG) is a draft now.
-- **IG backlog to add when the Buffer queue has room** (same captions as in Metricool drafts / posts.csv): 014 REN P3 Mon 23 17:10, 023 Biz P2 Mon 23 20:55, 007 lottery Tue 24 12:25, 024 Biz P3 Tue 24 20:55, 005 circles Wed 25 12:25, 009 proofs Thu 26 12:25. Max 4 Reels a day, so new videos' IG cross-posts come first on their day and backlog items fill the rest.
+- **IG backlog to add when the Buffer queue has room** (same captions as in posts.csv / the TikTok posts): 024 Biz P3 Wed 25 20:55, 005 circles Wed 25 12:25, 009 proofs Thu 26 12:25. Max 4 Reels a day, so new videos' IG cross-posts come first on their day and backlog items fill the rest. (21 Nov 21:50: 014, 023 and 007 added; 012 v2 is not cross-posted because 012 v1 is already on IG.)
+- Queue on 21 Nov 21:50: TikTok 8 scheduled (Sun 22 16:25 020, 20:25 022 | Mon 23 16:25 025, 20:25 014 | Tue 24 16:25 012 v2, 20:25 023 | Wed 25 16:25 021 v2, 20:25 024). Instagram 10 scheduled (full) through Tue 24 20:55. Free TikTok slots: Thu 26 16:25 and 20:25.
 - Each run: `list_posts` (status scheduled / sent / error) to count the queue, catch errors and fill missing tiktok_url values. If a Buffer post errors, fix and reschedule it; if the TikTok channel shows isDisconnected, ask the user to reconnect it in Buffer (exact steps).
-- First real Buffer TikTok post: 017 on Sat 21 Nov 13:10. The next run must confirm it was sent and is public.
+- First Buffer TikTok posts confirmed sent and public on 21 Nov: 017 (13:11), 018 (16:41), 013 (20:26). Buffer's `get_post` returns the TikTok link in `externalLink`.
 
 ## Format scoreboard (update every run)
-Numbers as of 20 Nov 21:40 (Windsor; posts < 48 h old, so early). * = not published yet.
-| Format | Posts | Reached For You | Best views | Avg watch % | Status |
-|---|---|---|---|---|---|
-| number fact (doubling, scale) | 001, 016, 017*, 021* | 001 (98%); 016 40% of 3 views | 411 (001) | 23% (001), 29% (016) | exploit |
-| illusion | 006, 019, 018*, 020* | 006 (97%) | 370 (006, 19 likes, 4 shares) | 20% (006), 20% (019) | exploit |
-| simulation / guessing game | 002, 004 | none | 5 | 5% (002), 37% (004) | watch (next miss = retire check) |
-| calm loop | 005 | none | 0 | n/a (0 views) | watch |
-| data | 007 | none | 7 | 25% | watch |
-| slideshow (photo) | 008 | none | 4 | – | watch |
-| explainer | 009, 015 | 009 25% of 3 views | 6 | 21% (009), 7% (015) | watch |
-| seasonal countdown | 010 | 010 50% of 3 views | 3 | 73% of 3 views (noise) | watch |
-| humour | 011 | none | 2 | 34% | watch |
-| story / group chat | 012* (TikTok Sun 22 13:10) | – | – | – | pending |
-| REN series | 003, 013* (Sat 21 20:25), 014* (Mon 23 16:40) | none | 6 | 12% (003) | watch |
-| story series "Is this a business?" | 022*, 023*, 024* (Sun-Tue 20:25) | – | – | – | scheduled |
+Numbers as of 21 Nov 21:45 (TikTok: Windsor; IG: Metricool, Friday's Reels only). * = not published yet. FY = For You share.
+| Format | Posts | Reached For You (TikTok) | Best TikTok views | Avg watch % (TikTok) | Instagram | Status |
+|---|---|---|---|---|---|---|
+| illusion | 006, 019, 018, 020*, 025* | 006 (98%), 018 (98.5%) | 756 (006); 018 566 in 5 h, hold3 55% | 23% (006), 41% (018), 76% (019, 3 views) | 018: 2,717 views, 54% avg (best); 019: 145 | **exploit #1** (16:25); same-colour series Part 2 = 025 |
+| number fact (doubling, scale, odds) | 001, 016, 017, 021* | 001 (98%) | 413 (001) | 23% (001), 40% (016), 31% (017) | 017: 141, 016: 130 | exploit (16:25) |
+| REN series | 003, 013, 014* | 013 (94%, 1 h old) | 29 (013) | 11% (003), 26% (013); hold3 38% (013) | 003 IG sent 21 Nov | keep: last 2 eps (6, 29) >= median of last 10 TikToks (4); 20:25 |
+| story series "Is this a business?" | 022*, 023*, 024* | – | – | – | – | scheduled Sun 22, Tue 24, Wed 25 at 20:25 |
+| story / group chat | 012 v2* (Tue 24 16:25) | – | – | – | 012 v1: 126 views, 62% avg | explore |
+| simulation / guessing game | 002, 004 | none (profile only) | 6 | 5% (002), 36% (004) | 004 IG sent 21 Nov | watch (never reached FY, so no miss yet) |
+| calm loop | 005 | none | 0 | – | backlog | watch |
+| data | 007 | none | 7 | 30% | Tue 24 12:25 | watch |
+| slideshow (photo) | 008 | none (29% search) | 6 | – | not on IG (9:16 photos) | watch |
+| explainer | 009, 015 | 009 18% of 3 views | 6 | 19% (009), 15% (015) | 015 Sun 22 | watch |
+| seasonal countdown | 010 | 30% of 3 views | 3 | 65% of 3 views (noise) | 166 views, 35% avg | watch |
+| humour | 011 | none | 4 | 27% | 110 views | watch |
+Nothing has "signal" by the strict definition yet (018: 566 views, 41% avg watch, 11% full watch on TikTok; on IG 54% avg watch). Followers per 1,000 views: 0 everywhere.
 
 ## Learnings log (newest first, one line each)
+- 2026-11-21 (21:45 run): Reach is coming back but nobody follows. 018 "same colour" is the best video on both networks (TikTok 566 views in 5 h, 98.5% For You, hold3 55% = first video at the hooks target; IG 2,717 views, 54% avg watch), and even REN P2 got 94% For You in its first hour, yet the accounts have 1 + 0 followers after ~5,350 views (TikTok ~1,800, IG ~3,500). A short claim + instant reveal holds people; nothing gives them a reason to follow. From now on every exploit video names its series part and ends with a reason to follow (025: "Part 3 is harder. Follow.").
+- 2026-11-21 (recovery diagnosis): only 3 of 16 TikToks reached For You (001 paper folding, 006 afterimage, 018 same colour); the rest got 0-7 views, mostly from the profile page. The account followed nobody, had no bio, had never liked or commented, had only ever uploaded through the API, and posted 11 videos on 20 Nov: TikTok most likely treats it as a probable bot. Instagram reaches people fine, so content is not the blocker. Fix: user's one-time account fix + 10-min daily in-app routine (22-28 Nov), 2 automatic TikToks a day (16:25, 20:25), no deletes.
 - 2026-11-21 (hooks): 3-second hold on the For You videos was 34% (001), 37% (006), 42% (018); target 55%+. Every old opening was a small headline strip over a still picture, 9-15 words, a statement instead of a task. Hooks v2 (`HOOKS.md`, `kit/hook.py`, `kit/hookcheck.py`); 020, 021 and 012 rebuilt as v2 before they post. Log `hold3` (retention at 3 s) for every video from now on.
 - 2026-11-20 (21:40 run): Publishing capacity is the binding constraint: Metricool Free publishes only 20 posts per calendar month (counted per network) and the cap hit on day 2 at 20:25 (13 TikTok + 7 IG). Content-wise, both For You hits (001 "Fold a sheet of paper", 006 "Stare at the dot") open with a direct instruction to the viewer; the other 11 TikToks got 2-7 views, mostly from the profile page (never tested on For You).
 - 2026-11-20: 11 TikToks posted on the account's 2nd day; only 001 and 006 reached For You. Capped TikTok at 3/day and moved 012/017/018 to Sat/Sun. First-3-seconds drop-off is the main weakness.
