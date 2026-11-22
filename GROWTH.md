@@ -21,7 +21,7 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 - **Never** delete TikTok videos, set them to private, or re-upload one. Leave flops up.
 - **Exit:** when 5 TikTok posts in a row each reach For You (For You share >= 50% AND >= 200 views within 48 h), recovery ends: back to max 3 TikToks a day (third slot between 12:00 and 13:30), and tell the user in the report.
 - **First run after 28 Nov:** if recovery is still active, ask under "Needs you:" whether the user can keep the 10-minute routine going for another week.
-- Streak so far (newest last): 018 yes (566 views in 5 h, 98.5% FY) | 013 REN P2 pending (94% FY, 29 views at 1 h).
+- Streak so far (newest last): 017 no (4 views, 42% FY) | 018 yes (597 views, 97.8% FY) | 013 yes (268 views at 48 h, 98.4% FY) | 026 yes (217 views in 5 h, 97.4% FY) | 027 pending (17 views at 1 h, 79% FY). **Streak: 3 of 5** (22 Nov 21:50).
 
 ## Cadence after recovery (why: new accounts that post 5+ a day risk velocity throttling)
 - TikTok: **max 3 posts a day**, at least 150 min apart, between 12:00 and 22:30 Berlin. Never the same format twice in a row.
@@ -75,8 +75,12 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 
 ## "Impossible objects" 3D series (Blender, 16:25)
 - 026 (Part 1, Sun 22 16:25, IG 16:55): Penrose triangle, Ames room, Sugihara's ambiguous cylinder, each exposed by a camera move. First video made in **Blender** (EEVEE) on the user's M3 MacBook Air through the Blender MCP connector; how-to, maths and gotchas in `tests/026-impossible-3d/README.md`, scene in `tests/026-impossible-3d/blender/impossible_objects.blend`.
-- Ends with "Part 2 is harder. Follow." **Part 2 is promised**: make it if 026 reaches For You or has signal. Ideas not used yet: Penrose stairs (ball climbs forever), Sugihara's "impossible motion" (balls roll uphill into a peak), Ames window, impossible fork, a second ambiguous cylinder shape (heart/star).
+- Ends with "Part 2 is harder. Follow." **Part 2 is promised**: make it if 026 reaches For You or has signal. **026 reached For You (97.4% FY, 217 views in 5 h, hold3 34%), so Part 2 is due**; it needs a session with the Mac + Blender (the nightly loop can't render it). Work on the 0-3 s: hold3 34% is below 018's 55%. Ideas not used yet: Penrose stairs (ball climbs forever), Sugihara's "impossible motion" (balls roll uphill into a peak), Ames window, impossible fork, a second ambiguous cylinder shape (heart/star).
 - **Blender only runs on the Mac** (the cloud box measured ~50 s/frame on the 20 Nov benchmark). It needs the Claude desktop app open and online and Blender running with the MCP add-on, so the nightly loop can't make these on its own: build them in a session with the user, or skip if `blender__get_addon_status` fails. Render time on the Air: 1.9 s/frame (simple scenes) to 7.8 s/frame (mirror with planar probe), about 42 min for 24 s. Frames come over in zips of ~100 frames (an 80 MB zip timed out).
+
+## "Guess it before the balls do" series (exploit, from IG signal)
+- 004 (Part 1, pixel reveal fox) never reached For You on TikTok but its Instagram Reel got 1,284 views (37% avg watch), the 2nd-best Reel. 029 = Part 2 remade **without any pixel look**: smooth skia vector art (kiwi, donut, pineapple) under a dark scratch-off cover, round soft trails, 3 escalating rounds, payoffs 3.0 / 10.0 / 17.5 s, "A waffle? Look closer." decoy on the hardest round. No voice. Code and seeds: `tests/029-guess-before-balls/README.md`.
+- 029 IG Mon 23 12:10 (within 48 h of 004's IG post), TikTok Sat 28 16:25. Ends with "Part 3 is harder. Follow." **Part 3 is promised**: make it if 029's IG Reel gets >= 1,000 views or its TikTok reaches For You. Ideas in the README (watermelon vs "ladybug?", sunflower vs "pizza?", zebra close-up vs "barcode?").
 
 ## No pixel stuff (user, 22 Nov 2026, hard rule)
 - "I don't want any pixel shit anymore." No new video uses pixel themes, pixel characters, pixel-art looks, pixel puns or #pixelart (captions included). The account name (spare.pixels) doesn't constrain the content.
@@ -106,32 +110,36 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - **Buffer Free** publishes now (user decision 20 Nov 22:10: stay free). Connector `Buffer_com`, org `6b00d1f57c8fd27105398cbf`, TikTok channel `6b00d2e9ece6dfde5f3a8402`. Limits: 3 channels, **10 scheduled posts per channel at a time**, 1,000 API requests per channel per 30 days (plus 150 per 15 min, 600 per 24 h). No monthly post cap. TikTok itself allows about 15 API posts a day per account.
 - Instagram channel `6b00de3bece6dfde5f3b8d7e` (spare.pixel, business) connected 21 Nov.
 - 21 Nov 01:00: whole queue moved to Buffer. TikTok: 10 posts Sat 21 to Tue 24 (full). Instagram: 10 Reels Sat 21 to Mon 23 13:40 (full). Every Metricool copy (TikTok + IG) is a draft now.
-- **IG backlog to add when the Buffer queue has room** (same captions as in posts.csv / the TikTok posts): 024 Biz P3 Wed 25 20:55, 005 circles Wed 25 12:25, 009 proofs Thu 26 12:25. Max 4 Reels a day, so new videos' IG cross-posts come first on their day and backlog items fill the rest. (21 Nov 21:50: 014, 023 and 007 added; 012 v2 is not cross-posted because 012 v1 is already on IG.)
+- **IG backlog to add when the Buffer queue has room** (same captions as in posts.csv / the TikTok posts): 005 circles, 009 proofs, 002 rings (Buffer draft 6b00de8add205ed779a66df8, caption already without #pixelart). 024 Biz P3 was added 22 Nov (Wed 25 20:55). Max 4 Reels a day, so new videos' IG cross-posts come first on their day and backlog items fill the rest. (21 Nov 21:50: 014, 023 and 007 added; 012 v2 is not cross-posted because 012 v1 is already on IG.)
 - Queue on 22 Nov 14:35: TikTok 9 scheduled (Sun 22 16:25 **026**, 20:25 022 | Mon 23 16:25 025, 20:25 014 | Tue 24 16:25 012 v2, 20:25 023 | Wed 25 16:25 021 v2, 20:25 024 | Thu 26 16:25 **020** (moved from Sun 22 so 026 could post today, user's choice)). Instagram: 026 Sun 22 16:55, 020 moved to Thu 26 16:55. Free TikTok slot: Thu 26 20:25. 22 Nov 19:10 (user: 027 next): TikTok queue re-slotted: **Sun 22 20:25 027** (v2, voice A+; Buffer 6b0327a6846b0ee907a51eb9) + IG 20:55 (6b0327a7d5eabfb8ccc7cf86) | Mon 23 16:25 022 Biz P1 (+ IG 16:55), 20:25 014 REN P3 | Tue 24 16:25 025 same colour P2 (+ IG 16:55), 20:25 023 | Wed 25 16:25 021 v2, 20:25 024 | Thu 26 16:25 020 v2, 20:25 open | Fri 27 16:25 012 v2, 20:25 open.
+- 22 Nov 21:50 run: 027's IG Reel errored in Buffer ("issue with the media"; same container layout as 026, which posted fine, so probably transient). Fix: IG-safe re-encode `videos/027-pixel-fell-out-v2-ig.mp4` (closed GOP, AAC 128 kbps = Instagram's API spec, bt709 tags), rescheduled Sun 22 22:20. If an IG Reel errors again, use the same re-encode recipe (`ffmpeg -c:v libx264 -preset slow -crf 17 -maxrate 8M -bufsize 16M -g 60 -flags +cgop -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv -c:a aac -b:a 128k -ar 48000 -movflags +faststart`).
+- Queue after the 22 Nov 21:50 run. TikTok (9 of 10; 1 spot kept for 028): Mon 23 16:25 022, 20:25 014 | Tue 24 16:25 **028 reserved (not in Buffer yet)**, 20:25 023 | Wed 25 16:25 021, 20:25 024 | Thu 26 16:25 025, **20:25 open** (Business Part 4 if Part 3 leans YES or Part 1 has signal, else the best exploit) | Fri 27 16:25 012 v2, 20:25 020 v2 | Sat 28 16:25 **029**, 20:25 open. Instagram (9 incl. 027 tonight; 1 spot for 028): Sun 22 22:20 027 | Mon 23 12:10 **029**, 13:40 021, 16:55 022, 20:55 014 | Tue 24 16:55 028 (reserved), 20:55 023 | Wed 25 20:55 024 | Thu 26 16:55 025 | Fri 27 20:55 020.
 - Each run: `list_posts` (status scheduled / sent / error) to count the queue, catch errors and fill missing tiktok_url values. If a Buffer post errors, fix and reschedule it; if the TikTok channel shows isDisconnected, ask the user to reconnect it in Buffer (exact steps).
 - First Buffer TikTok posts confirmed sent and public on 21 Nov: 017 (13:11), 018 (16:41), 013 (20:26). Buffer's `get_post` returns the TikTok link in `externalLink`.
 
 ## Format scoreboard (update every run)
-Numbers as of 21 Nov 21:45 (TikTok: Windsor; IG: Metricool, Friday's Reels only). * = not published yet. FY = For You share.
+Numbers as of 22 Nov 21:50 (TikTok: Windsor; IG: Metricool). * = not published yet. FY = For You share. hold3 = still watching at 3 s.
 | Format | Posts | Reached For You (TikTok) | Best TikTok views | Avg watch % (TikTok) | Instagram | Status |
 |---|---|---|---|---|---|---|
-| illusion | 006, 019, 018, 020*, 025* | 006 (98%), 018 (98.5%) | 756 (006); 018 566 in 5 h, hold3 55% | 23% (006), 41% (018), 76% (019, 3 views) | 018: 2,717 views, 54% avg (best); 019: 145 | **exploit #1** (16:25); same-colour series Part 2 = 025 |
-| number fact (doubling, scale, odds) | 001, 016, 017, 021* | 001 (98%) | 413 (001) | 23% (001), 40% (016), 31% (017) | 017: 141, 016: 130 | exploit (16:25) |
-| REN series | 003, 013, 014* | 013 (94%, 1 h old) | 29 (013) | 11% (003), 26% (013); hold3 38% (013) | 003 IG sent 21 Nov | keep: last 2 eps (6, 29) >= median of last 10 TikToks (4); 20:25 |
-| story series "Is this a business?" | 022*, 023*, 024* | – | – | – | – | scheduled Sun 22, Tue 24, Wed 25 at 20:25 |
-| story / group chat | 012 v2* (Tue 24 16:25) | – | – | – | 012 v1: 126 views, 62% avg | explore |
-| 3D illusion (Blender) | 026* | – | – | – | 026 IG Sun 22 16:55 | explore (Sun 22 16:25); Part 2 promised |
-| 3D story (Blender, voiced) | 027* | – | – | – | 027 IG Sun 22 20:55 | explore (Sun 22 20:25, user's pick: test of Blender quality); no Part 2 (no pixel stuff) |
-| simulation / guessing game | 002, 004 | none (profile only) | 6 | 5% (002), 36% (004) | 004 IG sent 21 Nov | watch (never reached FY, so no miss yet) |
+| illusion | 006, 019, 018, 020*, 025* | 006 (97%), 018 (98%) | 759 (006), 597 (018, hold3 55%) | 22% (006), 41% (018) | 018: 2,735 views, 54% avg (best); 019: 146 (49%); 006: 126 | **exploit #1** (16:25); same-colour Part 2 = 025 (Thu 26) |
+| guessing game ("guess it before the balls do") | 004, 029* | 004 never reached FY (profile only, 6 views) | 6 | 34% (004, 6 views) | **004: 1,284 views, 37% avg (2nd-best Reel)** | **exploit** (IG signal): 029 = Part 2, no pixel look (IG Mon 23 12:10, TikTok Sat 28 16:25); Part 3 promised |
+| number fact (doubling, scale, odds) | 001, 016, 017, 021* | 001 (98%) | 414 (001) | 23% (001); 017 4 views | 001: 150, 017: 141, 016: 130 | exploit (16:25) |
+| REN series | 003, 013, 014* | 013 (98%) | 268 (013, hold3 31%) | 11% (003), 14% (013) | 003: 112, 013: 117 (22%) | 014 P3 Mon 23 20:25 is the last pixel episode; REN P4 only in a non-pixel look (or end the series) |
+| story series "Is this a business?" | 022*, 023*, 024*, 028* (Blender A/B) | – | – | – | – | Mon 23 16:25, Tue 24 20:25, Wed 25 20:25; 028 Tue 24 16:25 (reserved) |
+| story / group chat | 012 v2* (Fri 27 16:25) | – | – | – | 012 v1: 126 views, 30% avg | explore |
+| 3D illusion (Blender) | 026 | 026 (97%) | 217 in 5 h, hold3 34% | 25% | 026 IG sent 16:56 (no data yet) | reached FY, so **Part 2 is due** (Mac + Blender needed, see its section) |
+| 3D story (Blender, voiced) | 027 | pending (79% FY of 17 views at 1 h, hold3 42%) | 17 | 18% | IG errored, re-sent 22:20 (IG-safe file) | user's test of Blender quality; no Part 2 |
+| simulation | 002 | none (profile only) | 3 | 5% | IG pulled to backlog (draft) | watch |
 | calm loop | 005 | none | 0 | – | backlog | watch |
-| data | 007 | none | 7 | 30% | Tue 24 12:25 | watch |
-| slideshow (photo) | 008 | none (29% search) | 6 | – | not on IG (9:16 photos) | watch |
-| explainer | 009, 015 | 009 18% of 3 views | 6 | 19% (009), 15% (015) | 015 Sun 22 | watch |
-| seasonal countdown | 010 | 30% of 3 views | 3 | 65% of 3 views (noise) | 166 views, 35% avg | watch |
-| humour | 011 | none | 4 | 27% | 110 views | watch |
-Nothing has "signal" by the strict definition yet (018: 566 views, 41% avg watch, 11% full watch on TikTok; on IG 54% avg watch). Followers per 1,000 views: 0 everywhere.
+| data | 007 | none | 7 | 28% | pulled (pixel) | retired (pixel) |
+| slideshow (photo) | 008 | none (4.5% FY) | 8 | – | not on IG | retired (pixel wallpapers) |
+| explainer | 009, 015 | none (17% of 3 views; 0%) | 6 | 18% (009), 15% (015) | 015: 124 (33%) | watch |
+| seasonal countdown | 010 | none (27% of 3 views) | 3 | – | 166 views, 35% avg | retired (pixel) |
+| humour | 011 | none | 4 | 22% | 112 views | watch |
+Signal (strict definition): none on TikTok yet (018: 597 views, 41% avg, 11.7% full). On Instagram 018 (2,735 views) and 004 (1,284) pass views >= 1,000. Followers per 1,000 views: 0 everywhere (TikTok 1 follower, IG 0, after ~2,300 TikTok + ~6,000 IG views).
 
 ## Learnings log (newest first, one line each)
+- 2026-11-22 (21:50 run): TikTok reach is back: 3 posts in a row reached For You (018, 013, 026 at 97-98% FY), so the recovery is working and the bottleneck is now the first 3 seconds and the follow reason, not distribution: hold3 55% (018, 2D illusion) vs 34% (026, 3D illusion) vs 31% (013, REN), and still 0 new followers. On Instagram the two videos that pass 1,000 views are both viewer tasks (018 "same colour", 004 "guess the picture"): give the viewer something to do, then pay it off fast. 029 makes the guessing game without pixels.
 - 2026-11-22 (user): no more pixel content of any kind in new videos (themes, characters, looks, #pixelart). The name spare.pixels is just a name.
 - 2026-11-22 (user feedback on 027): Blender quality is a clear step up ("the lighting, the animation... looks really good"), but a premise is not a story: "the pixel wants to get back" has no stakes or payoff, and the user called it pointless. Story beats come first, the 3D look second; "Is this a business?" in Blender is the user's top idea. Kokoro voice A sounded lifeless; Chatterbox-Turbo with the same timbre (A+) replaced it the same evening.
 - 2026-11-22 (027, with the user): first voiced Blender story. Writing and measuring the voice lines first moved two beats (TRY 1 +0.5 s, the paw +0.5 s) and made the video 24 s instead of 23; scenes timed from the voice fit on the first try. `pip install bpy==5.3.0` in the cloud renders EEVEE stills (software GL, ~30 s at 25 %), so the whole storyboard can be checked before the Mac renders. Story hook = a viewer task about the story's premise ("Find the MISSING pixel.") rather than a teaser line.
