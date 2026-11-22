@@ -88,6 +88,13 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - Blender videos don't have to be about pixels or in pixel style; the account name doesn't constrain the look. Directions the user named: **a realistic world built in Blender**, a **small/miniature world**, or **our normal formats in Blender, especially "Is this a business?"**, which the user thinks "could look insanely good" in 3D.
 - Before building, write the story beat sheet (problem, stakes, three escalating beats, payoff/twist, CTA) and check it against: would someone retell this to a friend? If not, it isn't ready.
 
+## A/B test: 2D vs Blender, same story (user, 22 Nov 2026)
+- **028 = "Is this a business?" Part 1 remade in Blender** (realistic 3D apartment house, same story, same timeline, captions, counter, end card and soundtrack as 022; only the picture differs; silent like 022 so voice doesn't confound the test). Being made 22 Nov with the user.
+- **Slot: Tue 24 Nov 16:25 TikTok + 16:55 Instagram = exactly 24 h after 022** (Mon 23 16:25 / 16:55). **RESERVED: the nightly loop must not put anything else in Tue 24 16:25 / 16:55**, even while 028 isn't in Buffer yet.
+- Caption = 022's caption with "Part 2 tonight." (Part 2 posts Tue 20:25).
+- Compare after 48 h each: For You share, views, hold3, avg watch %, full-watch rate, likes/comments/shares per 1,000 views, new followers, on TikTok and Instagram. One pair is a weak test (different weekday, the account is changing fast), so call it a lean, not proof; write the result in the learnings log.
+- To make room (22 Nov 19:45): 025 same colour P2 moved Tue 24 16:25 -> **Thu 26 16:25** (IG 16:55); 020 black dots v2 moved Thu 26 16:25 -> **Fri 27 20:25** (IG 20:55).
+
 ## "The pixel that fell out" 3D story (Blender, voiced)
 - 027 (Sun 22 20:25, IG 20:55; moved from Fri 27 on 22 Nov because the user wanted it to be the next post, to see how the higher Blender quality does): a screen made of 431 glowing 3D pixel tiles shows a pixel-art cat; one gold pixel of its eye fell out and is a tiny cube with eyes. Hook "Find the MISSING pixel." (3-2-1 ring, payoff "HE FELL OUT." at 3.0 s); three tries to get back in; "HOME."; the cat sneezes him out again and the video loops. Voice A+ (`isAiGenerated: true`), file `videos/027-pixel-fell-out-v2.mp4` (v1 had Kokoro voice A and never posted). Code, timing and gotchas: `tests/027-pixel-fell-out/README.md`.
 - Its CTA promises "Best name stars in Part 2", but there will be no Part 2 (no pixel stuff, see above).
