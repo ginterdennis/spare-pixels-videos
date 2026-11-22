@@ -33,6 +33,8 @@ Marketing benchmarks (rough, not official TikTok numbers) put a good 3-second ho
 | H7 | **Nothing to decode in 0-3 s:** no HUD labels, jargon, hedges or setup sentences. Context comes after the payoff. | you |
 | H8 | **Caption line 1 = the hook words**, so the sound-off viewer and the caption say the same thing. | you |
 
+**Voiced videos (since 22 Nov, voice A via `kit/voice.py`, see GROWTH.md "Voice"):** the narrator starts the hook words at 0.00 s (cue 0.0) over `hook_sfx()`, and the hook must still fit before the first payoff. Time the opening from `python3 kit/voice.py measure "<hook>"`: max 6 words is about 2-2.5 s at 1.1x. H1 and H8 still apply: the screen, the voice and caption line 1 say the same hook.
+
 ## Hook patterns (rotate; don't use the same one twice in a row)
 1. **Count / guess with a clock.** "How many BLACK dots?" + 3-2-1 ring, payoff "ZERO." (020 v2)
 2. **Doubt question.** Ask something the viewer is sure about, then stamp the opposite. "Has this shuffle EVER happened?" > NEVER. (021 v2)

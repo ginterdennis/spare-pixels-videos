@@ -31,5 +31,6 @@ See `state.json` (single source of truth; update it after every episode).
 - Font: Silkscreen (OFL) at sizes that are multiples of 8 px; RPG dialogue boxes with typewriter text.
 - Palette: navy night, aurora green/teal/violet, accent #FFD36B, Ren's jacket #C4462D.
 - Music: 104 BPM chip-style pulse arpeggio + pad; item pickups land on the beat.
+- Narrator (from Part 4, 22 Nov 2026): voice A via `kit/voice.py` (`narrate()` last in audio.py). Write the lines first and time the scenes from `voice.py measure`. Upload with `isAiGenerated: true`.
 - Code: `src/` (assets.py = sprites, scene.py = picture, audio.py = sound).
   Fonts: `npm pack @fontsource/silkscreen`, convert the latin .woff files to .ttf with `src/woff2ttf.py` into `fonts/`.

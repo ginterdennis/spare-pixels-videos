@@ -38,6 +38,8 @@ bash finish.sh 1                          # full -> standard range, mux at 48 kH
 ```
 Each part renders in under a minute on the 2-CPU box. All scene times live in `src/part<n>.json`, read by both the video and `audio<n>.py`.
 
+**Narrator (from Part 4, 22 Nov 2026):** voice A via `kit/voice.py`. Write the lines first, `python3 ../../kit/voice.py measure "..."`, set the `part<n>.json` scene times so each line fits its scene, and call `narrate(m, cues)` last in `audio<n>.py`. Parts 1-3 were timed for silence and stay as they are. Upload with `isAiGenerated: true`.
+
 ## Suggested captions
 - Part 1: "One load of laundry. 640 stairs. Which neighbour are you: 1, 2 or 3? (1 leaves it in, 2 moves it out, 3 writes the note) #laundry #apartmentlife #relatable #startupideas #isthisabusiness"
 - Part 2: "A €10 sensor vs 640 stairs. Would you use it? YES or NO #laundry #smarthome #esp32 #startupideas #isthisabusiness"
