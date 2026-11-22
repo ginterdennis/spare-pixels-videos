@@ -853,6 +853,12 @@ def camera_frame(t):
     """-> pos, target, lens, focus point, f-stop"""
     wide_t = (0.0, 1.6, 3.6)
     el, az, dist, lens = math.radians(5.5), math.radians(-7.0), 62.0, 60.0
+    if t < T["s1"][1]:
+        # slow orbit + push while Jonas runs down (motion on frame 0 for the hook); lands on the
+        # standard wide view exactly when the zoom into the basement starts
+        k = A.ease_out(t / (T["s1"][1] - T["zoomIn"]))
+        az = math.radians(A.lerp(-12.0, -7.0, k))
+        dist = A.lerp(65.0, 62.0, k)
     wide_c = (wide_t[0] + dist * math.cos(el) * math.sin(az), wide_t[1] - dist * math.cos(el) * math.cos(az), wide_t[2] + dist * math.sin(el))
     if A.is_close(t):
         c = A.jonas_close(t)
