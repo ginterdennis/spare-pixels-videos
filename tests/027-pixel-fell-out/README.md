@@ -1,6 +1,6 @@
 # 027 The pixel that fell out (first Blender story, voiced)
 
-24 s, 1080x1920, 30 fps, loops seamlessly. Made in Blender 5.3 (EEVEE) on the user's M3 MacBook Air, narrated by **voice A** (Kokoro `am_michael`, 1.1x, `kit/voice.py`).
+24 s, 1080x1920, 30 fps, loops seamlessly. Made in Blender 5.3 (EEVEE) on the user's M3 MacBook Air, narrated by **voice A+** (Chatterbox-Turbo with voice A's timbre, `kit/voice.py`). Posted as `videos/027-pixel-fell-out-v2.mp4`; v1 (Kokoro voice A) never went out.
 
 A screen built from 431 glowing 3D pixel tiles shows a pixel-art cat. One gold pixel of its eye is missing: it fell out, and it's a tiny gold cube with eyes. He tries three times to get back in. The cat helps, then sneezes him out again, and the video loops to the hook.
 
@@ -23,7 +23,11 @@ A screen built from 431 glowing 3D pixel tiles shows a pixel-art cat. One gold p
 - `audio.py`: chiptune theme in C (C-Am-F-G, 120 BPM, 4-bar phrase on the absolute bar grid so the loop lands on a bar line), one sound per event, formant-synth cat sneeze, then `narrate()` last.
 
 ## Voice
-Lines were written and measured first (`kit/voice.py measure`), then the scenes were retimed around them: TRY 1 moved from 4.8 s to 5.3 s so "Now he wants back in." finishes, and the paw now pops 0.68 s after "Try three." so the voice can say "Wait... the cat?!" as it happens. The voice says the on-screen words (CTA voice skips "Follow so you see it."). Pronunciation checked with `voice.py phonemes`. Voiced, so Buffer `isAiGenerated: true`.
+v2 (posted): voice A+, using the exact takes the user approved in the voice samples (cached into `~/.cache/spare-voice`), new takes for "Try two." / "Try three.", and `place()` for the cue times: the picture is fixed, so lines that run long start a little later ("Try one." +0.08 s, "Wait... the cat?!" +0.07 s); "[gasp] Again?!" starts on the sneeze. Whisper hears every line in the final mix.
+
+v1 notes: Lines were written and measured first (`kit/voice.py measure`), then the scenes were retimed around them: TRY 1 moved from 4.8 s to 5.3 s so "Now he wants back in." finishes, and the paw now pops 0.68 s after "Try three." so the voice can say "Wait... the cat?!" as it happens. The voice says the on-screen words (CTA voice skips "Follow so you see it."). Pronunciation checked with `voice.py phonemes`. Voiced, so Buffer `isAiGenerated: true`.
+
+**User verdict (22 Nov):** the look is great, the story is pointless. See GROWTH.md "Blender direction".
 
 ## How it was rendered
 - EEVEE, 32 samples (64 looked the same on the DOF/motion-blur shots), motion blur 0.5 with `motion_blur_position = START` (no smear across hard cuts), raytracing on, view transform Standard. About 4 s per frame on the Air, ~50 min for 720 frames, as a background `Blender -b pixel_fell_out.blend -a`.
