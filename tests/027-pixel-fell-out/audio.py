@@ -1,4 +1,4 @@
-"""027 score, sound effects and narration (voice A: Kokoro am_michael, 1.1x, kit/voice.py).
+"""027 score, sound effects and narration (voice A+: Chatterbox-Turbo with voice A's timbre, kit/voice.py).
 
 Original chiptune theme in C (C - Am - F - G, 120 BPM, a 4-bar phrase on the absolute 2-second bar
 grid, so the 24 s loop lands on a bar line). One sound per visual event, all times from anim.py.
@@ -12,7 +12,7 @@ import numpy as np
 from scipy import signal
 from kit import *
 from hook import hook_sfx
-from voice import narrate
+from voice import narrate, place
 import anim
 
 EV = anim.build()
@@ -22,20 +22,20 @@ B = 0.5                                     # one beat
 RNG = np.random.default_rng(27)
 
 # ------------------------------------------------------------------ voice cues (measured with voice.py)
-CUES = [
+# wanted start times; place() pushes a line later only if the previous one is still talking
+WANT = [
     (0.00, "Find the missing pixel."),
     (EV["reveal"], "He fell out."),
     (EV["reveal"] + 0.93, "Now he wants back in."),
     (EV["try1"], "Try one."),
     (EV["nope"] + 0.02, "Nope."),
     (EV["try2"], "Try two."),
-    (EV["splat"] + 0.03, "So close."),
+    (EV["splat"] + 0.03, "So close!"),
     (EV["try3"], "Try three."),
     (EV["paw_pop"] + 0.27, "Wait... the cat?!"),
     (EV["click"] + 0.02, "Home."),
-    (EV["eject"] + 0.14, "Again?!"),
-    (EV["cta"] + 0.09, "Name him."),
-    (EV["cta"] + 0.97, "Best name stars in part two."),
+    (EV["achoo"] + 0.05, "[gasp] Again?!"),                    # the gasp lands on the sneeze
+    (EV["eject"] + 1.20, "Name him. Best name stars in part two."),
 ]
 
 
@@ -234,6 +234,7 @@ m.add(E["eject"] + 0.25, glide(1500, 420, E["eject_land"] - E["eject"] - 0.25), 
 land(E["eject_land"], 0.5)
 
 # ------------------------------------------------------------------ narration (LAST: ducks the rest)
+CUES = place(WANT, end=DUR)
 spans = narrate(m, CUES)
 for s in spans:
     print(f"{s['t0']:6.2f}-{s['t1']:6.2f}  {s['text']}")

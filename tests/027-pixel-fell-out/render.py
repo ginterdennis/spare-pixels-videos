@@ -1,7 +1,7 @@
 """027 "The pixel that fell out": text, bloom and grade over the Blender frames (EEVEE, M3 MacBook Air).
 
 Story (all times come from anim.py, the same functions Blender baked):
-  Narrated by voice A (Kokoro am_michael 1.1x, audio.py): the voice says the on-screen words.
+  Narrated by voice A+ (Chatterbox-Turbo with voice A's timbre, audio.py): the voice says the on-screen words.
   0-3 s   HOOK  "Find the MISSING pixel." over a push-in on the tile cat, 3-2-1 ring; the cat's eyes dart
                  around and look down; the camera whips down the screen -> "HE FELL OUT." (3.0 s)
   TRY 1   straight jump, 1/5 of the way          -> "NOPE."
