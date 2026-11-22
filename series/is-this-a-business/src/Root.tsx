@@ -10,6 +10,7 @@ import T3 from './part3.json';
 export const Root: React.FC = () => (
   <>
     <Composition id="Part1" component={Part1} durationInFrames={Math.round(T1.end * 30)} fps={30} width={1080} height={1920} />
+    <Composition id="Part1UI" component={Part1} defaultProps={{uiOnly: true}} durationInFrames={Math.round(T1.end * 30)} fps={30} width={1080} height={1920} />
     <Composition id="Part2" component={Part2} durationInFrames={Math.round(T2.end * 30)} fps={30} width={1080} height={1920} />
     <Composition id="Part3" component={Part3} durationInFrames={Math.round(T3.end * 30)} fps={30} width={1080} height={1920} />
   </>

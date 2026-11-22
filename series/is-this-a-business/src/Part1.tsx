@@ -5,7 +5,7 @@ import {C, clamp01, easeInOut, easeOut, FPS, lerp, tw} from './theme';
 import {along, Building, JONAS_PATH, LV, MACHINE_X, pathFrom, stairsAt, Walker} from './Building';
 import {Basket, JONAS, Look, Person} from './Person';
 import {BasementRoom, Clock, FLOOR_Y, JONAS_LAUNDRY, NEIGHBOUR_LAUNDRY, Note, Washer} from './Props';
-import {Cap, Captions, Counter, Em, EndCard, SeriesPill, Tag} from './UI';
+import {Cap, Captions, Counter, Em, EndCard, LabelFont, SeriesPill, Tag} from './UI';
 
 const ZX = MACHINE_X;
 const ZY = LV[5] - 60;
@@ -221,7 +221,9 @@ const CloseUp: React.FC<{t: number}> = ({t}) => {
   );
 };
 
-export const Part1: React.FC = () => {
+/** uiOnly: captions, counter, pill, tags, end card and cut flashes on a transparent background,
+ *  for compositing over other picture sources (028: the same story rendered in Blender). */
+export const Part1: React.FC<{uiOnly?: boolean}> = ({uiOnly = false}) => {
   const frame = useCurrentFrame();
   const t = frame / FPS;
   const closeUp = inS(t, T.s2) || inS(t, T.s4) || inS(t, T.s6) || inS(t, T.s8);
@@ -241,9 +243,10 @@ export const Part1: React.FC = () => {
   const cuts = [T.s2[0], T.s3[0], T.s4[0], T.s5[0], T.s6[0], T.s7[0], T.s8[0], T.s9[0]];
   const flash = Math.max(0, ...cuts.map((c) => 1 - Math.abs(t - c) / 0.07)) * 0.35;
   return (
-    <AbsoluteFill style={{backgroundColor: C.paper}}>
-      <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
-      {closeUp ? <CloseUp t={t} /> : <Overview t={t} />}
+    <LabelFont.Provider value={uiOnly ? 'sans' : 'pixel'}>
+    <AbsoluteFill style={{backgroundColor: uiOnly ? 'transparent' : C.paper}}>
+      {!uiOnly && <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />}
+      {!uiOnly && (closeUp ? <CloseUp t={t} /> : <Overview t={t} />)}
       <AbsoluteFill style={{backgroundColor: C.white, opacity: flash}} />
       <SeriesPill part={1} />
       <Counter value={stairs} bump={bump} color={counterColor} />
@@ -253,5 +256,6 @@ export const Part1: React.FC = () => {
       <Captions t={t} caps={CAPS} />
       <EndCard t={t} at={T.card} out={T.cardOut} next={2} lines={['Could a tiny sensor', 'end the stair trips?']} />
     </AbsoluteFill>
+    </LabelFont.Provider>
   );
 };

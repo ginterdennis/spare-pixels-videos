@@ -43,11 +43,16 @@ export const Captions: React.FC<{t: number; caps: Cap[]; top?: number}> = ({t, c
   </>
 );
 
+/** Font for the small labels (pill, tags, counter label, card kicker). Default: the series' original
+ *  pixel font. 028 and later Blender versions use Inter Black (no pixel looks, user rule 22 Nov). */
+export const LabelFont = React.createContext<'pixel' | 'sans'>('pixel');
+const useLF = () => (React.useContext(LabelFont) === 'sans' ? {fontFamily: FONT.sans, fontWeight: 900} : {fontFamily: FONT.pixel, fontWeight: 700});
+
 /** Series pill + part pill, top left. */
 export const SeriesPill: React.FC<{part: number; op?: number}> = ({part, op = 1}) => (
   <div style={{position: 'absolute', left: 56, top: 200, display: 'flex', gap: 12, opacity: op}}>
-    <div style={{background: C.navy, color: C.paper, fontFamily: FONT.pixel, fontWeight: 700, fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>IS THIS A BUSINESS?</div>
-    <div style={{background: C.gold, color: C.ink, fontFamily: FONT.pixel, fontWeight: 700, fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>PART {part}</div>
+    <div style={{background: C.navy, color: C.paper, ...useLF(), fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>IS THIS A BUSINESS?</div>
+    <div style={{background: C.gold, color: C.ink, ...useLF(), fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>PART {part}</div>
   </div>
 );
 
@@ -58,7 +63,7 @@ export const Tag: React.FC<{t: number; at: number; until: number; text: string; 
   const o = 1 - tw(t, until, 0.18);
   return (
     <div style={{position: 'absolute', left: x, top: y, opacity: o, transform: `scale(${k})`, transformOrigin: '0% 50%'}}>
-      <div style={{background: C.white, color: C.ink, fontFamily: FONT.pixel, fontWeight: 700, fontSize: 30, padding: '8px 18px 10px', borderRadius: 14, border: `5px solid ${C.ink}`, boxShadow: `6px 6px 0 ${C.ink}`, rotate: '-3deg'}}>{text}</div>
+      <div style={{background: C.white, color: C.ink, ...useLF(), fontSize: 30, padding: '8px 18px 10px', borderRadius: 14, border: `5px solid ${C.ink}`, boxShadow: `6px 6px 0 ${C.ink}`, rotate: '-3deg'}}>{text}</div>
     </div>
   );
 };
@@ -66,9 +71,9 @@ export const Tag: React.FC<{t: number; at: number; until: number; text: string; 
 /** Stairs counter, top right. Bumps when the number changes. */
 export const Counter: React.FC<{value: number; bump: number; label?: string; op?: number; color?: string; sub?: string}> = ({value, bump, label = 'STAIRS', op = 1, color = C.ink, sub}) => (
   <div style={{position: 'absolute', right: 52, top: 192, textAlign: 'right', opacity: op}}>
-    <div style={{fontFamily: FONT.pixel, fontWeight: 700, fontSize: 28, color: C.ink, letterSpacing: 2}}>{label}</div>
+    <div style={{...useLF(), fontSize: 28, color: C.ink, letterSpacing: 2}}>{label}</div>
     <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 92, lineHeight: '92px', color, letterSpacing: '-0.03em', transform: `scale(${1 + 0.12 * bump})`, transformOrigin: '100% 50%', fontVariantNumeric: 'tabular-nums'}}>{Math.round(value).toLocaleString('en-US')}</div>
-    {sub && <div style={{fontFamily: FONT.pixel, fontWeight: 700, fontSize: 26, color: C.coral, marginTop: 4, letterSpacing: 1}}>{sub}</div>}
+    {sub && <div style={{...useLF(), fontSize: 26, color: C.coral, marginTop: 4, letterSpacing: 1}}>{sub}</div>}
   </div>
 );
 
@@ -80,7 +85,7 @@ export const EndCard: React.FC<{t: number; at: number; out: number; next: number
   return (
     <div style={{position: 'absolute', left: 70, width: 870, top: lerp(1920, 1040, k) + ko * 900, opacity: 1 - ko}}>
       <div style={{background: C.navy, border: `6px solid ${C.ink}`, borderRadius: 26, boxShadow: `10px 10px 0 ${C.ink}`, padding: '28px 40px 34px'}}>
-        <div style={{fontFamily: FONT.pixel, fontWeight: 700, fontSize: 32, color: C.gold, letterSpacing: 2}}>{kicker ?? `NEXT · PART ${next}`}</div>
+        <div style={{...useLF(), fontSize: 32, color: C.gold, letterSpacing: 2}}>{kicker ?? `NEXT · PART ${next}`}</div>
         <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 64, lineHeight: '74px', color: C.paper, marginTop: 14, letterSpacing: '-0.02em'}}>
           {lines.map((l, i) => <div key={i}>{l}</div>)}
         </div>
