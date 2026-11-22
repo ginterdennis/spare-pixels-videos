@@ -17,6 +17,7 @@
 ## Style rules
 - Look: dark navy gradient (`kit.BG_TOP/BG_BOT`), Inter Black headlines, accent GOLD #FFD36B / PINK / CYAN, small letter-spaced HUD labels with big numbers.
 - The first frame must work on its own: a big viewer task (max 6 words) over something already moving (HOOKS.md). Keep key content out of the top ~180 px and bottom ~380 px (TikTok UI).
+- **No pixel stuff (user, 22 Nov 2026):** no pixel themes, pixel characters, pixel-art looks, pixel puns or #pixelart in any new video or caption. The account name doesn't constrain the content.
 - English. Original art, jokes and music only. No copyrighted characters, no real brand UIs, no real people.
 - Fonts are Latin subsets: no arrows, no emoji inside the video (emoji are fine in captions).
 - Facts must be checked with a web search before they go in a video.

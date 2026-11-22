@@ -78,6 +78,11 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - Ends with "Part 2 is harder. Follow." **Part 2 is promised**: make it if 026 reaches For You or has signal. Ideas not used yet: Penrose stairs (ball climbs forever), Sugihara's "impossible motion" (balls roll uphill into a peak), Ames window, impossible fork, a second ambiguous cylinder shape (heart/star).
 - **Blender only runs on the Mac** (the cloud box measured ~50 s/frame on the 20 Nov benchmark). It needs the Claude desktop app open and online and Blender running with the MCP add-on, so the nightly loop can't make these on its own: build them in a session with the user, or skip if `blender__get_addon_status` fails. Render time on the Air: 1.9 s/frame (simple scenes) to 7.8 s/frame (mirror with planar probe), about 42 min for 24 s. Frames come over in zips of ~100 frames (an 80 MB zip timed out).
 
+## No pixel stuff (user, 22 Nov 2026, hard rule)
+- "I don't want any pixel shit anymore." No new video uses pixel themes, pixel characters, pixel-art looks, pixel puns or #pixelart (captions included). The account name (spare.pixels) doesn't constrain the content.
+- Already queued and kept by the user: 027 pixel cat (Sun 22 20:25, the Blender-quality test) and 014 REN Part 3 (Mon 23 20:25). Pulled by the user: 007 gold-pixel lottery on Instagram (Buffer post 6b02040bcc364169c104504e set to draft; don't re-queue it).
+- Consequences: no 027 Part 2 (its "best name stars in Part 2" promise lapses); REN gets no new pixel-art episodes, so make REN Part 4 only in a non-pixel look, or let the series end; formats built on pixels (pixel reveal, year in 365 pixels, pixel wallpapers, gold-pixel data) are retired for new videos.
+
 ## Blender direction (user, 22 Nov 2026): story first
 - The user's verdict on 027: the look (lighting, animation, 3D) is "really great", but **the story is pointless** ("the pixel wants to get back" is not a story). Blender videos need a real story: a relatable problem, stakes the viewer feels, a character who wants something and a payoff or twist that is worth the wait.
 - Blender videos don't have to be about pixels or in pixel style; the account name doesn't constrain the look. Directions the user named: **a realistic world built in Blender**, a **small/miniature world**, or **our normal formats in Blender, especially "Is this a business?"**, which the user thinks "could look insanely good" in 3D.
@@ -85,7 +90,7 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 
 ## "The pixel that fell out" 3D story (Blender, voiced)
 - 027 (Sun 22 20:25, IG 20:55; moved from Fri 27 on 22 Nov because the user wanted it to be the next post, to see how the higher Blender quality does): a screen made of 431 glowing 3D pixel tiles shows a pixel-art cat; one gold pixel of its eye fell out and is a tiny cube with eyes. Hook "Find the MISSING pixel." (3-2-1 ring, payoff "HE FELL OUT." at 3.0 s); three tries to get back in; "HOME."; the cat sneezes him out again and the video loops. Voice A+ (`isAiGenerated: true`), file `videos/027-pixel-fell-out-v2.mp4` (v1 had Kokoro voice A and never posted). Code, timing and gotchas: `tests/027-pixel-fell-out/README.md`.
-- Its CTA promises "Best name stars in Part 2". Make Part 2 only if 027 has signal (or 5+ name comments), and then give it a real story (see "Blender direction"); otherwise let it go.
+- Its CTA promises "Best name stars in Part 2", but there will be no Part 2 (no pixel stuff, see above).
 - Read 027's numbers as the test of **Blender visual quality** (hold3, avg watch %, For You share vs the 2D videos), not of the story.
 - Same Blender limits as 026 (Mac on, desktop app + Blender open). The scene is fully scripted (`anim.py` is pure Python; `blender/build.py` rebuilds and bakes it). Render time on the Air: ~4.3 s/frame at 32 samples (431 tile objects, DOF, motion blur), ~52 min for 24 s.
 
@@ -109,7 +114,7 @@ Numbers as of 21 Nov 21:45 (TikTok: Windsor; IG: Metricool, Friday's Reels only)
 | story series "Is this a business?" | 022*, 023*, 024* | – | – | – | – | scheduled Sun 22, Tue 24, Wed 25 at 20:25 |
 | story / group chat | 012 v2* (Tue 24 16:25) | – | – | – | 012 v1: 126 views, 62% avg | explore |
 | 3D illusion (Blender) | 026* | – | – | – | 026 IG Sun 22 16:55 | explore (Sun 22 16:25); Part 2 promised |
-| 3D story (Blender, voiced) | 027* | – | – | – | 027 IG Sun 22 20:55 | explore (Sun 22 20:25, user's pick: test of Blender quality); Part 2 only with signal |
+| 3D story (Blender, voiced) | 027* | – | – | – | 027 IG Sun 22 20:55 | explore (Sun 22 20:25, user's pick: test of Blender quality); no Part 2 (no pixel stuff) |
 | simulation / guessing game | 002, 004 | none (profile only) | 6 | 5% (002), 36% (004) | 004 IG sent 21 Nov | watch (never reached FY, so no miss yet) |
 | calm loop | 005 | none | 0 | – | backlog | watch |
 | data | 007 | none | 7 | 30% | Tue 24 12:25 | watch |
@@ -120,6 +125,7 @@ Numbers as of 21 Nov 21:45 (TikTok: Windsor; IG: Metricool, Friday's Reels only)
 Nothing has "signal" by the strict definition yet (018: 566 views, 41% avg watch, 11% full watch on TikTok; on IG 54% avg watch). Followers per 1,000 views: 0 everywhere.
 
 ## Learnings log (newest first, one line each)
+- 2026-11-22 (user): no more pixel content of any kind in new videos (themes, characters, looks, #pixelart). The name spare.pixels is just a name.
 - 2026-11-22 (user feedback on 027): Blender quality is a clear step up ("the lighting, the animation... looks really good"), but a premise is not a story: "the pixel wants to get back" has no stakes or payoff, and the user called it pointless. Story beats come first, the 3D look second; "Is this a business?" in Blender is the user's top idea. Kokoro voice A sounded lifeless; Chatterbox-Turbo with the same timbre (A+) replaced it the same evening.
 - 2026-11-22 (027, with the user): first voiced Blender story. Writing and measuring the voice lines first moved two beats (TRY 1 +0.5 s, the paw +0.5 s) and made the video 24 s instead of 23; scenes timed from the voice fit on the first try. `pip install bpy==5.3.0` in the cloud renders EEVEE stills (software GL, ~30 s at 25 %), so the whole storyboard can be checked before the Mac renders. Story hook = a viewer task about the story's premise ("Find the MISSING pixel.") rather than a teaser line.
 - 2026-11-22 (voice, with the user): narrator voice added. Kokoro-82M (Apache-2.0) runs on the cloud CPU at ~0.8 s compute per 1 s of speech; the user picked voice A (`am_michael`, 1.1x). Existing videos were timed for silence: Part 1's hook line takes 3.5 s against a 2.95 s scene, so voiced videos must be timed from the voice lines (`voice.py measure`). Already-queued videos stay silent; voice starts with newly made ones.
