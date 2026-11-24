@@ -1,6 +1,7 @@
 import React from 'react';
 import {backOut, C, easeInOut, easeOut, FONT, lerp, OW, tw} from './theme';
 import {FLOOR_Y} from './Props';
+import {useLabelSvg} from './UI';
 
 /** Speech-bubble readout above the sensor: a live vibration trace + label. */
 export const SensorBubble: React.FC<{t: number; amp: number; label: string; color: string; k: number}> = ({t, amp, label, color, k}) => {
@@ -65,11 +66,12 @@ export const CouchFront: React.FC = () => (
   </g>
 );
 
-export type PhoneStatus = {label: string; sub: string; color: string; progress: number};
+export type PhoneStatus = {label: string; sub: string; color: string; progress: number; size?: number};
 export type Banner = {title: string; sub: string; at: number};
 
 /** The app on Jonas's phone, shown big on the right. */
-export const Phone: React.FC<{t: number; at: number; until: number; status: PhoneStatus; banners?: Banner[]; statusAt?: number}> = ({t, at, until, status, banners = [], statusAt = -1}) => {
+export const Phone: React.FC<{t: number; at: number; until: number; status: PhoneStatus; banners?: Banner[]; statusAt?: number; x?: number; rot?: number}> = ({t, at, until, status, banners = [], statusAt = -1, x = 590, rot = 3}) => {
+  const lf = useLabelSvg();
   if (t < at || t > until + 0.25) return null;
   const k = tw(t, at, 0.4, backOut);
   const o = 1 - tw(t, until, 0.22, easeInOut);
@@ -77,17 +79,17 @@ export const Phone: React.FC<{t: number; at: number; until: number; status: Phon
   const R = 104;
   const circ = 2 * Math.PI * R;
   return (
-    <div style={{position: 'absolute', left: 590, top: 400, width: 330, height: 660, opacity: o, transform: `translateY(${lerp(80, 0, k)}px) scale(${lerp(0.85, 1, k)}) rotate(3deg)`, transformOrigin: '50% 100%'}}>
+    <div style={{position: 'absolute', left: x, top: 400, width: 330, height: 660, opacity: o, transform: `translateY(${lerp(80, 0, k)}px) scale(${lerp(0.85, 1, k)}) rotate(${rot}deg)`, transformOrigin: '50% 100%'}}>
       <div style={{position: 'absolute', inset: 0, background: C.ink, borderRadius: 54, boxShadow: `10px 10px 0 rgba(28,33,64,0.35)`}} />
       <div style={{position: 'absolute', left: 14, top: 14, right: 14, bottom: 14, background: C.paper, borderRadius: 42, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: 112, top: 12, width: 78, height: 22, borderRadius: 11, background: C.ink}} />
-        <div style={{position: 'absolute', left: 0, right: 0, top: 70, textAlign: 'center', fontFamily: FONT.pixel, fontWeight: 700, fontSize: 22, color: C.ink, letterSpacing: 1}}>HOUSE WASHER</div>
+        <div style={{position: 'absolute', left: 0, right: 0, top: 70, textAlign: 'center', fontFamily: lf.family, fontWeight: lf.weight, fontSize: 22, color: C.ink, letterSpacing: 1}}>HOUSE WASHER</div>
         <svg width={302} height={300} style={{position: 'absolute', left: 0, top: 112}}>
           <circle cx={151} cy={140} r={R} fill="none" stroke={C.wallDark} strokeWidth={22} />
           <circle cx={151} cy={140} r={R} fill="none" stroke={status.color} strokeWidth={22} strokeLinecap="round" strokeDasharray={`${circ * status.progress} ${circ}`} transform="rotate(-90 151 140)" />
         </svg>
         <div style={{position: 'absolute', left: 0, right: 0, top: 206, textAlign: 'center', transform: `scale(${lerp(0.6, 1, sk)})`}}>
-          <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 58, color: status.color, letterSpacing: '-0.02em', lineHeight: '60px'}}>{status.label}</div>
+          <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: status.size ?? 58, color: status.color, letterSpacing: '-0.02em', lineHeight: '60px'}}>{status.label}</div>
         </div>
         <div style={{position: 'absolute', left: 20, right: 20, top: 430, textAlign: 'center', fontFamily: FONT.sans, fontWeight: 800, fontSize: 30, lineHeight: '38px', color: C.ink}}>{status.sub}</div>
         {banners.map((b, i) => {

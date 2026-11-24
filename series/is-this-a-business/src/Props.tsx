@@ -1,6 +1,7 @@
 import React from 'react';
 import {C, FONT, OW} from './theme';
 import {ClothesPile} from './Person';
+import {LabelFont} from './UI';
 
 export const NEIGHBOUR_LAUNDRY = [C.pink, C.lilac, C.coral, C.pink, C.sky];
 export const JONAS_LAUNDRY = [C.gold, C.navy, C.white, C.goldDark, C.teal];
@@ -27,6 +28,7 @@ export const Washer: React.FC<{
   const rot = run ? t * 520 : 0;
   const disp = display ?? (run ? 'RUN' : state === 'done' ? 'END' : '- -');
   const drumR = 98;
+  const dispFont = React.useContext(LabelFont) === 'sans' ? {f: FONT.mono, w: 700} : {f: FONT.pixel, w: 700};
   return (
     <g transform={`translate(${x},${y}) scale(${s})`}>
       {run && (
@@ -49,7 +51,7 @@ export const Washer: React.FC<{
         <circle cx={-20} cy={-383} r={20} fill={C.white} stroke={C.ink} strokeWidth={sw * 0.8} />
         <path d={`M -20 -383 L ${-20 + 13 * Math.cos(run ? t * 2 : -0.8)} ${-383 + 13 * Math.sin(run ? t * 2 : -0.8)}`} stroke={C.ink} strokeWidth={sw * 0.8} strokeLinecap="round" />
         <rect x={22} y={-402} width={124} height={40} rx={8} fill={C.ink} />
-        <text x={84} y={-372} textAnchor="middle" fontFamily={FONT.pixel} fontWeight={700} fontSize={25} fill={state === 'done' ? C.gold : run ? C.tealLight : '#8C93B8'}>{disp}</text>
+        <text x={84} y={-372} textAnchor="middle" fontFamily={dispFont.f} fontWeight={dispFont.w} fontSize={25} fill={state === 'done' ? C.gold : run ? C.tealLight : '#8C93B8'}>{disp}</text>
         {/* door */}
         <circle cx={0} cy={-178} r={128} fill={C.metal} stroke={C.ink} strokeWidth={sw} />
         <circle cx={0} cy={-178} r={drumR + 4} fill={C.ink} />

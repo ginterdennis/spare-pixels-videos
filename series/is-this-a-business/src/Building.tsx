@@ -2,6 +2,7 @@ import React from 'react';
 import {C, FONT, OW} from './theme';
 import {Look, Person} from './Person';
 import {Washer} from './Props';
+import {useLabelSvg} from './UI';
 
 // Cross-section of the house: floors 4..0 and the basement (-1).
 export const BX0 = 110;
@@ -76,18 +77,23 @@ const Flight: React.FC<{x0: number; y0: number; x1: number; y1: number}> = ({x0,
   );
 };
 
-const Door: React.FC<{x: number; y: number; label: string; hi?: boolean}> = ({x, y, label, hi}) => (
+const Door: React.FC<{x: number; y: number; label: string; hi?: boolean}> = ({x, y, label, hi}) => {
+  const lf = useLabelSvg();
+  return (
   <g>
     <rect x={x - 26} y={y - 88} width={52} height={88} rx={4} fill={hi ? C.gold : C.wallDark} stroke={C.ink} strokeWidth={OW * 0.6} />
     <circle cx={x + 14} cy={y - 42} r={3.5} fill={C.ink} />
-    <text x={x} y={y - 98} textAnchor="middle" fontFamily={FONT.pixel} fontWeight={700} fontSize={17} fill={C.ink} opacity={0.7}>{label}</text>
+    <text x={x} y={y - 98} textAnchor="middle" fontFamily={lf.family} fontWeight={lf.weight} fontSize={17} fill={C.ink} opacity={0.7}>{label}</text>
   </g>
-);
+  );
+};
 
 export type Walker = {u: number; look: Look; basket: string[] | null; path?: Pt[]; visible?: boolean; moving?: boolean; rev?: boolean; face?: 1 | -1; opacity?: number; expr?: 'neutral' | 'tired' | 'annoyed' | 'happy'};
 
 /** The whole house in cross-section, with walkers on the stairs. */
-export const Building: React.FC<{t: number; walkers: Walker[]; machine?: {state: 'running' | 'done' | 'idle'; drum: string[]; pile?: string[] | null}; hiDoor?: boolean; machineGlow?: number}> = ({t, walkers, machine, hiDoor = true, machineGlow = 0}) => (
+export const Building: React.FC<{t: number; walkers: Walker[]; machine?: {state: 'running' | 'done' | 'idle'; drum: string[]; pile?: string[] | null}; hiDoor?: boolean; machineGlow?: number; children?: React.ReactNode}> = ({t, walkers, machine, hiDoor = true, machineGlow = 0, children}) => {
+  const lf = useLabelSvg();
+  return (
   <g>
     {/* ground and earth */}
     <rect x={0} y={LV[4]} width={1080} height={1920 - LV[4]} fill={C.earth} />
@@ -128,11 +134,12 @@ export const Building: React.FC<{t: number; walkers: Walker[]; machine?: {state:
     <rect x={BX0} y={ROOF} width={BX1 - BX0} height={LV[5] + 14 - ROOF} fill="none" stroke={C.ink} strokeWidth={OW} />
     {/* floor labels */}
     {LV.map((y, i) => (
-      <text key={`l${i}`} x={BX0 - 18} y={y - 40} textAnchor="end" fontFamily={FONT.pixel} fontWeight={700} fontSize={30} fill={C.ink}>{LABELS[i]}</text>
+      <text key={`l${i}`} x={BX0 - 18} y={y - 40} textAnchor="end" fontFamily={lf.family} fontWeight={lf.weight} fontSize={30} fill={C.ink}>{LABELS[i]}</text>
     ))}
     {/* the one washer */}
     {machineGlow > 0 && <circle cx={MACHINE_X} cy={LV[5] - 62} r={92} fill={C.gold} opacity={0.35 * machineGlow} />}
     {machine && <Washer x={MACHINE_X} y={LV[5]} s={0.3} t={t} state={machine.state} drum={machine.drum} pile={machine.pile ?? null} ow={OW * 0.7} />}
+    {children}
     {/* walkers */}
     {walkers.map((w, i) => {
       if (w.visible === false) return null;
@@ -142,4 +149,5 @@ export const Building: React.FC<{t: number; walkers: Walker[]; machine?: {state:
       );
     })}
   </g>
-);
+  );
+};

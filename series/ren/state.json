@@ -90,5 +90,7 @@
       "file": "videos/014-ren-part3-day3.mp4"
     }
   ],
-  "camp": "rooftop fire in a metal bucket (cardboard tinder); can boil water now"
+  "camp": "rooftop fire in a metal bucket (cardboard tinder); can boil water now",
+  "paused": true,
+  "pause_reason": "24 Nov 2026 loop: REN gating failed (014 Part 3: 206 views, below the 255 median of the last 10 TikToks; hold3 27%, avg watch 10%). Also no new pixel-art episodes (user rule 22 Nov). Resume only with a non-pixel look and if the gating rule allows."
 }

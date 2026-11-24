@@ -47,6 +47,8 @@ export const Captions: React.FC<{t: number; caps: Cap[]; top?: number}> = ({t, c
  *  pixel font. 028 and later Blender versions use Inter Black (no pixel looks, user rule 22 Nov). */
 export const LabelFont = React.createContext<'pixel' | 'sans'>('pixel');
 const useLF = () => (React.useContext(LabelFont) === 'sans' ? {fontFamily: FONT.sans, fontWeight: 900} : {fontFamily: FONT.pixel, fontWeight: 700});
+/** Same choice for SVG text: {family, weight}. Part 4+ (2D) also uses 'sans'. */
+export const useLabelSvg = () => (React.useContext(LabelFont) === 'sans' ? {family: FONT.sans, weight: 900} : {family: FONT.pixel, weight: 700});
 
 /** Series pill + part pill, top left. */
 export const SeriesPill: React.FC<{part: number; op?: number}> = ({part, op = 1}) => (

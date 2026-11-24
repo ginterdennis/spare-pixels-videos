@@ -11,7 +11,7 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 2. **Data.** Per video for the last 14 days: views, retention at 1/2/3/5 s (`hold3` = at 3 s, see HOOKS.md), average watch (s and % of length), full-watch rate, likes, comments, shares, saves, new followers, For You share. Windsor has retention and traffic sources (TikTok only); Metricool has TikTok `TKPO*` and Instagram Reels `IGRE*` (incl. `IGRE27` retention, `IGRE30` skip rate). Fill `posts.csv` 48 h columns for posts that are 48 h+ old.
 3. **Decide** (rules below), **make** the videos, **post** them, **log** them, **report**.
 
-## TikTok reach recovery (ACTIVE since 21 Nov 2026; overrides the normal cadence below)
+## TikTok reach recovery (21-24 Nov 2026; ENDED 24 Nov: exit rule met, see the streak line)
 - **Why:** only 3 of 16 TikToks reached For You by 21 Nov (001, 006, 018); the rest got 0-7 views, mostly from the profile page. The account followed nobody, had no bio, had never liked or commented, had only ever uploaded through the API, and posted 11 videos on 20 Nov, so TikTok most likely treated it as a probable bot. Instagram reached people fine, so the content is not the blocker.
 - **The user** did a one-time fix on 21 Nov (bio, phone/email verified, account status and For You eligibility checked, followed niche creators) and does a 10-minute in-app routine every evening 22-28 Nov (reminder 19:30: scroll niche For You, like, comment, follow 2-3 niche creators, reply to all comments). The user does NOT post or approve anything by hand: every Buffer post is `schedulingType: "automatic"`, never a reminder.
 - **TikTok slots while recovery is active: exactly 2 a day, both automatic.**
@@ -21,10 +21,11 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 - **Never** delete TikTok videos, set them to private, or re-upload one. Leave flops up.
 - **Exit:** when 5 TikTok posts in a row each reach For You (For You share >= 50% AND >= 200 views within 48 h), recovery ends: back to max 3 TikToks a day (third slot between 12:00 and 13:30), and tell the user in the report.
 - **First run after 28 Nov:** if recovery is still active, ask under "Needs you:" whether the user can keep the 10-minute routine going for another week.
-- Streak so far (newest last): 017 no (4 views, 42% FY) | 018 yes (597 views, 97.8% FY) | 013 yes (268 views at 48 h, 98.4% FY) | 026 yes (217 views in 5 h, 97.4% FY) | 027 pending (17 views at 1 h, 79% FY). **Streak: 3 of 5** (22 Nov 21:50).
+- Streak (newest last): 017 no (4 views, 42% FY) | 018 yes (597, 97.4% FY) | 013 yes (269, 96.7%) | 026 yes (329, 97.0%) | 027 yes (253, 94.6%) | 022 yes (6,081, 99.9%) | 014 yes (206, 99.2%) | 028 yes (257 in 6 h, 98.6%). **7 in a row reached For You: recovery ENDED 24 Nov 21:40.** Normal cadence from Wed 25 Nov (3 TikToks a day: 12:55, 16:25, 20:25). The user's evening routine was planned until 28 Nov; the "first run after 28 Nov" question no longer applies.
+- If reach collapses again (throttle alarm below), go back to 2 automatic TikToks a day (16:25, 20:25) and re-read this section.
 
-## Cadence after recovery (why: new accounts that post 5+ a day risk velocity throttling)
-- TikTok: **max 3 posts a day**, at least 150 min apart, between 12:00 and 22:30 Berlin. Never the same format twice in a row.
+## Cadence (ACTIVE since 25 Nov; why: new accounts that post 5+ a day risk velocity throttling)
+- TikTok: **max 3 posts a day**, at least 150 min apart, between 12:00 and 22:30 Berlin: **12:55** (third slot, 12:00-13:30), **16:25** (strongest standalone), **20:25** (series). Never the same format twice in a row. 2 exploit + 1 explore a day.
 - Instagram: cross-post every new video 30 min after its TikTok slot. Max 4 Reels a day.
 - Ramp up to 4 TikToks a day only when the median of the last 9 TikTok posts is >= 500 views AND at least 6 of those 9 reached For You (For You share >= 50%).
 - **Throttle alarm:** if the last 6 TikTok posts (all 24 h+ old) each have < 50 views and 0% For You, post only 1 a day for 3 days, then return to the normal cadence. Never delete videos and never repost an identical file (reposts without meaningful change are not eligible for For You).
@@ -32,7 +33,7 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 ## What counts as a winner
 A video **has signal** if any of: views >= 1,000; average watch >= 50% of its length; full-watch rate >= 25%; or (views >= 300 and comments + shares >= 10 per 1,000 views). Followers per 1,000 views is the tie-breaker (it's what we actually need). The two watch-based tests count only with >= 20 views (010 and 005 showed 64-73% average watch on 0-3 views: noise).
 
-## Explore / exploit (during recovery: the 16:25 slot alternates exploit/explore, 20:25 = series or best exploit; after recovery: 2 exploit + 1 explore TikTok slots a day)
+## Explore / exploit (since 25 Nov: 2 exploit + 1 explore TikTok slots a day; 20:25 = series)
 - **Exploit**: New variants of the best formats (by signal, then For You share, then average watch %). A variant keeps what worked (hook type, length, CTA) but has a new subject. Never a recolour.
 - **Explore**: a new format or a bold twist on a format.
 - **Follow-up rule:** any video with >= 1,000 views or >= 5 new followers gets a "Part 2" or a close sequel within 48 h.
@@ -69,6 +70,9 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - Made 20 Nov at the user's request, modelled on a series the user sent. Bible, cast, facts and build steps: `series/is-this-a-business/README.md` (Remotion; `finish.sh` does the colour-range fix + 48 kHz mux).
 - Parts 1-3 (022-024): TikTok **Mon 23 16:25** (moved from Sun 22 20:25 on 22 Nov so 027 could post first, user's wish), **Tue 24, Wed 25** Nov at 20:25 (Part 1's caption says "Part 2 on Tuesday", still true). Part 1 IG Mon 23 16:55. Instagram: Part 1 Sun 22 20:55, Part 2 Tue 24 20:55, Part 3 still to add (Wed 25 20:55).
 - Part 3 promises "If YES wins, Jonas builds it" (Part 4). Make Part 4 if Part 3's comments lean YES, or if Part 1 has signal; otherwise close the series with a short note in the learnings log. Track Part 2 views / Part 1 views (series carry-over).
+- **Part 1 (022) is the account's first real hit (24 Nov, 30 h):** 6,081 TikTok views, 99.9% For You, avg watch 16.5 s = 61%, full watch 36%, hold3 69% (1 s 87%, 2 s 74%, 5 s 59%), 56 likes, 3 shares, but 0 comments and 0 new followers. IG 1,929 views, 18.7 s avg (69%). Strict signal on every test. So **the series is exploit #1** and gets the 20:25 slot every day it has a part.
+- **Part 4 = 030 "Jonas built it. Day one: silence."** (made 24 Nov, voiced A+, 25.6 s, `videos/030-biz-part4-wifi.mp4`, code `src/Part4.tsx` + `audio4.py`): the box works, but the basement has no Wi-Fi (concrete floors eat 2.4 GHz); 4B walks 160 stairs for nothing because the app said FREE; Jonas walks down and watches the bars die floor by floor; fix = a second €6 chip at the basement door that passes the message upstairs (ESP-NOW-style chip-to-chip); bonus: the lost sock from Part 3; first ping goes to the neighbour who voted NO. Labels in Inter (no pixel font). TikTok **Thu 26 20:25**, IG 20:55.
+- **Part 5 is promised** ("NEXT · PART 5: The landlord found out."): make it for Fri 27 or Sat 28 20:25 (Fri 20:25 is 020 black dots; move 020 to a 16:25/12:55 slot if Part 5 is ready). Story idea: the landlord sees the box; stakes = ban it or buy it for all his houses (the "business" moment). Real story beats first (GROWTH "Blender direction").
 
 ## "Same colour" illusion series (exploit, 16:25)
 - 018 (Part 1) is the best video on both networks (TikTok 98.5% For You, hold3 55%; IG 2,717 views, 54% avg watch). 025 = Part 2 (Mon 23 16:25), ends with "Part 3 is harder. Follow." **Part 3 is promised**: make it if 025 reaches For You, for a 16:25 slot 1-2 days later. Ideas not used yet: Koffka ring, White's illusion in grey, confetti illusion, colour cast (a red object under cyan light), Chubb.
@@ -80,7 +84,8 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 
 ## "Guess it before the balls do" series (exploit, from IG signal)
 - 004 (Part 1, pixel reveal fox) never reached For You on TikTok but its Instagram Reel got 1,284 views (37% avg watch), the 2nd-best Reel. 029 = Part 2 remade **without any pixel look**: smooth skia vector art (kiwi, donut, pineapple) under a dark scratch-off cover, round soft trails, 3 escalating rounds, payoffs 3.0 / 10.0 / 17.5 s, "A waffle? Look closer." decoy on the hardest round. No voice. Code and seeds: `tests/029-guess-before-balls/README.md`.
-- 029 IG Mon 23 12:10 (within 48 h of 004's IG post), TikTok Sat 28 16:25. Ends with "Part 3 is harder. Follow." **Part 3 is promised**: make it if 029's IG Reel gets >= 1,000 views or its TikTok reaches For You. Ideas in the README (watermelon vs "ladybug?", sunflower vs "pizza?", zebra close-up vs "barcode?").
+- 029 IG Mon 23 12:10 (within 48 h of 004's IG post): **1,312 views, 8.3 s avg (39%)** = IG signal again. TikTok **moved Sat 28 16:25 -> Wed 25 12:55** (24 Nov, the new third slot).
+- **Part 3 = 031** (made 24 Nov, `tests/031-guess-part3/`): strawberry (3.0 s), sunflower (10.0 s), watermelon close-up with the rind hidden at the top (17.5 s, decoy "Strawberry? Look closer.", seed 126 keeps the rind covered until ~5.5 s). Ends "Part 4 is harder. Follow." (**Part 4 promised**, make it if 031's IG Reel gets >= 1,000 views or its TikTok reaches For You). IG **Wed 25 13:25**, TikTok **Sat 28 16:25** (after 029 on TikTok). Ideas left: zebra close-up vs "barcode?", peacock feather, pizza vs "sunflower?".
 
 ## No pixel stuff (user, 22 Nov 2026, hard rule)
 - "I don't want any pixel shit anymore." No new video uses pixel themes, pixel characters, pixel-art looks, pixel puns or #pixelart (captions included). The account name (spare.pixels) doesn't constrain the content.
@@ -98,6 +103,7 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - Caption = 022's caption with "Part 2 tonight." (Part 2 posts Tue 20:25).
 - Learnings from the build: one 3D cutaway house + basement set carries the whole story; EEVEE on the M3 Air ran ~4-5 s/frame (810 frames ~65 min); bring frames back in zips of <= 13 MB (bigger uploads from the Mac failed tonight); a tiny character in a wide shot gives too little frame-0 motion (hookcheck H2 failed at 1.2), a slow camera swing fixed it (14.9).
 - Compare after 48 h each: For You share, views, hold3, avg watch %, full-watch rate, likes/comments/shares per 1,000 views, new followers, on TikTok and Instagram. One pair is a weak test (different weekday, the account is changing fast), so call it a lean, not proof; write the result in the learnings log.
+- **Early read (24 Nov 21:40, 028 only 6 h old):** 2D 022 beats Blender 028 on every rate: hold3 69% vs 56%, avg watch 61% vs 44%, full watch 36% vs 28%; views 6,081 (30 h) vs 257 (6 h). 028 also reached For You (98.6%). Confound: same story one day later, so some viewers had already seen it. Lean: the 2D look is not the weak point; keep the series 2D (Remotion) unless the 48 h compare on Thu says otherwise.
 - To make room (22 Nov 19:45): 025 same colour P2 moved Tue 24 16:25 -> **Thu 26 16:25** (IG 16:55); 020 black dots v2 moved Thu 26 16:25 -> **Fri 27 20:25** (IG 20:55).
 
 ## "The pixel that fell out" 3D story (Blender, voiced)
@@ -119,27 +125,28 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - First Buffer TikTok posts confirmed sent and public on 21 Nov: 017 (13:11), 018 (16:41), 013 (20:26). Buffer's `get_post` returns the TikTok link in `externalLink`.
 
 ## Format scoreboard (update every run)
-Numbers as of 22 Nov 21:50 (TikTok: Windsor; IG: Metricool). * = not published yet. FY = For You share. hold3 = still watching at 3 s.
+Numbers as of 24 Nov 21:40 (TikTok: Windsor; IG: Metricool). * = not published yet. FY = For You share. hold3 = still watching at 3 s.
 | Format | Posts | Reached For You (TikTok) | Best TikTok views | Avg watch % (TikTok) | Instagram | Status |
 |---|---|---|---|---|---|---|
-| illusion | 006, 019, 018, 020*, 025* | 006 (97%), 018 (98%) | 759 (006), 597 (018, hold3 55%) | 22% (006), 41% (018) | 018: 2,735 views, 54% avg (best); 019: 146 (49%); 006: 126 | **exploit #1** (16:25); same-colour Part 2 = 025 (Thu 26) |
-| guessing game ("guess it before the balls do") | 004, 029* | 004 never reached FY (profile only, 6 views) | 6 | 34% (004, 6 views) | **004: 1,284 views, 37% avg (2nd-best Reel)** | **exploit** (IG signal): 029 = Part 2, no pixel look (IG Mon 23 12:10, TikTok Sat 28 16:25); Part 3 promised |
-| number fact (doubling, scale, odds) | 001, 016, 017, 021* | 001 (98%) | 414 (001) | 23% (001); 017 4 views | 001: 150, 017: 141, 016: 130 | exploit (16:25) |
-| REN series | 003, 013, 014* | 013 (98%) | 268 (013, hold3 31%) | 11% (003), 14% (013) | 003: 112, 013: 117 (22%) | 014 P3 Mon 23 20:25 is the last pixel episode; REN P4 only in a non-pixel look (or end the series) |
-| story series "Is this a business?" | 022*, 023*, 024*, 028* (Blender A/B) | – | – | – | – | Mon 23 16:25, Tue 24 20:25, Wed 25 20:25; 028 Tue 24 16:25 (reserved) |
-| story / group chat | 012 v2* (Fri 27 16:25) | – | – | – | 012 v1: 126 views, 30% avg | explore |
-| 3D illusion (Blender) | 026 | 026 (97%) | 217 in 5 h, hold3 34% | 25% | 026 IG sent 16:56 (no data yet) | reached FY, so **Part 2 is due** (Mac + Blender needed, see its section) |
-| 3D story (Blender, voiced) | 027 | pending (79% FY of 17 views at 1 h, hold3 42%) | 17 | 18% | IG errored, re-sent 22:20 (IG-safe file) | user's test of Blender quality; no Part 2 |
-| simulation | 002 | none (profile only) | 3 | 5% | IG pulled to backlog (draft) | watch |
+| **story series "Is this a business?"** | 022, 028 (Blender A/B), 023, 024*, 030* | 022 (99.9%), 028 (98.6%), 023 (100% of 17 at 1 h) | **6,081 (022, hold3 69%)** | **61% (022)**, 44% (028) | **022: 1,929 views, 69% avg (best avg)**; 028 sent 16:56 | **exploit #1** (20:25 daily): P3 Wed 25, P4 (030) Thu 26, P5 promised |
+| illusion | 006, 019, 018, 020*, 025* | 006 (97%), 018 (97%) | 759 (006), 597 (018, hold3 55%) | 22% (006), 41% (018) | 018: 2,741 views, 54% avg (most views) | exploit #2 (16:25); 025 Thu 26, 020 Fri 27 |
+| guessing game ("guess it before the balls do") | 004, 029*, 031* | 004 never reached FY (profile only) | 6 | 34% (004, 6 views) | **004: 1,286 (37%); 029: 1,312 (39%)** | exploit (IG signal twice): 029 TikTok Wed 25 12:55, 031 P3 IG Wed 25 13:25 + TikTok Sat 28 16:25; P4 promised |
+| 3D illusion (Blender) | 026 | 026 (97%) | 329, hold3 38% | 29% | 137 views, 54% avg | Part 2 due (Mac + Blender session needed) |
+| 3D story (Blender, voiced) | 027 | 027 (94.6%) | 253, hold3 59% | 35% | 131 views, 43% avg | no Part 2 (pixel) |
+| number fact (doubling, scale, odds) | 001, 016, 017, 021* | 001 (98%) | 414 (001) | 23% (001) | 001: 152, 021: 135, 017: 142, 016: 131 | exploit (16:25); 021 Wed 25 |
+| REN series | 003, 013, 014 | 013 (97%), 014 (99%) | 269 (013), 206 (014, hold3 27%) | 14% (013), 10% (014) | 113-129 views | **paused** 24 Nov (gating failed + no pixel episodes) |
+| story / group chat | 012 v2* (Fri 27 16:25) | – | – | – | 012 v1: 127 views, 30% avg | explore |
+| simulation | 002 | none (profile only) | 3 | 6% | backlog (draft) | watch |
 | calm loop | 005 | none | 0 | – | backlog | watch |
-| data | 007 | none | 7 | 28% | pulled (pixel) | retired (pixel) |
-| slideshow (photo) | 008 | none (4.5% FY) | 8 | – | not on IG | retired (pixel wallpapers) |
-| explainer | 009, 015 | none (17% of 3 views; 0%) | 6 | 18% (009), 15% (015) | 015: 124 (33%) | watch |
-| seasonal countdown | 010 | none (27% of 3 views) | 3 | – | 166 views, 35% avg | retired (pixel) |
-| humour | 011 | none | 4 | 22% | 112 views | watch |
-Signal (strict definition): none on TikTok yet (018: 597 views, 41% avg, 11.7% full). On Instagram 018 (2,735 views) and 004 (1,284) pass views >= 1,000. Followers per 1,000 views: 0 everywhere (TikTok 1 follower, IG 0, after ~2,300 TikTok + ~6,000 IG views).
+| data | 007 | none | 7 | 26% | pulled (pixel) | retired (pixel) |
+| slideshow (photo) | 008 | none (4.5% FY) | 11 | – | not on IG | retired (pixel wallpapers) |
+| explainer | 009, 015 | none | 6 | 15-18% | 015: 125 (33%) | watch |
+| seasonal countdown | 010 | none | 3 | – | 168 views, 35% avg | retired (pixel) |
+| humour | 011 | none | 4 | 21% | 113 views | watch |
+Signal (strict definition): **022 on TikTok** (views >= 1,000, avg watch 61%, full 36%) and 028 (full 28%); on Instagram 018, 022, 029 and 004 pass views >= 1,000. Followers per 1,000 views: still 0 (TikTok 1 follower, IG 0) after ~9,000 TikTok + ~10,000 IG views.
 
 ## Learnings log (newest first, one line each)
+- 2026-11-24 (21:40 run): The story series is the account's first real TikTok hit: "Is this a business?" Part 1 (022) got 6,081 views at 99.9% For You with 69% still watching at 3 s and 61% average watch, although its opening breaks the 6-word hook rule (8-word story line + a stairs counter already moving). A relatable everyday problem told as a micro-story with a running number holds people better than any viewer-task hook so far. But 6,081 views gave 0 comments and 0 follows: watching is solved, following is not. Reach recovery is over (7 TikToks in a row reached For You), so the account goes back to 3 a day with the series at 20:25 every day.
 - 2026-11-22 (21:50 run): TikTok reach is back: 3 posts in a row reached For You (018, 013, 026 at 97-98% FY), so the recovery is working and the bottleneck is now the first 3 seconds and the follow reason, not distribution: hold3 55% (018, 2D illusion) vs 34% (026, 3D illusion) vs 31% (013, REN), and still 0 new followers. On Instagram the two videos that pass 1,000 views are both viewer tasks (018 "same colour", 004 "guess the picture"): give the viewer something to do, then pay it off fast. 029 makes the guessing game without pixels.
 - 2026-11-22 (user): no more pixel content of any kind in new videos (themes, characters, looks, #pixelart). The name spare.pixels is just a name.
 - 2026-11-22 (user feedback on 027): Blender quality is a clear step up ("the lighting, the animation... looks really good"), but a premise is not a story: "the pixel wants to get back" has no stakes or payoff, and the user called it pointless. Story beats come first, the 3D look second; "Is this a business?" in Blender is the user's top idea. Kokoro voice A sounded lifeless; Chatterbox-Turbo with the same timbre (A+) replaced it the same evening.
