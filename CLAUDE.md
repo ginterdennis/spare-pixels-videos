@@ -24,7 +24,7 @@
 - Glow sprites need glow >= 2.6, or they show as a square.
 
 ## Posting rules
-- Growth goal and the daily loop's rules live in `GROWTH.md` (read it first). TikTok: max 3 posts a day, 150+ min apart (new-account throttle risk); **while the TikTok reach recovery in GROWTH.md is active: exactly 2 a day, 16:25 and 20:25 Berlin, always `schedulingType: automatic`**. Instagram: max 4 Reels a day.
+- Growth goal and the daily loop's rules live in `GROWTH.md` (read it first). TikTok: max 3 posts a day, 150+ min apart (new-account throttle risk); (the TikTok reach recovery ended 24 Nov; slots now 12:55, 16:25, 20:25 Berlin; always `schedulingType: automatic`). Instagram: max 4 Reels a day.
 - At least 60 min between posts; do not post the same format back to back.
 - Default: send the user each video for an OK before it is scheduled, unless the user has approved automatic posting for that run.
 
