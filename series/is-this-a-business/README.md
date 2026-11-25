@@ -1,4 +1,4 @@
-# "Is this a business?" (story series; Parts 1-4 made, Part 5 promised)
+# "Is this a business?" (story series in cases; case 1 = laundry, Parts 1-5; case 2 = the parcel, Part 1 made)
 
 Inspired by the format of an illustrated "would anyone pay for this?" story series the user sent on 20 Nov 2026. Our story, character, art and music are original.
 How it works: Part 1 tells an everyday problem as a micro-story, Part 2 shows a small fix, Part 3 asks whether people would pay for it. Each part ends on a "Next · Part n" card.
@@ -11,6 +11,8 @@ How it works: Part 1 tells an everyday problem as a micro-story, Part 2 shows a 
 | 2 | `videos/023-biz-part2-sensor.mp4` | 25.4 s | "A €10 box on the washer. It feels the shaking." | Next · Part 3: "Would 10 flats pay €1 a month for it?" |
 | 3 | `videos/024-biz-part3-would-they-pay.mp4` | 22.8 s | "Would 10 flats pay €1 a month for this?" | "Comment YES or NO. If YES wins, Jonas builds it." (sets up a Part 4) |
 | 4 | `videos/030-biz-part4-wifi.mp4` | 25.6 s | "Jonas built it. Day one: silence." (voiced A+) | Next · Part 5: "The landlord found out." |
+| 5 | `videos/033-biz-part5-landlord.mp4` | 25.2 s | "The landlord found the box." (voiced A+) | CASE 1 · CLOSED: "Next: a new problem. Is THAT a business?" |
+| C2 P1 | `videos/034-biz-case2-parcel.mp4` | 26.5 s | "How one parcel visited 7 flats." (voiced A+) | Next · Part 2: "One box by the front door?" |
 
 Part 1 beats: taken (no idea how long) → back an hour later: done, but someone's wet laundry is inside → waits 20 min → moves it out, starts his load → 10 minutes late, someone moved HIS laundry ("was in my way!") → 4 trips, 640 stairs → "Now picture 10 flats. One machine."
 Part 2 beats: sensor feels shaking = running, still = done → Jonas checks the app first (BUSY → FREE) → loads and scans the QR sticker so the load is his → phone buzzes when done, nudges again if he is slow → 2 trips, 320 stairs.
@@ -53,5 +55,14 @@ Part 4 uses `LabelFont` = 'sans' everywhere (pill, tags, door/floor labels, wash
 ## Part 4 (promised in Part 3; done 24 Nov as 030)
 If the comments lean YES: "Jonas builds it": the box being put together (ESP32 + accelerometer), a test run, the first real ping, and the first month's numbers. Reuse `Washer` (sensor + QR props), `Phone` and the overview.
 
-## Part 5 (promised in Part 4)
-"The landlord found out." Story first: the landlord sees the box (stakes: rip it out, or "put one in all my houses"). Beat sheet before building; keep the 2D look (the 24 Nov A/B lean: 2D 022 beat Blender 028 on hold3, avg watch and full watch).
+## Part 5 (done 25 Nov as 033): finale of case 1
+Beats (voiced A+, timing `src/part5.json`, code `src/Part5.tsx`, `audio5.py`): notice taped on the running washer, "BY FRIDAY!" stamp (1.95 s) → overview: STAIRS PER LOAD rolls 320 → 640, six neighbours at their doors ("NOT the stairs!", "Told you." from 1A who voted NO) → hallway: the landlord (`LANDLORD` look: bald, grey tufts, glasses, moustache) "Who said you could?!", Jonas's phone: 14 angry notes last month → 0 since the box → "I own 12 houses." → 12 houses each get a box (BOXES ORDERED 12; 12 × 10 flats × €1 = €120 a month) → the notice is crossed out, new note "Make me 12." → end card CASE 1 · CLOSED. Loops into the basement.
+
+## Why cases (25 Nov data)
+Part 1 got 7,066 TikTok views (hold3 69%); Part 2 290 (hold3 53%), Part 3 69 in its first hour (hold3 32%). With no followers, every part is a cold video, and only openings with a relatable problem hold strangers. So each case = a new everyday problem in the same house, and every part opens on a problem or conflict, never on the product or the maths.
+
+## Case 2: the parcel (Part 1 done 25 Nov as 034)
+Beats (voiced A+, `src/c2p1.json`, `src/Case2P1.tsx`, `audio_c2p1.py`): banner "Your parcel was delivered", 4A's door opens, empty doormat, "DELIVERED?" stamp (2.65 s) → delivery photo shows door 2A → overview: 2A > 3B > 1A > 0B > 2B > 3A > 4B (FLATS VISITED + stairs, dotted coral trail, one bubble per neighbour) → floor-4 landing: 4B (the pink neighbour from Part 1) opens: "Oh, that's yours? Since Tuesday!" → December: parcels pile up at every door → "Where does YOUR parcel end up?" → Next · Part 2 "One box by the front door?". Pill `SeriesPill label="CASE 2 · PART 1"`.
+Part 2 idea: a shared parcel box at the entrance that pings the owner; open on a new problem (the box is full on day one / someone takes the wrong parcel), not on the box itself.
+
+**Voice gotcha:** write numbers above 10 as digits ("640", "12", "160") and use US spelling ("neighbor") in the voice lines, or Whisper's word check burns 5 retakes per line.
