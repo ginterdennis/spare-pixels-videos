@@ -51,10 +51,10 @@ const useLF = () => (React.useContext(LabelFont) === 'sans' ? {fontFamily: FONT.
 export const useLabelSvg = () => (React.useContext(LabelFont) === 'sans' ? {family: FONT.sans, weight: 900} : {family: FONT.pixel, weight: 700});
 
 /** Series pill + part pill, top left. */
-export const SeriesPill: React.FC<{part: number; op?: number}> = ({part, op = 1}) => (
+export const SeriesPill: React.FC<{part: number; op?: number; label?: string}> = ({part, op = 1, label}) => (
   <div style={{position: 'absolute', left: 56, top: 200, display: 'flex', gap: 12, opacity: op}}>
     <div style={{background: C.navy, color: C.paper, ...useLF(), fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>IS THIS A BUSINESS?</div>
-    <div style={{background: C.gold, color: C.ink, ...useLF(), fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>PART {part}</div>
+    <div style={{background: C.gold, color: C.ink, ...useLF(), fontSize: 30, padding: '10px 18px 12px', borderRadius: 999, border: `5px solid ${C.ink}`}}>{label ?? `PART ${part}`}</div>
   </div>
 );
 

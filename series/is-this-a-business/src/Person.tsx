@@ -9,6 +9,7 @@ export type Look = {
   shoes: string;
   hairStyle: 'short' | 'bun' | 'curly' | 'cap' | 'long' | 'bald';
   cap?: string;
+  landlord?: boolean; // grey side tufts, glasses and a moustache (Part 5)
 };
 
 export const JONAS: Look = {hoodie: C.gold, pants: C.navy, hair: C.hair, skin: C.skin, shoes: C.white, hairStyle: 'curly'};
@@ -202,7 +203,13 @@ export const Person: React.FC<PersonProps> = ({
   const hairFront = () => {
     const r = 76;
     switch (look.hairStyle) {
-      case 'bald': return null;
+      case 'bald':
+        return look.landlord ? (
+          <g>
+            <ellipse cx={hc.x - 64} cy={hc.y - 2} rx={20} ry={30} fill={look.hair} stroke={C.ink} strokeWidth={sw} />
+            <ellipse cx={hc.x + 70} cy={hc.y - 14} rx={10} ry={20} fill={look.hair} stroke={C.ink} strokeWidth={sw} />
+          </g>
+        ) : null;
       case 'cap':
         return (
           <g>
@@ -259,6 +266,14 @@ export const Person: React.FC<PersonProps> = ({
       <circle cx={hc.x + 24} cy={hc.y + 22} r={11} fill={C.coral} opacity={0.3} />
       {eyes()}
       {mouth()}
+      {look.landlord && (
+        <g>
+          <path d={`M${mx - 26} ${my - 6} Q${mx - 12} ${my - 22} ${mx} ${my - 12} Q${mx + 12} ${my - 22} ${mx + 26} ${my - 6} Q${mx} ${my - 2} ${mx - 26} ${my - 6} Z`} fill={look.hair} stroke={C.ink} strokeWidth={sw * 0.8} strokeLinejoin="round" />
+          {[ex1, ex2].map((ex) => <circle key={`g${ex}`} cx={ex} cy={eyeY} r={16} fill="none" stroke={C.ink} strokeWidth={sw * 0.8} />)}
+          <path d={`M${ex1 + 16} ${eyeY} L${ex2 - 16} ${eyeY}`} stroke={C.ink} strokeWidth={sw * 0.8} />
+          <path d={`M${ex1 - 16} ${eyeY - 2} L${hc.x - 22} ${eyeY - 6}`} stroke={C.ink} strokeWidth={sw * 0.8} strokeLinecap="round" />
+        </g>
+      )}
       {sweat > 0 && (
         <path d={`M${hc.x - 70} ${hc.y - 66} q -14 24 0 30 q 14 -6 0 -30 Z`} fill={C.sky} stroke={C.ink} strokeWidth={sw * 0.8} opacity={sweat} transform={`translate(0 ${10 * (1 - sweat)})`} />
       )}
