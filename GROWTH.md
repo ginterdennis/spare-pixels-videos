@@ -10,7 +10,8 @@ Start (20 Nov 2026, 18:00): TikTok 1 follower, Instagram 0.
 
 ## Daily loop (scheduled task, every evening, plans the NEXT day)
 1. **Followers.** TikTok: Windsor `tiktok_organic` `total_followers_count` (the account shows as "huh.neat" in Windsor's list but returns username `spare.pixels`), or Metricool `TKEV07`. Instagram: Metricool `IGEV01`. If combined >= 10,000: stop making videos, report, and switch the loop off.
-2. **Data.** Per video for the last 14 days: views, retention at 1/2/3/5 s (`hold3` = at 3 s, see HOOKS.md), average watch (s and % of length), full-watch rate, likes, comments, shares, saves, new followers, For You share. Windsor has retention and traffic sources (TikTok only); Metricool has TikTok `TKPO*` and Instagram Reels `IGRE*` (incl. `IGRE27` retention, `IGRE30` skip rate). Fill `posts.csv` 48 h columns for posts that are 48 h+ old.
+0. **Read `VIEWS.md` first (since 27 Nov).** It is the main goal (50,000+ views on a video) and overrides older rules in this file and in the scheduled task's prompt where they differ: one question answered at the end, two Business case openers a day (12:55 + 20:25), no new 3-round videos, share prompt on the end card and in caption line 2, 18-24 s.
+2. **Data.** Per video for the last 14 days: views, retention at 1/2/3/5/10 s (`hold3` = at 3 s, `hold10` = at 10 s, kept 3-to-10 = hold10 / hold3; see VIEWS.md), shares per 1,000 views, top viewer country, average watch (s and % of length), full-watch rate, likes, comments, shares, saves, new followers, For You share. Windsor has retention and traffic sources (TikTok only); Metricool has TikTok `TKPO*` and Instagram Reels `IGRE*` (incl. `IGRE27` retention, `IGRE30` skip rate). Fill `posts.csv` 48 h columns for posts that are 48 h+ old.
 3. **Decide** (rules below), **make** the videos, **post** them, **log** them, **report**.
 
 ## TikTok reach recovery (21-24 Nov 2026; ENDED 24 Nov: exit rule met, see the streak line)
@@ -45,10 +46,10 @@ A video **has signal** if any of: views >= 1,000; average watch >= 50% of its le
 - **Research** (web search) every Sunday, and whenever nothing has had signal for 4 days in a row: what is working now in faceless science/illusion/satisfying/number-fact/story short-form. Pick formats we can make to a high standard with code.
 
 ## Production rules (on top of CLAUDE.md)
-- **Hooks: follow `HOOKS.md` (v2, 21 Nov).** In short: a viewer task of max 6 words, big (`kit/hook.py` `hook_text`), over something already moving on frame 0, a sound hit at 0.00 s (`hook_sfx`), the first payoff by 3.0 s (ideally with a visible `countdown`), and the payoff opens the next question. No labels/jargon/hedges in 0-3 s. Caption line 1 = the hook words. Run `python3 kit/hookcheck.py <mp4> --hook "..." --reveal <s>` before scheduling; every check must pass. Why: on 001/006/018 (the only For You videos) only 34-42% were still watching at 3 s.
-- 15–25 s long unless the format needs more. End so the loop hands back to frame 0.
+- **Hooks: follow `HOOKS.md` (v2, 21 Nov).** In short: a viewer task of max 6 words, big (`kit/hook.py` `hook_text`), over something already moving on frame 0, a sound hit at 0.00 s (`hook_sfx`), a first beat by 3.0 s that raises the stakes but does not answer the question (since 27 Nov, VIEWS.md V1-V2; the answer comes at the end), and one question for the whole video. No labels/jargon/hedges in 0-3 s. Caption line 1 = the hook words. Run `python3 kit/hookcheck.py <mp4> --hook "..." --reveal <s>` before scheduling; every check must pass. Why: on 001/006/018 (the only For You videos) only 34-42% were still watching at 3 s.
+- 18-24 s (VIEWS.md V5). End so the loop hands back to frame 0.
 - One comment prompt that's easy to answer (a number, 1/2/3, YES/NO, your birthday, tag a friend).
-- Captions: hook + question + 4–6 hashtags. Instagram: drop TikTok-only tags (#fyp, #learnontiktok).
+- Captions (VIEWS.md): line 1 hook words, line 2 share prompt naming a person ("Send this to your neighbour."), line 3 comment prompt, 4-5 hashtags incl. one plain search phrase (#businessidea). Instagram: drop TikTok-only tags (#fyp, #learnontiktok).
 - Facts checked with a web search. Original art, jokes and music only. No real people, brands or copyrighted characters.
 - Look at stills of the busiest moments before the full render and at a contact sheet of the final file. Mux audio at 48 kHz.
 - `isAigc: false` / `isAiGenerated: false`: the videos are code-drawn graphics, nothing realistic. **Exception: `isAiGenerated: true` (TikTok and Instagram) on every video with the narrator voice.**

@@ -1,5 +1,7 @@
 # Spare Pixels (TikTok @spare.pixels): how videos are made and posted
 
+> **Goal since 27 Nov 2026 (user): views, 50,000+ on a video.** Read `VIEWS.md` before making or scheduling anything. Where it differs from older rules (here, in GROWTH.md, HOOKS.md or a scheduled task's prompt), VIEWS.md wins: one question answered at the end (the 2-3 s beat raises the stakes, it is not the answer), a running number, 18-24 s, a share prompt naming a person on the end card and in caption line 2, two "Is this a business?" case openers a day (TikTok 12:55 + 20:25), no new 3-round videos.
+
 ## Pipeline
 1. `bash setup.sh` once per workspace (installs Python deps, links `/home/claude/kit`, copies REN fonts, installs the narrator voice A+: ~1.8 GB from Hugging Face at pinned revisions, ~30 s). If it prints `VOICE MISSING`, make the video without narration and note "no voice" in `posts.csv`; don't stop the run.
 2. Each video has its own folder `tests/<id>-<slug>/` with `render.py` (frames → ffmpeg via `kit.Writer`) and `audio.py` (synth via `kit.Mix`), then `kit.mux(video, wav, out)` (loudnorm -14 LUFS).
