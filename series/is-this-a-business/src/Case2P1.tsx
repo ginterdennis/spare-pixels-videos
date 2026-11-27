@@ -338,7 +338,7 @@ export const Case2P1: React.FC = () => {
         {hud}
         <Tag t={t} at={T.sD[0] + 0.15} until={T.sD[1] - 0.1} text="FLAT 7 · NEXT DOOR" y={330} />
         <Captions t={t} caps={CAPS} />
-        <EndCard t={t} at={T.card} out={T.cardOut} next={2} lines={['One box by the', <span style={{color: C.gold}}>front door?</span>]} sub="Follow for Part 2" />
+        <EndCard t={t} at={T.card} out={T.cardOut} next={2} lines={['One box by the', <span style={{color: C.gold}}>front door?</span>]} sub="Send this to your neighbour." />
       </AbsoluteFill>
     </LabelFont.Provider>
   );

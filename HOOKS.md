@@ -2,6 +2,8 @@
 
 Read this before making any video. Code: `kit/hook.py` (building blocks), `kit/hookcheck.py` (QA).
 
+> **27 Nov 2026: read VIEWS.md first.** The 3-second rules below still hold, but H4 and H5 changed: the beat at second 2-3 must raise the stakes, not answer the question. Videos that answered at 3 s (same colour, guess, odd one out) lost two thirds of their viewers by second 10; 022, which kept its question open to the end, kept 74%.
+
 ## Why this exists
 On the three TikToks that reached For You, most viewers were gone before the video started paying off:
 
@@ -27,8 +29,8 @@ Marketing benchmarks (rough, not official TikTok numbers) put a good 3-second ho
 | H1 | **A task, not a topic.** Max 6 words, max 2 lines, big (`hook_text`, 132 px, auto-fits). A question or instruction the viewer answers in their head: count, guess, pick, stare, predict. | hookcheck |
 | H2 | **Moving on frame 0.** The visual is already mid-action: cards mid-riffle, zoom already pushing in, the chat already scrolling. No still title card. | hookcheck |
 | H3 | **Sound on frame 0.** `hook_sfx()` puts a hit at 0.00 s. No fade-in from silence. | hookcheck |
-| H4 | **First payoff by 3.0 s**, and if possible a visible clock to it (`countdown()` 3-2-1 ring). A visible deadline is the cheapest open loop. | hookcheck |
-| H5 | **The payoff opens the next question.** "ZERO." then "Now catch just ONE." Never let the video feel finished at second 3. A new beat every 2-4 s after that. | you |
+| H4 | **First beat by 3.0 s that raises the stakes** (a stamp, a counter jump, a twist: "DELIVERED?", "LOCKED OUT", "BY FRIDAY!"). It must not answer the frame-0 question; the answer comes at the end (VIEWS.md V1-V2). A visible clock still helps. *(Until 27 Nov: "first payoff by 3.0 s".)* | hookcheck (timing) + you (it is not the answer) |
+| H5 | **One question for the whole video.** Every beat after second 3 makes the same problem worse or the number bigger; no new, separate rounds. A new beat every 2-3 s. | you |
 | H6 | **Frame 0 is the most striking frame of the video**, not the calmest. It is also the cover in the profile grid (set `thumbnailOffset` to ~300 ms). | hookcheck (contrast) + you |
 | H7 | **Nothing to decode in 0-3 s:** no HUD labels, jargon, hedges or setup sentences. Context comes after the payoff. | you |
 | H8 | **Caption line 1 = the hook words**, so the sound-off viewer and the caption say the same thing. | you |
@@ -50,7 +52,7 @@ python3 kit/hookcheck.py videos/<file>.mp4 --hook "<words on frame 0>" --reveal 
 All automated checks must PASS. Then open `<file>.hook.jpg` (frames 0-3 s with TikTok's UI zones shaded) and confirm H5, H7, H8 yourself.
 
 ## How we measure it
-Per TikTok video with >= 100 For You views: retention at 1, 2, 3 and 5 s (Windsor `video_view_retention_second` / `video_view_retention_percentage`). Log `hold3` in the posts.csv notes and the scoreboard.
+Per TikTok video with >= 100 For You views: retention at 1, 2, 3 and 5 s (Windsor `video_view_retention_second` / `video_view_retention_percentage`). Log `hold3` and `hold10` (and kept 3-to-10 = hold10 / hold3) in the posts.csv notes and the scoreboard. Since 27 Nov hold10 matters more than hold3 (VIEWS.md).
 - Baseline (old hooks): 34-42% at 3 s.
 - Target: >= 55% at 3 s by 30 Nov, then >= 65%.
 - First v2 hooks: 020 v2 (Sun 22 Nov), 012 v2 (Tue 24 Nov), 021 v2 (Wed 25 Nov).

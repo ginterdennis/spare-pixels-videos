@@ -372,7 +372,7 @@ export const Case3P1: React.FC = () => {
         <Tag t={t} at={T.sC[0] + 0.15} until={T.sC[1] - 0.1} text="70 MINUTES LATER" y={300} />
         <Tag t={t} at={T.open + 0.1} until={T.bill - 0.05} text="NOT EVEN LOCKED" y={300} />
         <Captions t={t} caps={CAPS} />
-        <EndCard t={t} at={T.card} out={T.cardOut} next={4} kicker="CASE 3 · YOUR CALL" lines={['Is this a business?', <span style={{color: C.gold}}>YES or NO?</span>]} sub="New case tomorrow. Follow." />
+        <EndCard t={t} at={T.card} out={T.cardOut} next={4} kicker="CASE 3 · YOUR CALL" lines={['Is this a business?', <span style={{color: C.gold}}>YES or NO?</span>]} sub="Send this to someone who loses keys." />
       </AbsoluteFill>
     </LabelFont.Provider>
   );
