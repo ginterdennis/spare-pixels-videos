@@ -71,10 +71,10 @@ export const Tag: React.FC<{t: number; at: number; until: number; text: string; 
 };
 
 /** Stairs counter, top right. Bumps when the number changes. */
-export const Counter: React.FC<{value: number; bump: number; label?: string; op?: number; color?: string; sub?: string}> = ({value, bump, label = 'STAIRS', op = 1, color = C.ink, sub}) => (
+export const Counter: React.FC<{value: number; bump: number; label?: string; op?: number; color?: string; sub?: string; prefix?: string}> = ({value, bump, label = 'STAIRS', op = 1, color = C.ink, sub, prefix = ''}) => (
   <div style={{position: 'absolute', right: 52, top: 192, textAlign: 'right', opacity: op}}>
     <div style={{...useLF(), fontSize: 28, color: C.ink, letterSpacing: 2}}>{label}</div>
-    <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 92, lineHeight: '92px', color, letterSpacing: '-0.03em', transform: `scale(${1 + 0.12 * bump})`, transformOrigin: '100% 50%', fontVariantNumeric: 'tabular-nums'}}>{Math.round(value).toLocaleString('en-US')}</div>
+    <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 92, lineHeight: '92px', color, letterSpacing: '-0.03em', transform: `scale(${1 + 0.12 * bump})`, transformOrigin: '100% 50%', fontVariantNumeric: 'tabular-nums'}}>{prefix}{Math.round(value).toLocaleString('en-US')}</div>
     {sub && <div style={{...useLF(), fontSize: 26, color: C.coral, marginTop: 4, letterSpacing: 1}}>{sub}</div>}
   </div>
 );

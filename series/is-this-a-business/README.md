@@ -1,4 +1,4 @@
-# "Is this a business?" (story series in cases; case 1 = laundry, Parts 1-5; case 2 = the parcel, Part 1 made)
+# "Is this a business?" (story series in cases, one new case a day since 26 Nov; case 1 = laundry, Parts 1-5; case 2 = the parcel; case 3 = locked out). Case list: `CASES.md`
 
 Inspired by the format of an illustrated "would anyone pay for this?" story series the user sent on 20 Nov 2026. Our story, character, art and music are original.
 How it works: Part 1 tells an everyday problem as a micro-story, Part 2 shows a small fix, Part 3 asks whether people would pay for it. Each part ends on a "Next · Part n" card.
@@ -13,6 +13,7 @@ How it works: Part 1 tells an everyday problem as a micro-story, Part 2 shows a 
 | 4 | `videos/030-biz-part4-wifi.mp4` | 25.6 s | "Jonas built it. Day one: silence." (voiced A+) | Next · Part 5: "The landlord found out." |
 | 5 | `videos/033-biz-part5-landlord.mp4` | 25.2 s | "The landlord found the box." (voiced A+) | CASE 1 · CLOSED: "Next: a new problem. Is THAT a business?" |
 | C2 P1 | `videos/034-biz-case2-parcel.mp4` | 26.5 s | "How one parcel visited 7 flats." (voiced A+) | Next · Part 2: "One box by the front door?" |
+| C3 | `videos/038-biz-case3-locked-out.mp4` | 26.7 s | "How one door click became €240." (voiced A+) | CASE 3 · YOUR CALL: "Is this a business? YES or NO?" + "New case tomorrow. Follow." |
 
 Part 1 beats: taken (no idea how long) → back an hour later: done, but someone's wet laundry is inside → waits 20 min → moves it out, starts his load → 10 minutes late, someone moved HIS laundry ("was in my way!") → 4 trips, 640 stairs → "Now picture 10 flats. One machine."
 Part 2 beats: sensor feels shaking = running, still = done → Jonas checks the app first (BUSY → FREE) → loads and scans the QR sticker so the load is his → phone buzzes when done, nudges again if he is slow → 2 trips, 320 stairs.
@@ -66,3 +67,8 @@ Beats (voiced A+, `src/c2p1.json`, `src/Case2P1.tsx`, `audio_c2p1.py`): banner "
 Part 2 idea: a shared parcel box at the entrance that pings the owner; open on a new problem (the box is full on day one / someone takes the wrong parcel), not on the box itself.
 
 **Voice gotcha:** write numbers above 10 as digits ("640", "12", "160") and use US spelling ("neighbor") in the voice lines, or Whisper's word check burns 5 retakes per line.
+
+## Case 3: locked out (done 27 Nov as 038, one-video case)
+Beats (voiced A+, `src/c3p1.json`, `src/Case3P1.tsx`, `audio_c3p1.py`; composition `Case3`; `bash finish.sh c3` after copying `out/c3p1.wav` to `out/partc3.wav`): Jonas steps out in socks with the trash, the door falls shut behind him (keys visible on the hook while it is still open), LOCKED OUT stamp (2.85 s), x-ray of the keys inside → the call: "Door opening €120", "Saturday night × 2", TOTAL €240 (THE BILL counter 0 → 120 → 240) → 70 minutes on a parcel box on the landing, clock 23:10 → 00:20, battery 4% → 2% → 1% → DEAD → the locksmith (coral cap, `LOCKSMITH` look) opens it right away: NOT EVEN LOCKED, invoice €240, PAID → the kiosk downstairs (night street, KIOSK 24/7, SPARE KEYS board with 10 flat keys; owner `KIOSK` look) hands Jonas his spare key → receipt: Locksmith Sat night €240 | Kiosk keeps a key €2/mo | 1 lockout = 10 years → end card "CASE 3 · YOUR CALL: Is this a business? YES or NO? New case tomorrow. Follow." Loops back to the open door.
+Facts (checked 27 Nov 2026): ADAC "Schlüsseldienst-Kosten" (June 2026): a simple door opening by day usually costs 80-150 euros incl. travel; night, weekend or holiday 150-250 euros, surcharges 50-100 % on the day price; a door that only fell shut can often be opened without damage. Stiftung Warentest (2019) found 65 to 415 euros for the same fallen-shut door. KeyNest (UK) already stores spare keys at 24/7 shops for £9 a month per key (ex VAT). The €2 kiosk price is Jonas's pitch (fiction).
+Voice gotchas: "€240, please." became "240, euros please." (the comma is read into the number; write "240 euros, please."); Whisper heard "cost" as "costs" (used "became"); a sentence-initial "240 euros" was heard as "200 euros" (start with "That's").

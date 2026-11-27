@@ -94,12 +94,13 @@ const Parcel: React.FC<{x: number; y: number; s?: number; rot?: number}> = ({x, 
 );
 
 /** Floor-4 landing close-up: 4A (Jonas, gold door) left, 4B right. `openA`/`openB` 0..1 door swing. */
-const Landing: React.FC<{t: number; openA: number; openB: number; children?: React.ReactNode; matEmpty?: number}> = ({t, openA, openB, children, matEmpty = 0}) => {
-  const door = (x: number, label: string, open: number, col: string) => (
+export const Landing: React.FC<{t: number; openA: number; openB: number; children?: React.ReactNode; matEmpty?: number; insideA?: React.ReactNode}> = ({t, openA, openB, children, matEmpty = 0, insideA}) => {
+  const door = (x: number, label: string, open: number, col: string, inside?: React.ReactNode) => (
     <g>
       <text x={x + 130} y={570} textAnchor="middle" fontFamily={FONT.sans} fontWeight={900} fontSize={44} fill={C.ink}>{label}</text>
       <rect x={x} y={600} width={260} height={FLOOR_Y - 600} fill={C.ink} />
       <rect x={x + 20} y={640} width={220} height={FLOOR_Y - 640} fill="#F5E6C8" opacity={0.25} />
+      {inside}
       {/* door leaf swings open towards the viewer (narrower = more open) */}
       <g transform={`translate(${x},0) scale(${lerp(1, 0.18, open)},1)`}>
         <rect x={0} y={600} width={260} height={FLOOR_Y - 600} fill={col} stroke={C.ink} strokeWidth={OW} />
@@ -116,7 +117,7 @@ const Landing: React.FC<{t: number; openA: number; openB: number; children?: Rea
       {/* ceiling lamp */}
       <line x1={540} y1={300} x2={540} y2={380} stroke={C.ink} strokeWidth={4} />
       <path d="M 490 420 L 590 420 L 570 380 L 510 380 Z" fill={C.gold} stroke={C.ink} strokeWidth={5} strokeLinejoin="round" />
-      {door(150, '4A', openA, C.gold)}
+      {door(150, '4A', openA, C.gold, insideA)}
       {door(680, '4B', openB, C.wallDark)}
       {/* floor + doormats */}
       <rect x={0} y={FLOOR_Y} width={1080} height={1920 - FLOOR_Y} fill={C.floor} />
