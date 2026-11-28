@@ -20,7 +20,9 @@ Part 2 beats: sensor feels shaking = running, still = done → Jonas checks the 
 Part 3 beats: receipt (Wi-Fi chip €6.25, motion sensor €3.40, ~€10; 10 flats × €1 = €10/month, paid off in month 1) → the house votes from their doors (7 yes, 2 no, 1 "can it find my lost sock?") → "Would YOU pay €1?"
 
 ## Look
-Warm paper background, navy ink outlines (6 px), gold/teal/coral accents, Inter ExtraBold captions in white cards with a hard shadow, Silkscreen for the series pill, stairs counter and labels. Palette in `src/theme.ts`. Cast: Jonas (gold hoodie, curly hair) and 9 neighbours (`NEIGHBOURS` in `src/Part1.tsx`; the pink one in 4B is whose laundry Jonas moved).
+**Since 28 Nov 2026: the neon night version (user's choice), `LOOK = 'neon'` in `src/theme.ts`.** The same house and cast at night: lavender line art on dark walls, Jonas in cyan, the brand UI (night caption cards with a violet glow, the brand icon starting the series row, mint and cyan pills in JetBrains Mono, a mono counter with the eclipse gradient, sun-pink tags, a night end card in Unbounded). In new scenes use only `C.*`, `BRAND.*` or `nc(paperHex, neonHex)`; `C.white` is a night panel, `C.ink` the light line/text colour, `C.shade` dims. Rules: `brand/README.md`; references: `brand/reference/business-neon-*.jpg`. `public/night.png` is the background, `public/sh-icon.svg` the icon.
+
+The original look (parts 1-5, cases 2-3 as posted; `LOOK = 'paper'`): warm paper background, navy ink outlines (6 px), gold/teal/coral accents, Inter ExtraBold captions in white cards with a hard shadow, Silkscreen for the series pill, stairs counter and labels. Palette in `src/theme.ts`. Cast: Jonas (gold hoodie, curly hair) and 9 neighbours (`NEIGHBOURS` in `src/Part1.tsx`; the pink one in 4B is whose laundry Jonas moved).
 
 ## Facts (checked 20 Nov 2026)
 - A flight of stairs between floors typically has 13–18 steps; we use 16 per floor (angi.com, gambrick.com).
@@ -32,7 +34,7 @@ Warm paper background, navy ink outlines (6 px), gold/teal/coral accents, Inter 
 ## Build
 ```bash
 cd series/is-this-a-business
-cp ../../kit/fonts/{Inter-Black,Inter-ExtraBold,Inter-Bold,Silkscreen,Silkscreen-Bold,Pacifico,JBMono-Bold}.ttf public/
+cp ../../kit/fonts/{Inter-Black,Inter-ExtraBold,Inter-Bold,Silkscreen,Silkscreen-Bold,Pacifico,JBMono-Bold,JBMono-SemiBold,Unbounded-ExtraBold,Unbounded-Black}.ttf public/
 npm ci
 npx remotion bundle src/index.ts --out-dir build
 node stills.mjs Part1 0 3.6 15 20        # check frames first (stills/)

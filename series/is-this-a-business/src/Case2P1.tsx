@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './c2p1.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw} from './theme';
+import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE} from './theme';
 import {along, Building, DOOR_L, DOOR_R, LV, SA, SB, Walker} from './Building';
 import {JONAS, Look, Person} from './Person';
 import {FLOOR_Y} from './Props';
@@ -329,7 +329,7 @@ export const Case2P1: React.FC = () => {
   return (
     <LabelFont.Provider value="sans">
       <AbsoluteFill style={{backgroundColor: C.paper}}>
-        <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
+        <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />
         {scene}
         <Banner t={t} at={0} until={T.sA[1] - 0.15} title="Your parcel was delivered" sub="Today, 14:02 · photo attached" />
         <Photo t={t} />

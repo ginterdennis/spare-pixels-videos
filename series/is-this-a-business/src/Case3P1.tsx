@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './c3p1.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw} from './theme';
+import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE, nc, HARD_SHADOW, LOOK} from './theme';
 import {JONAS, Look, Person} from './Person';
 import {Clock, FLOOR_Y} from './Props';
 import {Landing} from './Case2P1';
@@ -14,10 +14,10 @@ import {Cap, Captions, Counter, Em, EndCard, LabelFont, SeriesPill, Tag} from '.
 const inS = (t: number, s: number[]) => t >= s[0] && t < s[1];
 const easeIn = (x: number) => x * x;
 
-const SOCKS: Look = {...JONAS, shoes: '#C9CFDA'};
-const LOCKSMITH: Look = {hoodie: '#46557A', pants: C.ink, hair: C.hair, skin: C.skin2, shoes: C.ink, hairStyle: 'cap', cap: C.coral};
+const SOCKS: Look = {...JONAS, shoes: nc('#C9CFDA', '#ECE8FF')};
+const LOCKSMITH: Look = {hoodie: nc('#46557A', '#5B4BB0'), pants: C.ink, hair: C.hair, skin: C.skin2, shoes: C.ink, hairStyle: 'cap', cap: C.coral};
 const KIOSK: Look = {hoodie: C.lilac, pants: C.navy, hair: '#2B1D16', skin: C.skin3, shoes: C.ink, hairStyle: 'short'};
-const BAG = '#3D4257';
+const BAG = nc('#3D4257', '#2E2752');
 
 const billAt = (t: number) => {
   if (t < T.q1) return 0;
@@ -50,7 +50,7 @@ const Key: React.FC<{x: number; y: number; s?: number; rot?: number; col?: strin
 /** Keys on the hook inside flat 4A (visible while the door is open). */
 const InsideKeys: React.FC<{t: number}> = ({t}) => (
   <g>
-    <rect x={208} y={756} width={96} height={20} rx={6} fill="#8C6239" stroke={C.ink} strokeWidth={4} />
+    <rect x={208} y={756} width={96} height={20} rx={6} fill={nc('#8C6239', '#6B3FA0')} stroke={C.ink} strokeWidth={4} />
     <circle cx={256} cy={766} r={5} fill={C.metal} />
     <Key x={256} y={800} s={0.85} rot={4 * Math.sin(t * 6)} />
     <circle cx={256} cy={790} r={40} fill={C.gold} opacity={0.18 + 0.1 * Math.sin(t * 8)} />
@@ -92,8 +92,8 @@ const SceneA: React.FC<{t: number}> = ({t}) => {
           <Person x={jx} y={FLOOR_Y} s={0.92} face={turned ? -1 : 1} look={SOCKS} walk={walking ? t * 9 + 20 : null} holding={t < T.slam + 0.1 ? BAG : null} expr={t >= T.reveal - 0.4 ? 'shock' : t > T.slam ? 'neutral' : 'happy'} />
           {xk > 0 && (
             <g transform={`translate(256,820) scale(${lerp(0.3, 1, xk)})`} opacity={Math.min(1, xk * 1.5)}>
-              <circle r={104} fill="#2A2F4F" stroke={C.coral} strokeWidth={9} strokeDasharray="22 12" />
-              <rect x={-52} y={-60} width={104} height={22} rx={6} fill="#8C6239" stroke={C.ink} strokeWidth={4} />
+              <circle r={104} fill={nc('#2A2F4F', '#1A1336')} stroke={C.coral} strokeWidth={9} strokeDasharray="22 12" />
+              <rect x={-52} y={-60} width={104} height={22} rx={6} fill={nc('#8C6239', '#6B3FA0')} stroke={C.ink} strokeWidth={4} />
               <Key x={0} y={-26} s={1.1} rot={5 * Math.sin(t * 5)} />
             </g>
           )}
@@ -115,7 +115,7 @@ const SceneB: React.FC<{t: number}> = ({t}) => {
           <Person x={600} y={FLOOR_Y} s={0.92} face={-1} look={SOCKS} pose="phone" expr={t >= T.q2 ? 'shock' : 'tired'} />
         </Landing>
       </g>
-      <rect x={0} y={0} width={1080} height={1920} fill={C.ink} opacity={0.18 * tw(t, T.sB[0], 0.3)} />
+      <rect x={0} y={0} width={1080} height={1920} fill={C.shade} opacity={(LOOK === 'neon' ? 2.4 : 1) * 0.18 * tw(t, T.sB[0], 0.3)} />
     </svg>
   );
 };
@@ -137,7 +137,7 @@ const CallCard: React.FC<{t: number}> = ({t}) => {
   };
   return (
     <div style={{position: 'absolute', left: 190, top: 330, width: 700, opacity: o, transform: `translateY(${lerp(160, 0, k)}px) scale(${lerp(0.85, 1, k)}) rotate(-2deg)`}}>
-      <div style={{background: C.ink, borderRadius: 56, padding: 18, boxShadow: `10px 10px 0 rgba(28,33,64,0.35)`}}>
+      <div style={{background: C.ink, borderRadius: 56, padding: 18, boxShadow: HARD_SHADOW}}>
         <div style={{background: C.paper, borderRadius: 42, padding: '30px 40px 40px', position: 'relative'}}>
           <div style={{position: 'absolute', right: 34, top: 24, display: 'flex', alignItems: 'center', gap: 8, fontFamily: FONT.sans, fontWeight: 900, fontSize: 30, color: C.coral}}>
             4%
@@ -194,9 +194,9 @@ const SceneC: React.FC<{t: number}> = ({t}) => {
           <Clock x={545} y={560} r={70} minutes={mins} />
           <Bag x={340} y={FLOOR_Y} s={0.8} />
           <g>
-            <rect x={428} y={FLOOR_Y - 150} width={190} height={150} rx={6} fill="#C9935A" stroke={C.ink} strokeWidth={OW} />
-            <rect x={428} y={FLOOR_Y - 150} width={190} height={30} fill="#B98249" stroke={C.ink} strokeWidth={OW * 0.8} />
-            <rect x={510} y={FLOOR_Y - 150} width={26} height={150} fill="#E8C690" opacity={0.85} />
+            <rect x={428} y={FLOOR_Y - 150} width={190} height={150} rx={6} fill={nc('#C9935A', '#2A2050')} stroke={C.ink} strokeWidth={OW} />
+            <rect x={428} y={FLOOR_Y - 150} width={190} height={30} fill={nc('#B98249', '#3A2C6E')} stroke={C.ink} strokeWidth={OW * 0.8} />
+            <rect x={510} y={FLOOR_Y - 150} width={26} height={150} fill={nc('#E8C690', '#9C7CFF')} opacity={0.85} />
           </g>
           <Person x={520 + shiver} y={FLOOR_Y} s={0.92} face={1} look={SOCKS} sit pose={t < T.die ? 'phone' : 'idle'} expr={t < T.die ? 'tired' : 'shock'} />
           <Battery t={t} />
@@ -273,10 +273,10 @@ const SceneE: React.FC<{t: number}> = ({t}) => {
     <svg width={1080} height={1920} style={{position: 'absolute'}}>
       <g transform={`translate(540,880) scale(${settle}) translate(-540,-880)`}>
         {/* night street wall */}
-        <rect x={0} y={0} width={1080} height={FLOOR_Y} fill="#2B3360" />
-        {[[80, 380], [990, 420], [60, 1060], [1010, 980]].map(([x, y], i) => <rect key={i} x={x - 30} y={y - 16} width={60} height={32} rx={4} fill="#343D72" />)}
+        <rect x={0} y={0} width={1080} height={FLOOR_Y} fill={nc('#2B3360', '#120D26')} />
+        {[[80, 380], [990, 420], [60, 1060], [1010, 980]].map(([x, y], i) => <rect key={i} x={x - 30} y={y - 16} width={60} height={32} rx={4} fill={nc('#343D72', '#1E1636')} />)}
         {/* sign */}
-        <text x={540} y={404} textAnchor="middle" fontFamily={FONT.sans} fontWeight={900} fontSize={96} fill={C.white} letterSpacing={6}>KIOSK</text>
+        <text x={540} y={404} textAnchor="middle" fontFamily={FONT.sans} fontWeight={900} fontSize={96} fill={nc(C.white, '#F2F7FF')} letterSpacing={6}>KIOSK</text>
         <rect x={800} y={330} width={190} height={74} rx={37} fill={C.gold} stroke={C.ink} strokeWidth={OW} />
         <text x={895} y={381} textAnchor="middle" fontFamily={FONT.sans} fontWeight={900} fontSize={38} fill={C.ink}>24/7</text>
         {/* awning */}
@@ -285,15 +285,15 @@ const SceneE: React.FC<{t: number}> = ({t}) => {
           <path key={i} d={`M ${120 + i * 84} 476 q 42 46 84 0`} fill={i % 2 ? C.white : C.coral} stroke={C.ink} strokeWidth={OW * 0.8} />
         ))}
         {/* lit window */}
-        <rect x={140} y={522} width={800} height={500} fill="#FFE7A6" stroke={C.ink} strokeWidth={OW} />
-        {[640, 760, 880].map((y) => <line key={y} x1={470} y1={y} x2={930} y2={y} stroke="#C9A15E" strokeWidth={8} />)}
+        <rect x={140} y={522} width={800} height={500} fill={nc('#FFE7A6', '#241A4A')} stroke={C.ink} strokeWidth={OW} />
+        {[640, 760, 880].map((y) => <line key={y} x1={470} y1={y} x2={930} y2={y} stroke={nc('#C9A15E', '#B05CFF')} strokeWidth={8} />)}
         {[640, 760, 880].map((y, r) => Array.from({length: 8}, (_, i) => {
           const cols = [C.teal, C.coral, C.sky, C.green, C.pink, C.gold, C.lilac, C.navy];
           return <rect key={`${r}${i}`} x={486 + i * 55} y={y - 62 + ((i + r) % 3) * 6} width={38} height={58 - ((i + r) % 3) * 6} rx={6} fill={cols[(i + r * 3) % 8]} stroke={C.ink} strokeWidth={3} />;
         }))}
         {/* key board */}
-        <rect x={160} y={560} width={250} height={290} rx={10} fill="#8C6239" stroke={C.ink} strokeWidth={OW * 0.8} />
-        <text x={285} y={598} textAnchor="middle" fontFamily={FONT.sans} fontWeight={900} fontSize={26} fill={C.white} letterSpacing={2}>SPARE KEYS</text>
+        <rect x={160} y={560} width={250} height={290} rx={10} fill={nc('#8C6239', '#6B3FA0')} stroke={C.ink} strokeWidth={OW * 0.8} />
+        <text x={285} y={598} textAnchor="middle" fontFamily={FONT.sans} fontWeight={900} fontSize={26} fill={nc(C.white, '#F2F7FF')} letterSpacing={2}>SPARE KEYS</text>
         <circle cx={196} cy={650} r={34} fill={C.gold} opacity={t < T.hand ? glow : 0} />
         {hooks}
         {/* kiosk owner behind the counter */}
@@ -302,13 +302,13 @@ const SceneE: React.FC<{t: number}> = ({t}) => {
         <rect x={140} y={960} width={800} height={200} fill={C.teal} stroke={C.ink} strokeWidth={OW} />
         <rect x={140} y={960} width={800} height={30} fill={C.tealLight} stroke={C.ink} strokeWidth={OW * 0.8} />
         {/* pavement */}
-        <rect x={0} y={FLOOR_Y} width={1080} height={1920 - FLOOR_Y} fill="#9C9384" />
+        <rect x={0} y={FLOOR_Y} width={1080} height={1920 - FLOOR_Y} fill={nc('#9C9384', '#17112F')} />
         <line x1={0} y1={FLOOR_Y} x2={1080} y2={FLOOR_Y} stroke={C.ink} strokeWidth={OW} />
-        {[1240, 1360, 1540, 1780].map((y) => <line key={y} x1={0} y1={y} x2={1080} y2={y} stroke="#857C6E" strokeWidth={3} />)}
+        {[1240, 1360, 1540, 1780].map((y) => <line key={y} x1={0} y1={y} x2={1080} y2={y} stroke={nc('#857C6E', '#2B2152')} strokeWidth={3} />)}
         <Person x={850} y={FLOOR_Y} s={0.92} face={-1} look={JONAS} pose={has ? 'reach' : 'idle'} poseK={0.35} expr={has ? 'happy' : 'neutral'} />
         {t >= T.hand && <Key x={has ? 640 : kx} y={has ? 790 : ky} s={0.9} rot={has ? -20 : lerp(0, 340, hk)} />}
       </g>
-      <rect x={0} y={0} width={1080} height={1920} fill={C.ink} opacity={0.16 * tw(t, T.rcpt, 0.3) * (1 - tw(t, T.ask, 0.3))} />
+      <rect x={0} y={0} width={1080} height={1920} fill={C.shade} opacity={(LOOK === 'neon' ? 2.4 : 1) * 0.16 * tw(t, T.rcpt, 0.3) * (1 - tw(t, T.ask, 0.3))} />
     </svg>
   );
 };
@@ -360,7 +360,7 @@ export const Case3P1: React.FC = () => {
   return (
     <LabelFont.Provider value="sans">
       <AbsoluteFill style={{backgroundColor: C.paper}}>
-        <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
+        <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />
         {scene}
         <CallCard t={t} />
         <Invoice t={t} />

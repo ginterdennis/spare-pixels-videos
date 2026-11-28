@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './part2.json';
-import {C, easeInOut, easeOut, FPS, lerp, tw} from './theme';
+import {C, easeInOut, easeOut, FPS, lerp, tw, BG_FILE} from './theme';
 import {Building, LV, MACHINE_X, stairsAt, Walker} from './Building';
 import {Basket, JONAS, Person} from './Person';
 import {BasementRoom, FLOOR_Y, JONAS_LAUNDRY, NEIGHBOUR_LAUNDRY, Washer} from './Props';
@@ -160,7 +160,7 @@ export const Part2: React.FC = () => {
       : {label: 'DONE', sub: 'Your laundry is ready', color: C.green, progress: 1};
   return (
     <AbsoluteFill style={{backgroundColor: C.paper}}>
-      <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
+      <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />
       {scene}
       <Phone t={t} at={T.s3[0] + 0.2} until={T.s3[1] - 0.05} status={status} statusAt={T.free3} />
       <Phone t={t} at={T.phone5} until={T.s5[1] - 0.05} status={status} />

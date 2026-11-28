@@ -1,7 +1,9 @@
-# Spare Pixels (TikTok @spare.pixels): how videos are made and posted
+# Sigmoid Horizon (formerly Spare Pixels; TikTok @spare.pixels, Instagram @spare.pixel, YouTube Shorts "Sigmoid Horizon"): how videos are made and posted
+
+> **Brand since 28 Nov 2026 (user): the account is Sigmoid Horizon, "The shape of what's next.", in the Neon Eclipse look, and all future videos stay in that style.** Read `brand/README.md` before making anything. Every new video uses `kit/brand.py` (or the Business series' neon theme) and must pass `python3 kit/brandcheck.py videos/<file>.mp4` before it is scheduled. Topics: a mix of maths, technology, business, science and energy; AI stays low-key (never the theme or the default pick); no politics. YouTube Shorts channel "Sigmoid Horizon" exists (Buffer `6b0a92b68541f09ecbd07cf2`); the TikTok and Instagram handles are still @spare.pixels / @spare.pixel.
 
 > **Goal since 27 Nov 2026 (user): views, 50,000+ on a video.** Read `VIEWS.md` before making or scheduling anything. Where it differs from older rules (here, in GROWTH.md, HOOKS.md or a scheduled task's prompt), VIEWS.md wins: one question answered at the end (the 2-3 s beat raises the stakes, it is not the answer), a running number, 18-24 s, no like/share/follow asks but a seamless loop back to frame 0 (V6), narration in full sentences, explainers built like "The 041 playbook" in VIEWS.md, two "Is this a business?" case openers a day (TikTok 12:55 + 20:25), no new 3-round videos.
-> **Since 28 Nov (user, 27 Nov): one current-affairs explainer every day at TikTok 16:25 / IG 16:55** (AI, science, maths, tech; never politics; voiced). Rules: GROWTH.md "Daily current-affairs explainer".
+> **Since 28 Nov (user, 27 Nov): one current-affairs explainer every day at TikTok 16:25 / IG 16:55** (maths, tech, business, science, energy; AI low-key; never politics; voiced). Rules: GROWTH.md "Daily current-affairs explainer".
 
 ## Pipeline
 1. `bash setup.sh` once per workspace (installs Python deps, links `/home/claude/kit`, copies REN fonts, installs the narrator voice A+: ~1.8 GB from Hugging Face at pinned revisions, ~30 s). If it prints `VOICE MISSING`, make the video without narration and note "no voice" in `posts.csv`; don't stop the run.
@@ -10,7 +12,8 @@
    Remotion (React) videos: see `tests/015-no-yellow/README.md` (render, convert Remotion's full-range output to standard range, mux at 48 kHz).
    **Narrator voice (since 22 Nov, evening):** the standard voice is **A+** = Chatterbox-Turbo (Resemble AI, MIT, ONNX on CPU) speaking with voice A's timbre (`kit/voice.py`, reference `kit/voice_a_ref.wav`; the user picked it from 3 samples after finding Kokoro voice A lifeless). Story series, REN and number facts are voiced; illusions and calm loops are not (rules in GROWTH.md "Voice"). Write the lines first, `python3 kit/voice.py measure "..."`, time the scenes around them, `place()` the cues, then `narrate(mix, cues)` as the LAST step of `audio.py` (it ducks the music). Every line is checked with Whisper and retaken if the words don't match. ~13-15 s of CPU per 1 s of speech. Needs huggingface.co + *.hf.co in the allowed domains. Don't change the voice without the user.
 3. Output 1080x1920, 30 fps, H.264. Render stills of the busiest moments and look at them before the full render.
-   Openings: follow `HOOKS.md` and build them with `kit/hook.py` (`from hook import hook_text, stamp, countdown, hook_sfx`). Before scheduling, `python3 kit/hookcheck.py videos/<file>.mp4 --hook "<frame-0 words>" --reveal <s>` must pass.
+   **Look: `brand/README.md` (Neon Eclipse). Draw with `kit/brand.py` (`frame0`, `hook`, `horizon`, `trajectory`, `watermark`, `topic_tag`, ...); the Business series uses its neon theme.**
+   Openings: follow `HOOKS.md`; draw frame 0 with `kit/brand.py` (`frame0` / `hook`); `kit/hook.py` still gives `stamp, countdown, hook_sfx` (now in brand colours). Before scheduling, `python3 kit/hookcheck.py videos/<file>.mp4 --hook "<frame-0 words>" --reveal <s>` AND `python3 kit/brandcheck.py videos/<file>.mp4` must pass.
 4. Copy the final MP4 to `videos/<id>-<slug>.mp4` (photo posts: JPEGs in `photos/<id>-<slug>/`), commit, push.
 5. Post through **Buffer** (connector `Buffer_com`; since 21 Nov, because Metricool Free only publishes 20 posts a month). Organization `6b00d1f57c8fd27105398cbf` ("My organization"), TikTok channel `6b00d2e9ece6dfde5f3a8402` (spare.pixels), timezone Europe/Berlin. `create_post` with `schedulingType: automatic`, `mode: customScheduled`, `dueAt` with the Berlin offset (e.g. `2026-11-21T13:10:00+01:00`), `text` = caption, `assets [{"video":{"url":"https://raw.githubusercontent.com/ginterdennis/spare-pixels-videos/main/<path>","metadata":{"thumbnailOffset":<ms>}}}]`, `metadata {"tiktok":{"title":"...","isAiGenerated":false}}` (code-drawn, nothing realistic), but **`true` for every video with the narrator voice** (synthetic speech; TikTok asks for a label on realistic AI audio, so we label it to be safe). Buffer Free: max 10 scheduled posts per channel at a time and 1,000 API requests per channel per 30 days, so schedule 1-3 days ahead and refill daily. Metricool (brand `8233683`) is now for analytics only; do not publish there (its 20 free posts a month are a spare from the 1st).
 6. Log every post in `posts.csv` (id, time, file, series, format, topic, hook, length, url, 48h metrics, notes incl. Buffer post id).
@@ -18,7 +21,7 @@
    Instagram rejects audio above 48 kHz: always mux at `-ar 48000` (kit.mux() leaves 96 kHz). Instagram feed photos must be 4:5 to 1.91:1, so 9:16 photo posts need a 4:5 version.
 
 ## Style rules
-- Look: dark navy gradient (`kit.BG_TOP/BG_BOT`), Inter Black headlines, accent GOLD #FFD36B / PINK / CYAN, small letter-spaced HUD labels with big numbers.
+- **Look (since 28 Nov 2026): Sigmoid Horizon Neon Eclipse, `brand/README.md`.** Void ground, sparse stars, the horizon arc in the eclipse gradient, the pink sun ring, the thin cyan S-curve trajectory, the round icon on every frame (top right), Unbounded / Inter / JetBrains Mono. The old navy-and-gold look, cockpit HUD and warm paper looks are retired for new videos.
 - The first frame must work on its own: a big viewer task (max 6 words) over something already moving (HOOKS.md). Keep key content out of the top ~180 px and bottom ~380 px (TikTok UI).
 - **No pixel stuff (user, 22 Nov 2026):** no pixel themes, pixel characters, pixel-art looks, pixel puns or #pixelart in any new video or caption. The account name doesn't constrain the content.
 - English. Original art, jokes and music only. No copyrighted characters, no real brand UIs, no real people.
@@ -30,6 +33,7 @@
 - Growth goal and the daily loop's rules live in `GROWTH.md` (read it first). TikTok: max 3 posts a day, 150+ min apart (new-account throttle risk); (the TikTok reach recovery ended 24 Nov; slots now 12:55, 16:25, 20:25 Berlin; always `schedulingType: automatic`). Instagram: max 4 Reels a day.
 - At least 60 min between posts; do not post the same format back to back.
 - Default: send the user each video for an OK before it is scheduled, unless the user has approved automatic posting for that run.
+- Never schedule a video that fails `kit/brandcheck.py`; fix it (or re-render in the brand look) first.
 
 ## Format test (20 Nov 2026)
 Formats 004-012 = simulation, calm loop, interactive, data, slideshow, explainer, seasonal, humour, story. See `posts.csv` and the Claude project doc `claude/format-test-2026-11-20.md`.

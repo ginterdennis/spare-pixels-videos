@@ -1,5 +1,5 @@
 import React from 'react';
-import {backOut, C, easeInOut, easeOut, FONT, lerp, OW, tw} from './theme';
+import {backOut, C, easeInOut, easeOut, FONT, lerp, OW, tw, nc, HARD_SHADOW} from './theme';
 import {FLOOR_Y} from './Props';
 import {useLabelSvg} from './UI';
 
@@ -29,7 +29,7 @@ export const FlatRoom: React.FC<{t: number; children?: React.ReactNode}> = ({chi
   <g>
     <rect x={0} y={0} width={1080} height={FLOOR_Y} fill={C.wall} />
     {/* window with rooftops */}
-    <rect x={96} y={380} width={300} height={250} rx={10} fill="#BFDDEA" stroke={C.ink} strokeWidth={OW} />
+    <rect x={96} y={380} width={300} height={250} rx={10} fill={nc('#BFDDEA', '#26306A')} stroke={C.ink} strokeWidth={OW} />
     <path d="M 102 560 L 160 520 L 210 548 L 210 600 L 102 600 Z" fill={C.coral} opacity={0.75} />
     <path d="M 220 600 L 220 530 L 300 490 L 390 530 L 390 600 Z" fill={C.navy} opacity={0.5} />
     <rect x={102} y={590} width={288} height={34} fill={C.green} opacity={0.6} />
@@ -41,9 +41,9 @@ export const FlatRoom: React.FC<{t: number; children?: React.ReactNode}> = ({chi
     <circle cx={485} cy={470} r={22} fill={C.gold} />
     <path d="M 442 545 L 478 505 L 505 530 L 530 512 L 530 548 L 442 548 Z" fill={C.teal} />
     {/* floor */}
-    <rect x={0} y={FLOOR_Y} width={1080} height={1920 - FLOOR_Y} fill="#D3BB95" />
+    <rect x={0} y={FLOOR_Y} width={1080} height={1920 - FLOOR_Y} fill={nc('#D3BB95', '#17112F')} />
     <line x1={0} y1={FLOOR_Y} x2={1080} y2={FLOOR_Y} stroke={C.ink} strokeWidth={OW} />
-    {[1230, 1320, 1440, 1600, 1800].map((y) => <line key={y} x1={0} y1={y} x2={1080} y2={y} stroke="#BDA27A" strokeWidth={3} />)}
+    {[1230, 1320, 1440, 1600, 1800].map((y) => <line key={y} x1={0} y1={y} x2={1080} y2={y} stroke={nc('#BDA27A', '#2B2152')} strokeWidth={3} />)}
     {/* plant */}
     <rect x={30} y={FLOOR_Y - 110} width={80} height={110} rx={8} fill={C.coral} stroke={C.ink} strokeWidth={OW} />
     {[[-30, -60], [0, -90], [30, -55], [-14, -120], [18, -128]].map(([dx, dy], i) => (
@@ -58,7 +58,7 @@ export const FlatRoom: React.FC<{t: number; children?: React.ReactNode}> = ({chi
 /** Couch seat + armrests drawn in front of the sitter. */
 export const CouchFront: React.FC = () => (
   <g>
-    <rect x={130} y={FLOOR_Y - 196} width={400} height={92} rx={22} fill="#3BA29B" stroke={C.ink} strokeWidth={OW} />
+    <rect x={130} y={FLOOR_Y - 196} width={400} height={92} rx={22} fill={nc('#3BA29B', '#1F7A66')} stroke={C.ink} strokeWidth={OW} />
     <rect x={96} y={FLOOR_Y - 250} width={72} height={200} rx={28} fill={C.teal} stroke={C.ink} strokeWidth={OW} />
     <rect x={500} y={FLOOR_Y - 250} width={72} height={200} rx={28} fill={C.teal} stroke={C.ink} strokeWidth={OW} />
     <rect x={140} y={FLOOR_Y - 56} width={24} height={56} fill={C.ink} />
@@ -80,7 +80,7 @@ export const Phone: React.FC<{t: number; at: number; until: number; status: Phon
   const circ = 2 * Math.PI * R;
   return (
     <div style={{position: 'absolute', left: x, top: 400, width: 330, height: 660, opacity: o, transform: `translateY(${lerp(80, 0, k)}px) scale(${lerp(0.85, 1, k)}) rotate(${rot}deg)`, transformOrigin: '50% 100%'}}>
-      <div style={{position: 'absolute', inset: 0, background: C.ink, borderRadius: 54, boxShadow: `10px 10px 0 rgba(28,33,64,0.35)`}} />
+      <div style={{position: 'absolute', inset: 0, background: C.ink, borderRadius: 54, boxShadow: HARD_SHADOW}} />
       <div style={{position: 'absolute', left: 14, top: 14, right: 14, bottom: 14, background: C.paper, borderRadius: 42, overflow: 'hidden'}}>
         <div style={{position: 'absolute', left: 112, top: 12, width: 78, height: 22, borderRadius: 11, background: C.ink}} />
         <div style={{position: 'absolute', left: 0, right: 0, top: 70, textAlign: 'center', fontFamily: lf.family, fontWeight: lf.weight, fontSize: 22, color: C.ink, letterSpacing: 1}}>HOUSE WASHER</div>
