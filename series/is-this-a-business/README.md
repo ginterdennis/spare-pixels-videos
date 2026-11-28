@@ -22,7 +22,9 @@ Part 3 beats: receipt (Wi-Fi chip €6.25, motion sensor €3.40, ~€10; 10 fla
 ## Look
 **Since 28 Nov 2026: the neon night version (user's choice), `LOOK = 'neon'` in `src/theme.ts`.** The same house and cast at night: lavender line art on dark walls, Jonas in cyan, the brand UI (night caption cards with a violet glow, the brand icon starting the series row, mint and cyan pills in JetBrains Mono, a mono counter with the eclipse gradient, sun-pink tags, a night end card in Unbounded). In new scenes use only `C.*`, `BRAND.*` or `nc(paperHex, neonHex)`; `C.white` is a night panel, `C.ink` the light line/text colour, `C.shade` dims. Rules: `brand/README.md`; references: `brand/reference/business-neon-*.jpg`. `public/night.png` is the background, `public/sh-icon.svg` the icon.
 
-The original look (parts 1-5, cases 2-3 as posted; `LOOK = 'paper'`): warm paper background, navy ink outlines (6 px), gold/teal/coral accents, Inter ExtraBold captions in white cards with a hard shadow, Silkscreen for the series pill, stairs counter and labels. Palette in `src/theme.ts`. Cast: Jonas (gold hoodie, curly hair) and 9 neighbours (`NEIGHBOURS` in `src/Part1.tsx`; the pink one in 4B is whose laundry Jonas moved).
+034 (case 2) and 038 (case 3) were re-rendered in the neon look on 28 Nov before they went out (`videos/034-biz-case2-parcel-neon.mp4`, `videos/038-biz-case3-locked-out-neon.mp4`; same timeline, v3 audio stream-copied). On a night panel use `nc(C.navy, BRAND.haze)` for secondary text, and `nc('Npx Npx 0 ${C.ink}', HARD_SHADOW)` instead of a hard ink shadow.
+
+The original look (parts 1-5 as posted; `LOOK = 'paper'`): warm paper background, navy ink outlines (6 px), gold/teal/coral accents, Inter ExtraBold captions in white cards with a hard shadow, Silkscreen for the series pill, stairs counter and labels. Palette in `src/theme.ts`. Cast: Jonas (gold hoodie, curly hair) and 9 neighbours (`NEIGHBOURS` in `src/Part1.tsx`; the pink one in 4B is whose laundry Jonas moved).
 
 ## Facts (checked 20 Nov 2026)
 - A flight of stairs between floors typically has 13–18 steps; we use 16 per floor (angi.com, gambrick.com).
