@@ -46,7 +46,7 @@ The old hook rule H4 ("first payoff by 3 s") lifted the 3-second hold but built 
 | V5 | **18-24 s.** 022 held at 27 s, but each second cut raises the full-watch rate. End on a frame that hands back to frame 0 so replays happen. |
 | V6 | **One share prompt naming a person** on the end card and in caption line 2: "Send this to your neighbour.", "Send this to someone who loses keys." Keep the YES/NO comment prompt too, but the share line comes first. |
 | V7 | **Plain, short English on screen.** Max 6 words per line, everyday words, numbers as digits. On 7 of the 16 For You videos with country data, 58-84% of viewers were in Germany or Austria, so many first viewers read English as a second language. |
-| V8 | **Mix: 2 open-question stories a day on TikTok.** Business case openers at 12:55 and 20:25 (never back to back: the 16:25 slot sits between them), one explore at 16:25. Explore videos follow V1 too: one question per video, the answer at the end. |
+| V8 | **Mix: 2 open-question stories a day on TikTok.** Business case openers at 12:55 and 20:25 (never back to back: the 16:25 slot sits between them). **16:25 = the daily current-affairs explainer since 28 Nov (user, 27 Nov; GROWTH.md "Daily current-affairs explainer")**; it is the day's explore slot. Explore videos follow V1 too: one question per video, the answer at the end. |
 
 ## What happens to each format
 - **"Is this a business?" case openers (exploit #1):** two a day on TikTok and Instagram. A new everyday case each time (`series/is-this-a-business/CASES.md`). A case that passes 1,000 views gets a Part 2 within 48 h, and Part 2 opens on a new problem or conflict, never on the fix.
