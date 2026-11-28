@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './part4.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw} from './theme';
+import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE} from './theme';
 import {along, Building, JONAS_PATH, LV, MACHINE_X, pathFrom, Walker} from './Building';
 import {JONAS, Person} from './Person';
 import {BasementRoom, FLOOR_Y, JONAS_LAUNDRY, NEIGHBOUR_LAUNDRY, Washer} from './Props';
@@ -281,7 +281,7 @@ export const Part4: React.FC = () => {
   return (
     <LabelFont.Provider value="sans">
       <AbsoluteFill style={{backgroundColor: C.paper}}>
-        <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
+        <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />
         {scene}
         <Phone t={t} at={T.nosig - 0.05} until={T.sA[1] - 0.08} x={70} rot={-3} status={{label: 'NO SIGNAL', sub: 'Washer: ???', color: C.coral, progress: 0, size: 46}} />
         <Phone t={t} at={T.sE[0] + 0.1} until={T.card + 0.4} status={status} statusAt={T.ping} banners={[{title: 'The washer is FREE', sub: 'House washer · now', at: T.ping}]} />

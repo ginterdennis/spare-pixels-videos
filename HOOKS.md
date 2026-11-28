@@ -2,6 +2,8 @@
 
 Read this before making any video. Code: `kit/hook.py` (building blocks), `kit/hookcheck.py` (QA).
 
+> **28 Nov 2026: brand.** Frame 0 is drawn in the Sigmoid Horizon look: `kit/brand.py` `frame0()` / `hook()` (Unbounded, one line in the eclipse gradient, topic tag, icon top right, horizon). `kit/hook.py` (`stamp`, `countdown`, `hook_sfx`, `hook_text`) now uses brand colours and Unbounded. Rules: `brand/README.md`.
+
 > **27 Nov 2026: read VIEWS.md first.** The 3-second rules below still hold, but H4 and H5 changed: the beat at second 2-3 must raise the stakes, not answer the question. Videos that answered at 3 s (same colour, guess, odd one out) lost two thirds of their viewers by second 10; 022, which kept its question open to the end, kept 74%.
 
 ## Why this exists

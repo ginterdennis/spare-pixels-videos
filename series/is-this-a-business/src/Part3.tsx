@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './part3.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw} from './theme';
+import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE} from './theme';
 import {Building, DOOR_L, DOOR_R, LV, Walker} from './Building';
 import {JONAS, Look, Person} from './Person';
 import {FLOOR_Y} from './Props';
@@ -193,7 +193,7 @@ export const Part3: React.FC = () => {
   const showCount = t < T.cardOut ? yes : Math.round(lerp(7, 0, tw(t, T.cardOut, 0.3)));
   return (
     <AbsoluteFill style={{backgroundColor: C.paper}}>
-      <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
+      <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />
       {scene}
       {inS(t, T.s2) && <AbsoluteFill style={{backgroundColor: C.ink, opacity: 0.12 * tw(t, T.s2[0], 0.3) * (1 - tw(t, T.s2[1] - 0.2, 0.2))}} />}
       <Receipt t={t} />

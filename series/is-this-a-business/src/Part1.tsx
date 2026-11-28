@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './part1.json';
-import {C, clamp01, easeInOut, easeOut, FPS, lerp, tw} from './theme';
+import {C, clamp01, easeInOut, easeOut, FPS, lerp, tw, BG_FILE} from './theme';
 import {along, Building, JONAS_PATH, LV, MACHINE_X, pathFrom, stairsAt, Walker} from './Building';
 import {Basket, JONAS, Look, Person} from './Person';
 import {BasementRoom, Clock, FLOOR_Y, JONAS_LAUNDRY, NEIGHBOUR_LAUNDRY, Note, Washer} from './Props';
@@ -245,7 +245,7 @@ export const Part1: React.FC<{uiOnly?: boolean}> = ({uiOnly = false}) => {
   return (
     <LabelFont.Provider value={uiOnly ? 'sans' : 'pixel'}>
     <AbsoluteFill style={{backgroundColor: uiOnly ? 'transparent' : C.paper}}>
-      {!uiOnly && <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />}
+      {!uiOnly && <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />}
       {!uiOnly && (closeUp ? <CloseUp t={t} /> : <Overview t={t} />)}
       <AbsoluteFill style={{backgroundColor: C.white, opacity: flash}} />
       <SeriesPill part={1} />

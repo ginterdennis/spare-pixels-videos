@@ -1,4 +1,4 @@
-"""Shared toolkit for Spare Pixels videos: frames -> ffmpeg pipe, text, synth audio, mux."""
+"""Shared toolkit for Sigmoid Horizon (formerly Spare Pixels) videos: frames -> ffmpeg pipe, text, synth audio, mux."""
 import os, subprocess, math, functools
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -8,14 +8,19 @@ from scipy.io import wavfile
 W, H, FPS = 1080, 1920, 30
 FONTS = os.path.join(os.path.dirname(__file__), "fonts")
 
-# brand palette (matches 001/002)
-BG_TOP = (14, 16, 32)
-BG_BOT = (6, 7, 16)
-WHITE = (246, 246, 250)
-GOLD = (255, 211, 107)
-PINK = (255, 79, 176)
-CYAN = (90, 200, 255)
-MUTED = (150, 156, 185)
+# Brand palette: Sigmoid Horizon "Neon Eclipse" since 28 Nov 2026 (brand/README.md, kit/brand.py).
+# The old names stay so existing helpers keep working; their values are now the brand's:
+# BG = void, GOLD (the old accent) = sun-pink, PINK = magenta, CYAN = horizon cyan, MUTED = haze.
+# Old spare.pixels values (navy gradient, gold #FFD36B) are kept in OLD_* only to re-render archived videos.
+OLD_BG_TOP, OLD_BG_BOT, OLD_GOLD = (14, 16, 32), (6, 7, 16), (255, 211, 107)
+BG_TOP = (5, 3, 11)
+BG_BOT = (5, 3, 11)
+WHITE = (242, 247, 255)
+GOLD = (255, 90, 223)
+PINK = (255, 47, 208)
+CYAN = (34, 230, 255)
+VIOLET = (176, 92, 255)
+MUTED = (164, 157, 196)
 
 
 @functools.lru_cache(None)

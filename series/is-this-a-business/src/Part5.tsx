@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './part5.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw} from './theme';
+import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE} from './theme';
 import {Building, DOOR_L, DOOR_R, LV, Walker} from './Building';
 import {JONAS, Look, Person} from './Person';
 import {BasementRoom, FLOOR_Y, JONAS_LAUNDRY, Note, Washer} from './Props';
@@ -254,7 +254,7 @@ export const Part5: React.FC = () => {
   return (
     <LabelFont.Provider value="sans">
       <AbsoluteFill style={{backgroundColor: C.paper}}>
-        <Img src={staticFile('paper.png')} style={{position: 'absolute', width: 1080, height: 1920}} />
+        <Img src={staticFile(BG_FILE)} style={{position: 'absolute', width: 1080, height: 1920}} />
         {scene}
         <Phone t={t} at={T.phone} until={T.sC[1] - 0.08} x={70} rot={-3} status={phoneStatus} statusAt={T.zero} />
         <AbsoluteFill style={{backgroundColor: C.white, opacity: flash}} />

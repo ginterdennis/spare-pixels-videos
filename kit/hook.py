@@ -17,7 +17,9 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from kit import *
 
-HOOK_SIZE = 132          # px, Inter Black (auto-shrinks to fit). Old strip headlines were 84 px.
+HOOK_SIZE = 112          # px, Unbounded ExtraBold (brand display face since 28 Nov; auto-shrinks to fit)
+HOOK_FONT = "Unbounded-ExtraBold"
+# New videos: prefer kit/brand.py hook()/frame0() for the full brand frame 0 (icon, tag, gradient word, horizon).
 HOOK_Y = 400             # baseline of the first hook line (safe area starts at ~180)
 MAX_WORDS = 6
 
@@ -27,20 +29,20 @@ def _words(lines):
 
 
 def _layer(lines, size, gap, panel, pad=(48, 34)):
-    f = font("Inter-Black", size)
+    f = font(HOOK_FONT, size)
     widths = [sum(f.getlength(t) for t, _ in parts) for parts in lines]
     lw, lh = int(max(widths)) + 2 * pad[0], int(len(lines) * size * gap + 2 * pad[1])
     im = Image.new("RGBA", (lw, lh), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     if panel:
-        d.rounded_rectangle((0, 0, lw - 1, lh - 1), radius=36, fill=(8, 9, 20, 205))
+        d.rounded_rectangle((0, 0, lw - 1, lh - 1), radius=36, fill=(14, 10, 28, 215))   # brand night panel
     for k, parts in enumerate(lines):
         base = pad[1] + size * 0.86 + k * size * gap
         x = (lw - widths[k]) / 2
         for txt, col in parts:
             # dark outline keeps the text readable over bright or busy visuals
             d.text((x, base), txt, font=f, fill=col + (255,), anchor="ls",
-                   stroke_width=max(3, size // 26), stroke_fill=(6, 7, 16, 255))
+                   stroke_width=max(3, size // 26), stroke_fill=(5, 3, 11, 255))
             x += f.getlength(txt)
     return im
 
@@ -54,7 +56,7 @@ def hook_text(im, t, lines, y=HOOK_Y, size=HOOK_SIZE, gap=1.08, panel=True, punc
     if alpha <= 0 or t < t0:
         return
     # shrink to fit: the panel at its punch-in scale (x1.10) must leave 60 px each side
-    f = font("Inter-Black", size)
+    f = font(HOOK_FONT, size)
     widest = max(sum(f.getlength(t_) for t_, _ in parts) for parts in lines) + 96
     if widest * 1.10 > W - 120:
         size = int(size * (W - 120) / (widest * 1.10))
@@ -99,10 +101,10 @@ def countdown(im, t, t0, t1, cx, cy, r=74, col=GOLD, label_txt=None):
     d.arc((cx - r, cy - r, cx + r, cy + r), 0, 360, fill=(60, 64, 90, 255), width=14)
     d.arc((cx - r, cy - r, cx + r, cy + r), -90, -90 + 360 * frac, fill=col + (255,), width=14)
     n = str(int(math.ceil(left - 1e-6)))
-    f = font("Inter-Black", int(r * 1.15))
+    f = font("Unbounded-ExtraBold", int(r * 0.9))
     d.text((cx, cy + r * 0.40), n, font=f, fill=WHITE + (255,), anchor="ms")
     if label_txt:
-        draw_rich(d, cx, cy + r + 62, [(label_txt, MUTED + (255,))], font("Inter-Bold", 34), spacing=4)
+        draw_rich(d, cx, cy + r + 62, [(label_txt, MUTED + (255,))], font("JBMono-Bold", 30), spacing=4)
 
 
 def hook_sfx(m, reveal=None, ticks=(), gain=1.0):
