@@ -292,7 +292,7 @@ export const Part4: React.FC = () => {
         <Tag t={t} at={T.sE[0] + 0.2} until={T.card - 0.1} text="1A · VOTED NO" y={330} />
         <Tag t={t} at={T.sA[0] + 0.0} until={T.nosig - 0.15} text="DAY 1" y={330} />
         <Captions t={t} caps={CAPS} />
-        <EndCard t={t} at={T.card} out={T.cardOut} next={5} lines={['The landlord', <span style={{color: C.gold}}>found out.</span>]} sub="Follow for Part 5" />
+        <EndCard t={t} at={T.card} out={T.cardOut} next={5} lines={['The landlord', <span style={{color: C.gold}}>found out.</span>]} />
       </AbsoluteFill>
     </LabelFont.Provider>
   );
