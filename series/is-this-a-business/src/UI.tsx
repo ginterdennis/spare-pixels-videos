@@ -57,9 +57,9 @@ export const useLabelSvg = () => (NEON ? {family: FONT.mono, weight: 700} : Reac
 export const SeriesPill: React.FC<{part: number; op?: number; label?: string}> = ({part, op = 1, label}) => {
   const lf = useLF();
   if (NEON) {
-    const pill = (c: string): React.CSSProperties => ({...lf, fontSize: 27, padding: '9px 18px 10px', borderRadius: 999, color: c, background: `${c}22`, border: `3px solid ${c}`, whiteSpace: 'nowrap'});
+    const pill = (c: string): React.CSSProperties => ({...lf, fontSize: 22, padding: '8px 15px 9px', borderRadius: 999, color: c, background: `${c}22`, border: `3px solid ${c}`, whiteSpace: 'nowrap'});
     return (
-      <div style={{position: 'absolute', left: 48, top: 196, display: 'flex', alignItems: 'center', gap: 12, opacity: op}}>
+      <div style={{position: 'absolute', left: 48, top: 196, display: 'flex', alignItems: 'center', gap: 10, opacity: op}}>
         <Img src={staticFile('sh-icon.svg')} style={{width: 76, height: 76}} />
         <div style={pill(BRAND.mint)}>IS THIS A BUSINESS?</div>
         <div style={pill(BRAND.cyan)}>{label ?? `PART ${part}`}</div>

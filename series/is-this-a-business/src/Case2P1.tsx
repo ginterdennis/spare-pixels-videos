@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './c2p1.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE} from './theme';
+import {backOut, BRAND, C, easeInOut, easeOut, FONT, FPS, HARD_SHADOW, lerp, LOOK, nc, OW, tw, BG_FILE} from './theme';
 import {along, Building, DOOR_L, DOOR_R, LV, SA, SB, Walker} from './Building';
 import {JONAS, Look, Person} from './Person';
 import {FLOOR_Y} from './Props';
@@ -140,13 +140,13 @@ const Banner: React.FC<{t: number; at: number; until: number; title: string; sub
   const o = 1 - tw(t, until, 0.25);
   return (
     <div style={{position: 'absolute', left: 60, width: 960, top: lerp(160, 300, k), opacity: o * Math.min(1, k * 2)}}>
-      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 30, boxShadow: `8px 8px 0 ${C.ink}`, padding: '20px 26px', display: 'flex', gap: 22, alignItems: 'center'}}>
+      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 30, boxShadow: nc(`8px 8px 0 ${C.ink}`, HARD_SHADOW), padding: '20px 26px', display: 'flex', gap: 22, alignItems: 'center'}}>
         <div style={{width: 84, height: 84, borderRadius: 20, background: '#C9935A', border: `5px solid ${C.ink}`, flexShrink: 0, position: 'relative'}}>
           <div style={{position: 'absolute', left: 30, top: 0, width: 16, height: 74, background: '#E8C690'}} />
         </div>
         <div>
           <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 44, lineHeight: '52px', color: C.ink}}>{title}</div>
-          <div style={{fontFamily: FONT.sans, fontWeight: 700, fontSize: 32, lineHeight: '40px', color: C.navy, opacity: 0.75}}>{sub}</div>
+          <div style={{fontFamily: FONT.sans, fontWeight: 700, fontSize: 32, lineHeight: '40px', color: nc(C.navy, BRAND.haze), opacity: LOOK === 'neon' ? 1 : 0.75}}>{sub}</div>
         </div>
       </div>
     </div>
@@ -161,7 +161,7 @@ const Photo: React.FC<{t: number}> = ({t}) => {
   const ring = tw(t, T.photo[0] + 0.55, 0.35, easeOut);
   return (
     <div style={{position: 'absolute', left: 190, top: 330, width: 700, opacity: o, transform: `translateY(${lerp(140, 0, k)}px) rotate(${lerp(8, -3, k)}deg) scale(${lerp(0.8, 1, k)})`}}>
-      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 12, boxShadow: `10px 10px 0 ${C.ink}`, padding: '22px 22px 18px'}}>
+      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 12, boxShadow: nc(`10px 10px 0 ${C.ink}`, HARD_SHADOW), padding: '22px 22px 18px'}}>
         <svg width={644} height={600} style={{display: 'block'}}>
           <rect x={0} y={0} width={644} height={600} fill={C.wall} />
           <rect x={210} y={130} width={230} height={420} fill={C.lilac} stroke={C.ink} strokeWidth={6} />
@@ -171,7 +171,7 @@ const Photo: React.FC<{t: number}> = ({t}) => {
           <rect x={0} y={550} width={644} height={50} fill={C.floor} />
           <Parcel x={325} y={590} s={1.25} />
         </svg>
-        <div style={{fontFamily: FONT.sans, fontWeight: 800, fontSize: 34, color: C.navy, marginTop: 12, textAlign: 'center'}}>Delivery photo · front door</div>
+        <div style={{fontFamily: FONT.sans, fontWeight: 800, fontSize: 34, color: nc(C.navy, BRAND.haze), marginTop: 12, textAlign: 'center'}}>Delivery photo · front door</div>
       </div>
     </div>
   );

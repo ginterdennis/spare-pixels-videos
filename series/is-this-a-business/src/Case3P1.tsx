@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
 import T from './c3p1.json';
-import {backOut, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE, nc, HARD_SHADOW, LOOK} from './theme';
+import {backOut, BRAND, C, easeInOut, easeOut, FONT, FPS, lerp, OW, tw, BG_FILE, nc, HARD_SHADOW, LOOK} from './theme';
 import {JONAS, Look, Person} from './Person';
 import {Clock, FLOOR_Y} from './Props';
 import {Landing} from './Case2P1';
@@ -234,8 +234,8 @@ const Invoice: React.FC<{t: number}> = ({t}) => {
   const sk = tw(t, T.paid, 0.22, backOut);
   return (
     <div style={{position: 'absolute', left: 230, top: 370, width: 600, opacity: o, transform: `translateY(${lerp(140, 0, k)}px) rotate(${lerp(6, 2, k)}deg)`}}>
-      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 10, boxShadow: `10px 10px 0 ${C.ink}`, padding: '26px 36px 30px', position: 'relative'}}>
-        <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 32, color: C.navy, letterSpacing: 3}}>INVOICE</div>
+      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 10, boxShadow: nc(`10px 10px 0 ${C.ink}`, HARD_SHADOW), padding: '26px 36px 30px', position: 'relative'}}>
+        <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 32, color: nc(C.navy, BRAND.haze), letterSpacing: 3}}>INVOICE</div>
         <div style={{fontFamily: FONT.sans, fontWeight: 800, fontSize: 34, color: C.ink, marginTop: 8}}>Door opening, Sat 00:20</div>
         <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 130, lineHeight: '140px', color: C.coral, letterSpacing: '-0.03em'}}>€240</div>
         {sk > 0 && (
@@ -329,8 +329,8 @@ const Receipt: React.FC<{t: number}> = ({t}) => {
   };
   return (
     <div style={{position: 'absolute', left: 110, top: 360, width: 830, opacity: o, transform: `translateY(${lerp(120, 0, k)}px) rotate(-1.5deg)`}}>
-      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 10, padding: '32px 44px 38px', boxShadow: `10px 10px 0 ${C.ink}`}}>
-        <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 34, color: C.navy, letterSpacing: 2, marginBottom: 12}}>WHAT IT COSTS</div>
+      <div style={{background: C.white, border: `6px solid ${C.ink}`, borderRadius: 10, padding: '32px 44px 38px', boxShadow: nc(`10px 10px 0 ${C.ink}`, HARD_SHADOW)}}>
+        <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 34, color: nc(C.navy, BRAND.haze), letterSpacing: 2, marginBottom: 12}}>WHAT IT COSTS</div>
         {row(T.rcpt + 0.05, 'Locksmith, Sat night', '€240')}
         {row(T.rcpt + 0.2, 'Kiosk keeps a key', '€2/mo', {color: C.teal})}
         <div style={{borderTop: `4px dashed ${C.ink}`, margin: '14px 0 10px', opacity: tw(t, T.rcpt + 1.65, 0.2)}} />
