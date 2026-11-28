@@ -105,10 +105,16 @@ def speakable(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+_ALIAS = {"kilometers": "km", "kilometer": "km", "kilometres": "km", "kilometre": "km", "tonnes": "tons"}
+
+
 def _words(s):
+    # Whisper writes "km", "90%", "$6", "tons" for what A+ says as "kilometers", "90 percent", "six dollars",
+    # "tonnes": compare them as the same words, or every such line burns 5 retakes (~6 min) for nothing (28 Nov).
+    s = re.sub(r"\$\s?(\d+(?:\.\d+)?)", r"\1 dollars", s).replace("%", " percent")
     s = re.sub(r"\[[a-z ]+\]", " ", s.lower())
     s = re.sub(r"\b(\d+)\b", lambda m: _NUMWORDS.get(m.group(1), m.group(1)), s)
-    return re.sub(r"[^a-z0-9 ]", " ", s).split()
+    return [_ALIAS.get(w, w) for w in re.sub(r"[^a-z0-9 ]", " ", s).split()]
 
 
 _NUMWORDS = {str(i): w for i, w in enumerate("zero one two three four five six seven eight nine ten".split())}
