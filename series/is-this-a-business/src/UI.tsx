@@ -80,7 +80,7 @@ export const Counter: React.FC<{value: number; bump: number; label?: string; op?
 );
 
 /** End card: "NEXT · PART n" + the question. Slides up from below. */
-export const EndCard: React.FC<{t: number; at: number; out: number; next: number; lines: React.ReactNode[]; sub?: string; kicker?: string}> = ({t, at, out, next, lines, sub = 'Follow so you catch it', kicker}) => {
+export const EndCard: React.FC<{t: number; at: number; out: number; next: number; lines: React.ReactNode[]; sub?: string; kicker?: string}> = ({t, at, out, next, lines, sub = '', kicker}) => {   // no like/share/follow asks (user, 27 Nov)
   if (t < at) return null;
   const k = tw(t, at, 0.5, easeOut);
   const ko = tw(t, out, 0.4, easeInOut);
@@ -91,7 +91,7 @@ export const EndCard: React.FC<{t: number; at: number; out: number; next: number
         <div style={{fontFamily: FONT.sans, fontWeight: 900, fontSize: 64, lineHeight: '74px', color: C.paper, marginTop: 14, letterSpacing: '-0.02em'}}>
           {lines.map((l, i) => <div key={i}>{l}</div>)}
         </div>
-        <div style={{fontFamily: FONT.sans, fontWeight: 700, fontSize: 36, color: C.tealLight, marginTop: 18}}>{sub}</div>
+        {sub && <div style={{fontFamily: FONT.sans, fontWeight: 700, fontSize: 36, color: C.tealLight, marginTop: 18}}>{sub}</div>}
       </div>
     </div>
   );

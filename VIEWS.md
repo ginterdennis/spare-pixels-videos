@@ -44,9 +44,22 @@ The old hook rule H4 ("first payoff by 3 s") lifted the 3-second hold but built 
 | V3 | **A running number from frame 0 to the end** (stairs, €, flats, minutes, kg). The viewer stays to see the final number. Every 2-3 s it moves or something new happens, and each beat makes the problem worse. |
 | V4 | **Problem first, idea last.** Business cases open on the problem a stranger gets in 3 s, never on the product, the price or the maths (024 opened on maths: 19% kept from 3 to 10 s). |
 | V5 | **18-24 s.** 022 held at 27 s, but each second cut raises the full-watch rate. End on a frame that hands back to frame 0 so replays happen. |
-| V6 | **One share prompt naming a person** on the end card and in caption line 2: "Send this to your neighbour.", "Send this to someone who loses keys." Keep the YES/NO comment prompt too, but the share line comes first. |
+| V6 | **No asks (user, 27 Nov evening, hard rule).** Never ask viewers to like, share, follow, save or send a video: not on screen, not in the voiceover, not in the caption. The user: "That's basically begging. We don't do that." Instead every video loops seamlessly back to frame 0 for rewatches (see "The 041 playbook", point 8). A comment question is still allowed. |
 | V7 | **Plain, short English on screen.** Max 6 words per line, everyday words, numbers as digits. On 7 of the 16 For You videos with country data, 58-84% of viewers were in Germany or Austria, so many first viewers read English as a second language. |
 | V8 | **Mix: 2 open-question stories a day on TikTok.** Business case openers at 12:55 and 20:25 (never back to back: the 16:25 slot sits between them). **16:25 = the daily current-affairs explainer since 28 Nov (user, 27 Nov; GROWTH.md "Daily current-affairs explainer")**; it is the day's explore slot. Explore videos follow V1 too: one question per video, the answer at the end. |
+
+## The 041 playbook (user, 27 Nov: "Wow, it's so good." Keep doing this.)
+What 041 "P vs NP" (v2, `tests/041-p-vs-np/`, `videos/041-p-vs-np.mp4`) did differently from the earlier videos. Use it for every explainer and current-affairs video, and take from it for every voiced video.
+1. **Script first.** Write the whole narration, check every fact with web search, and lock it before building anything. **Full sentences only** (the user: never bullet-point fragments like "300 switches. Check one setting: instant."). The voice explains; the screen shows short labels.
+2. **One everyday example, laid out step by step.** Not an abstract claim but something everyone knows (a sudoku): show it, say the rule out loud, show the contrast (checking = instant; solving = trying number after number), show why it explodes (the grid grows 9x9 > 16x16 > 25x25), then give a comparison the viewer can feel (a "ways to fill it" bar shooting past an "atoms in the universe" bar).
+3. **Every visual lands on its word.** Whisper word timestamps (`words.py` > `words.json`) drive the timeline through `timing.wt(line, word)`: the row lights up on "row", the column on "column", the locks shatter on "opens".
+4. **Tight narration.** Pauses inside a line are cut to 0.24 s and the take is sped up 10% with ffmpeg `atempo` (pitch unchanged), then re-checked with Whisper (`vo.py`). A+ reads slowly otherwise.
+5. **A stakes ladder, not a list.** Hook claim > where it came from > the example > what it means for you (your bank, your wallet) > what breaks > what we would gain > the twist (the world ends, a new one begins) > the honest answer (88% of experts bet against it, $1M unclaimed).
+6. **Banger hook, then rewind.** Frame 0: the claim in max 6 words plus the giant subject, already moving. At 2.4 s the stakes beat (a crack, padlocks snap open), then a rewind to the origin story.
+7. **A real visual world, not slides.** The user picked "neon 3D" from three looks (A night grid, B notebook, C neon): black starfield, glowing cyan and magenta lines with bloom, planes tilted in 3D perspective (skia `Matrix.setPolyToPoly`), extruded headline text, a slow camera drift. Engine: skia-python; choreography in `common.py`, the look in `styles.py` (all three looks still render). About 0.5 s per frame on the 2-CPU box: render in two halves in parallel (`render.py C part 0 2` and `part 1 2`), then concat.
+8. **A seamless loop instead of any ask.** The last line runs into the first ("...not even AI. Just remember:" > "Proving this would destroy the modern world as we know it."). The last frame is frame 0 (measured seam: one normal frame step). The music's bars tile the whole length (a 4-chord cycle that ends on the chord before the first one), a riser lands on the frame-0 hit, and all background motion (stars, floor grid, camera drift) is periodic over the length.
+9. **Length follows the explanation.** 041 runs 44 s, longer than V5's 18-24 s, because every line teaches something. Judge it on hold10, average watch and rewatches before changing the length rule.
+10. **Honest caption, no ask.** Hook words, then the context and caveats that did not fit in the video (who, when, what is confirmed, what is not), then hashtags.
 
 ## What happens to each format
 - **"Is this a business?" case openers (exploit #1):** two a day on TikTok and Instagram. A new everyday case each time (`series/is-this-a-business/CASES.md`). A case that passes 1,000 views gets a Part 2 within 48 h, and Part 2 opens on a new problem or conflict, never on the fix.
@@ -56,8 +69,8 @@ The old hook rule H4 ("first payoff by 3 s") lifted the 3-second hold but built 
 
 ## Captions
 - Line 1: the hook words (H8).
-- Line 2: the share prompt (V6).
-- Line 3: the comment prompt.
+- Line 2: context and caveats in plain words (who, when, what is confirmed). No ask (V6).
+- Line 3 (optional): one comment question.
 - 4-5 hashtags including one plain search phrase people type, e.g. `#businessidea`, `#sidehustle`, `#lockedout`, `#parcel`.
 
 ## Measuring

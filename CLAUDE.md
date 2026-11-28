@@ -1,6 +1,6 @@
 # Spare Pixels (TikTok @spare.pixels): how videos are made and posted
 
-> **Goal since 27 Nov 2026 (user): views, 50,000+ on a video.** Read `VIEWS.md` before making or scheduling anything. Where it differs from older rules (here, in GROWTH.md, HOOKS.md or a scheduled task's prompt), VIEWS.md wins: one question answered at the end (the 2-3 s beat raises the stakes, it is not the answer), a running number, 18-24 s, a share prompt naming a person on the end card and in caption line 2, two "Is this a business?" case openers a day (TikTok 12:55 + 20:25), no new 3-round videos.
+> **Goal since 27 Nov 2026 (user): views, 50,000+ on a video.** Read `VIEWS.md` before making or scheduling anything. Where it differs from older rules (here, in GROWTH.md, HOOKS.md or a scheduled task's prompt), VIEWS.md wins: one question answered at the end (the 2-3 s beat raises the stakes, it is not the answer), a running number, 18-24 s, no like/share/follow asks but a seamless loop back to frame 0 (V6), narration in full sentences, explainers built like "The 041 playbook" in VIEWS.md, two "Is this a business?" case openers a day (TikTok 12:55 + 20:25), no new 3-round videos.
 > **Since 28 Nov (user, 27 Nov): one current-affairs explainer every day at TikTok 16:25 / IG 16:55** (AI, science, maths, tech; never politics; voiced). Rules: GROWTH.md "Daily current-affairs explainer".
 
 ## Pipeline
